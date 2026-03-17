@@ -74,7 +74,7 @@ const links = [
 
           <!-- YouTube -->
           <a
-            href="https://www.youtube.com/"
+            href="https://www.youtube.com/@ashik-ahmed-dev"
             target="_blank"
             rel="noopener noreferrer"
             class="group flex h-10 w-10 items-center justify-center rounded-xl bg-slate-800 text-slate-300 transition hover:bg-emerald-500 hover:text-white"
