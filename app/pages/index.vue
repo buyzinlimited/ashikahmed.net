@@ -67,7 +67,7 @@ const projects = [
 </script>
 
 <template>
-  <main>
+  <main class="relative text-slate-900">
     <SeoMeta
       title="Ashik Ahmed | Full-Stack Developer (Nuxt, Vue, Laravel)"
       description="Ashik Ahmed is a Full-Stack Developer specializing in Nuxt.js, Vue.js, Laravel, and modern web application architecture. Building scalable, high-performance web solutions with clean UI and AI integration."
@@ -75,33 +75,32 @@ const projects = [
     />
 
     <!-- Hero -->
-    <section id="home" class="relative overflow-x-hidden">
-      <div class="mx-auto max-w-7xl px-4 pt-14 pb-10 md:pt-20 md:pb-16">
-        <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-12">
-          <!-- Left -->
+    <section class="relative bg-white/70 overflow-x-hidden">
+      <div class="relative mx-auto max-w-7xl px-4 py-12">
+        <div class="grid grid-cols-1 items-center gap-12 md:grid-cols-2">
           <div>
             <div
-              class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2"
+              class="inline-flex items-center gap-2 rounded-full border border-emerald-100 bg-white/90 px-4 py-2 shadow-sm backdrop-blur"
             >
-              <span
-                class="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_24px_rgba(16,185,129,0.8)]"
-              />
-              <span class="text-sm text-white/70">
+              <span class="h-2 w-2 rounded-full bg-emerald-500" />
+              <span class="text-sm text-slate-600">
                 Available for freelance & full-time
               </span>
             </div>
 
-            <h1 class="mt-6 text-4xl md:text-6xl font-bold leading-tight">
+            <h1
+              class="mt-6 text-4xl font-bold leading-tight tracking-tight text-slate-900 md:text-6xl"
+            >
               The future of
-              <span class="block text-white/70">development is</span>
+              <span class="block text-slate-500">development is</span>
               <span
-                class="bg-gradient-to-r from-emerald-300 to-cyan-200 bg-clip-text text-transparent"
+                class="bg-gradient-to-r from-emerald-600 to-cyan-500 bg-clip-text text-transparent"
               >
                 human + AI
               </span>
             </h1>
 
-            <p class="mt-5 text-white/70 max-w-xl">
+            <p class="mt-5 max-w-xl text-slate-600 md:text-lg">
               I build modern web apps with clean UI, scalable backend, and fast
               performance. Nuxt/Vue + Laravel/Node + Tailwind.
             </p>
@@ -109,103 +108,106 @@ const projects = [
             <div class="mt-8 flex flex-wrap gap-3">
               <a
                 href="#contact"
-                class="inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-semibold bg-emerald-500 text-[#06110D] hover:opacity-95 transition shadow-[0_0_0_1px_rgba(16,185,129,0.3),0_18px_60px_rgba(16,185,129,0.22)]"
+                class="inline-flex items-center justify-center rounded-xl bg-emerald-500 px-5 py-3 text-sm font-semibold text-white transition hover:bg-emerald-600 shadow-[0_10px_30px_rgba(16,185,129,0.18)]"
               >
                 Got a project?
               </a>
+
               <a
                 href="#projects"
-                class="inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-semibold bg-white/5 border border-white/10 hover:bg-white/10 transition"
+                class="inline-flex items-center justify-center rounded-xl border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-700 transition hover:border-slate-300 hover:bg-slate-50"
               >
                 See projects →
               </a>
+
               <a
                 href="#"
-                class="inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-semibold border border-emerald-500/25 text-emerald-200 bg-emerald-500/10 hover:bg-emerald-500/15 transition"
+                class="inline-flex items-center justify-center rounded-xl border border-emerald-200 bg-emerald-50 px-5 py-3 text-sm font-semibold text-emerald-700 transition hover:bg-emerald-100"
               >
                 Download Resume
               </a>
             </div>
 
-            <!-- Skills row -->
             <div class="mt-10 flex flex-wrap gap-2">
               <span
                 v-for="s in skills"
                 :key="s"
-                class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/70 hover:text-white transition"
+                class="rounded-full border border-slate-200 bg-white px-3 py-1 text-xs text-slate-600 transition hover:border-emerald-200 hover:text-emerald-600"
               >
                 {{ s }}
               </span>
             </div>
           </div>
 
-          <!-- Right -->
           <div class="relative isolate">
             <div class="relative mx-auto w-full max-w-md">
-              <!-- glow (kept but safe) -->
               <div
                 aria-hidden="true"
-                class="pointer-events-none absolute -inset-6 rounded-[2.5rem] bg-gradient-to-b from-emerald-500/15 via-white/5 to-transparent blur-2xl"
+                class="pointer-events-none absolute -inset-6 rounded-[2.5rem] bg-gradient-to-b from-emerald-100 via-cyan-50 to-transparent blur-2xl"
               />
 
               <div
-                class="relative rounded-[2rem] border border-white/10 bg-white/5 p-6 overflow-hidden"
+                class="relative overflow-hidden rounded-2xl border border-slate-200 bg-white/95 p-6"
               >
-                <!-- ring glow -->
                 <div
                   aria-hidden="true"
-                  class="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full border border-emerald-500/25"
+                  class="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full border border-emerald-200"
                 />
                 <div
                   aria-hidden="true"
-                  class="pointer-events-none absolute -right-10 -top-10 h-44 w-44 rounded-full border border-emerald-500/20"
+                  class="pointer-events-none absolute -right-10 -top-10 h-44 w-44 rounded-full border border-emerald-100"
                 />
                 <div
                   aria-hidden="true"
-                  class="pointer-events-none absolute -right-2 -top-2 h-28 w-28 rounded-full border border-emerald-500/15"
+                  class="pointer-events-none absolute -right-2 -top-2 h-28 w-28 rounded-full border border-emerald-100/80"
                 />
 
-                <!-- avatar placeholder -->
                 <div class="flex items-center gap-4">
                   <div
-                    class="h-16 w-16 rounded-2xl bg-gradient-to-br from-emerald-500/30 to-cyan-500/20 border border-white/10 shrink-0"
-                  />
+                    class="h-16 w-16 shrink-0 border border-emerald-100 bg-gradient-to-br from-emerald-100 to-cyan-100"
+                  >
+                    <img
+                      src="/ashik-ahmed.jpg"
+                      alt="ashik ahmed"
+                      class="rounded-2xl"
+                    />
+                  </div>
                   <div class="min-w-0">
-                    <p class="text-sm text-white/70">Hello, I’m</p>
-                    <p class="text-xl font-semibold truncate">Ashik Ahmed</p>
-                    <p class="text-sm text-emerald-200/80">
-                      Full-Stack Developer
+                    <p class="text-sm text-slate-500">Hello, I’m</p>
+                    <p class="truncate text-xl font-semibold text-slate-900">
+                      Ashik Ahmed
                     </p>
+                    <p class="text-sm text-emerald-600">Full-Stack Developer</p>
                   </div>
                 </div>
 
-                <!-- stats -->
                 <div class="mt-6 grid grid-cols-3 gap-3">
                   <div
-                    class="rounded-2xl border border-white/10 bg-black/20 p-4"
+                    class="rounded-2xl border border-slate-200 bg-slate-50 p-4"
                   >
-                    <p class="text-2xl font-bold">120+</p>
-                    <p class="text-xs text-white/60 mt-1">Completed</p>
+                    <p class="text-2xl font-bold text-slate-900">120+</p>
+                    <p class="mt-1 text-xs text-slate-500">Completed</p>
                   </div>
+
                   <div
-                    class="rounded-2xl border border-white/10 bg-black/20 p-4"
+                    class="rounded-2xl border border-slate-200 bg-slate-50 p-4"
                   >
-                    <p class="text-2xl font-bold">95%</p>
-                    <p class="text-xs text-white/60 mt-1">Satisfaction</p>
+                    <p class="text-2xl font-bold text-slate-900">95%</p>
+                    <p class="mt-1 text-xs text-slate-500">Satisfaction</p>
                   </div>
+
                   <div
-                    class="rounded-2xl border border-white/10 bg-black/20 p-4"
+                    class="rounded-2xl border border-slate-200 bg-slate-50 p-4"
                   >
-                    <p class="text-2xl font-bold">10+</p>
-                    <p class="text-xs text-white/60 mt-1">Years</p>
+                    <p class="text-2xl font-bold text-slate-900">10+</p>
+                    <p class="mt-1 text-xs text-slate-500">Years</p>
                   </div>
                 </div>
 
-                <!-- CTA -->
                 <div class="mt-6">
                   <a
                     href="#contact"
-                    class="inline-flex w-full items-center justify-center rounded-xl px-4 py-3 text-sm font-semibold bg-white/5 border border-white/10 hover:bg-white/10 transition"
+                    class="inline-flex w-full items-center justify-center rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50"
                   >
                     Join the community
                   </a>
@@ -213,19 +215,20 @@ const projects = [
               </div>
             </div>
           </div>
-          <!-- /Right -->
         </div>
       </div>
     </section>
 
     <!-- Services + About -->
-    <section id="about" class="relative">
-      <div class="mx-auto max-w-7xl px-4 py-14 md:py-20">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-          <!-- Services (left) -->
-          <div class="lg:col-span-5 space-y-4">
-            <h2 class="text-2xl md:text-3xl font-bold">What I do</h2>
-            <p class="text-white/70">
+    <section class="relative py-6">
+      <div class="relative mx-auto max-w-7xl px-4 py-14 md:py-16">
+        <div class="grid grid-cols-1 items-start gap-10 lg:grid-cols-12">
+          <div class="space-y-4 lg:col-span-5">
+            <h2 class="text-2xl font-bold text-slate-900 md:text-3xl">
+              What I do
+            </h2>
+
+            <p class="max-w-xl text-slate-600">
               From landing pages to full web applications—clean architecture and
               production-quality UI.
             </p>
@@ -234,72 +237,83 @@ const projects = [
               <div
                 v-for="s in services"
                 :key="s.title"
-                class="group rounded-2xl border border-white/10 bg-white/5 p-5 hover:bg-white/7 transition"
+                class="group rounded-2xl bg-white p-5 transition hover:-translate-y-0.5 hover:border-emerald-200"
               >
                 <div class="flex gap-4">
                   <div
-                    class="h-11 w-11 rounded-2xl border border-white/10 bg-black/20 grid place-items-center group-hover:shadow-[0_0_0_1px_rgba(16,185,129,0.25)] transition"
+                    class="grid h-11 w-11 place-items-center rounded-2xl border border-slate-200 bg-slate-50 transition group-hover:border-emerald-200 group-hover:bg-emerald-50"
                   >
                     <span class="text-lg">{{ s.icon }}</span>
                   </div>
+
                   <div>
-                    <p class="font-semibold">{{ s.title }}</p>
-                    <p class="mt-1 text-sm text-white/70">{{ s.desc }}</p>
+                    <p class="font-semibold text-slate-900">{{ s.title }}</p>
+                    <p class="mt-1 text-sm leading-6 text-slate-600">
+                      {{ s.desc }}
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- About card (right) -->
           <div class="lg:col-span-7">
             <div
-              class="rounded-[2rem] border border-white/10 bg-white/5 p-8 md:p-10 relative overflow-hidden"
+              class="relative overflow-hidden rounded-xl bg-white p-8 md:p-10"
             >
               <div
-                class="absolute -top-28 -right-28 h-72 w-72 rounded-full bg-emerald-500/12 blur-[80px]"
-              />
+                class="absolute -right-28 -top-28 h-72 w-72 rounded-full bg-emerald-100/70 blur-[80px]"
+              ></div>
+
               <div class="relative">
-                <h3 class="text-2xl md:text-3xl font-bold">About me</h3>
-                <p class="mt-4 text-white/70 leading-relaxed">
+                <h3 class="text-2xl font-bold text-slate-900 md:text-3xl">
+                  About me
+                </h3>
+
+                <p class="mt-4 leading-relaxed text-slate-600">
                   I build modern web experiences—from design systems to scalable
                   APIs. Strong focus on performance, accessibility, and
                   maintainable code.
                 </p>
 
-                <div class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div class="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
                   <div
-                    class="rounded-2xl border border-white/10 bg-black/20 p-5"
+                    class="rounded-2xl border border-slate-200 bg-slate-50 p-5"
                   >
-                    <p class="text-3xl font-bold text-emerald-200">120+</p>
-                    <p class="mt-1 text-sm text-white/60">Projects delivered</p>
+                    <p class="text-3xl font-bold text-emerald-600">120+</p>
+                    <p class="mt-1 text-sm text-slate-500">
+                      Projects delivered
+                    </p>
                   </div>
+
                   <div
-                    class="rounded-2xl border border-white/10 bg-black/20 p-5"
+                    class="rounded-2xl border border-slate-200 bg-slate-50 p-5"
                   >
-                    <p class="text-3xl font-bold text-emerald-200">95%</p>
-                    <p class="mt-1 text-sm text-white/60">
+                    <p class="text-3xl font-bold text-emerald-600">95%</p>
+                    <p class="mt-1 text-sm text-slate-500">
                       Client satisfaction
                     </p>
                   </div>
+
                   <div
-                    class="rounded-2xl border border-white/10 bg-black/20 p-5"
+                    class="rounded-2xl border border-slate-200 bg-slate-50 p-5"
                   >
-                    <p class="text-3xl font-bold text-emerald-200">10+</p>
-                    <p class="mt-1 text-sm text-white/60">Years experience</p>
+                    <p class="text-3xl font-bold text-emerald-600">8+</p>
+                    <p class="mt-1 text-sm text-slate-500">Years experience</p>
                   </div>
                 </div>
 
                 <div class="mt-8 flex flex-wrap gap-3">
                   <a
                     href="#projects"
-                    class="inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-semibold bg-emerald-500 text-[#06110D] hover:opacity-95 transition"
+                    class="inline-flex items-center justify-center rounded-xl bg-emerald-500 px-5 py-3 text-sm font-semibold text-white transition hover:bg-emerald-600"
                   >
                     See my work
                   </a>
+
                   <a
                     href="#contact"
-                    class="inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-semibold bg-white/5 border border-white/10 hover:bg-white/10 transition"
+                    class="inline-flex items-center justify-center rounded-xl border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50"
                   >
                     Let’s talk
                   </a>
@@ -311,71 +325,323 @@ const projects = [
       </div>
     </section>
 
-    <!-- Projects -->
-    <section id="projects" class="relative">
-      <div class="mx-auto max-w-7xl px-4 pb-16 md:pb-24">
-        <div class="flex items-end justify-between gap-6">
-          <div>
-            <p class="text-emerald-200/80 text-sm">Selected work</p>
-            <h2 class="text-3xl md:text-4xl font-bold mt-1">Projects</h2>
-          </div>
-          <a
-            href="#contact"
-            class="hidden sm:inline-flex items-center justify-center rounded-xl px-4 py-2 text-sm font-semibold bg-white/5 border border-white/10 hover:bg-white/10 transition"
+    <!-- Development Process -->
+    <section class="relative bg-white/70 py-16 md:py-20">
+      <div class="relative max-w-7xl mx-auto px-4 md:px-6">
+        <div class="max-w-2xl">
+          <span
+            class="inline-flex items-center rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-emerald-700"
           >
-            Need similar? →
-          </a>
+            Development Workflow
+          </span>
+
+          <h2 class="mt-4 text-3xl md:text-4xl font-bold text-slate-900">
+            My Web Development Process
+          </h2>
+
+          <p class="mt-4 text-slate-600 leading-7">
+            I follow a structured development workflow to build fast, scalable,
+            and user-friendly websites—from planning and UI implementation to
+            backend development, testing, and deployment.
+          </p>
         </div>
 
-        <div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
-          <article
-            v-for="p in projects"
-            :key="p.title"
-            class="group rounded-[2rem] border border-white/10 bg-white/5 hover:bg-white/7 transition duration-300 hover:-translate-y-1 hover:shadow-[0_0_0_1px_rgba(16,185,129,0.18),0_18px_60px_rgba(0,0,0,0.35)]"
-          >
-            <!-- Thumbnail -->
+        <div class="mt-12 grid grid-cols-1 gap-6 lg:grid-cols-3">
+          <div class="lg:col-span-2 grid sm:grid-cols-2 gap-6">
             <div
-              class="relative aspect-[16/10] overflow-hidden rounded-t-[2rem]"
+              v-for="(item, i) in [
+                {
+                  step: '01',
+                  title: 'Requirement Analysis',
+                  desc: 'I understand the business goal, target users, required features, and project scope before starting development.',
+                  icon: '📌',
+                },
+                {
+                  step: '02',
+                  title: 'UI Planning & Architecture',
+                  desc: 'I plan layout structure, component hierarchy, database flow, and application architecture for clean development.',
+                  icon: '🧩',
+                },
+                {
+                  step: '03',
+                  title: 'Frontend Development',
+                  desc: 'I build responsive, fast, and modern user interfaces using Vue, Nuxt, Tailwind CSS, and reusable components.',
+                  icon: '💻',
+                },
+                {
+                  step: '04',
+                  title: 'Backend & API Integration',
+                  desc: 'I develop secure backend systems, authentication, dashboards, and API integrations using Laravel or Node.js.',
+                  icon: '⚙️',
+                },
+                {
+                  step: '05',
+                  title: 'Testing & Optimization',
+                  desc: 'I test functionality, responsiveness, performance, SEO basics, and fix issues before final delivery.',
+                  icon: '🚀',
+                },
+                {
+                  step: '06',
+                  title: 'Deployment & Support',
+                  desc: 'I deploy the project, connect domain/hosting, and provide support for updates, fixes, and improvements.',
+                  icon: '🌐',
+                },
+              ]"
+              :key="i"
+              class="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-6 transition duration-300 hover:-translate-y-1 hover:border-emerald-200 hover:shadow-xl"
             >
+              <div
+                class="absolute right-4 top-4 text-5xl font-bold text-slate-100 transition group-hover:text-emerald-50"
+              >
+                {{ item.step }}
+              </div>
+
+              <div
+                class="relative z-10 flex h-12 w-12 items-center justify-center rounded-2xl border border-emerald-100 bg-emerald-50 text-xl"
+              >
+                {{ item.icon }}
+              </div>
+
+              <div class="relative z-10 mt-5">
+                <h3 class="text-lg font-semibold text-slate-900">
+                  {{ item.title }}
+                </h3>
+                <p class="mt-3 text-sm leading-6 text-slate-600">
+                  {{ item.desc }}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right stack card -->
+          <div
+            class="rounded-3xl border border-slate-200 bg-white p-6 lg:sticky lg:top-24 h-fit"
+          >
+            <div class="flex items-center justify-between gap-3">
+              <div>
+                <p class="text-sm font-medium text-emerald-600">Tech Stack</p>
+                <h3 class="mt-1 text-xl font-bold text-slate-900">
+                  Tools I Use
+                </h3>
+              </div>
+
+              <div
+                class="flex h-11 w-11 items-center justify-center rounded-2xl bg-slate-100 text-lg"
+              >
+                🛠️
+              </div>
+            </div>
+
+            <p class="mt-4 text-sm leading-6 text-slate-600">
+              My core stack for building modern full-stack web applications.
+            </p>
+
+            <!-- stack list -->
+            <div class="mt-6 space-y-4">
+              <div>
+                <div class="mb-2 flex items-center justify-between text-sm">
+                  <span class="font-medium text-slate-700">Vue / Nuxt</span>
+                  <span class="text-slate-500">95%</span>
+                </div>
+                <div class="h-2 overflow-hidden rounded-full bg-slate-200">
+                  <div class="h-full w-[95%] rounded-full bg-emerald-500"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="mb-2 flex items-center justify-between text-sm">
+                  <span class="font-medium text-slate-700">Laravel</span>
+                  <span class="text-slate-500">92%</span>
+                </div>
+                <div class="h-2 overflow-hidden rounded-full bg-slate-200">
+                  <div class="h-full w-[92%] rounded-full bg-emerald-500"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="mb-2 flex items-center justify-between text-sm">
+                  <span class="font-medium text-slate-700">Tailwind CSS</span>
+                  <span class="text-slate-500">96%</span>
+                </div>
+                <div class="h-2 overflow-hidden rounded-full bg-slate-200">
+                  <div class="h-full w-[96%] rounded-full bg-emerald-500"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="mb-2 flex items-center justify-between text-sm">
+                  <span class="font-medium text-slate-700">Node.js</span>
+                  <span class="text-slate-500">85%</span>
+                </div>
+                <div class="h-2 overflow-hidden rounded-full bg-slate-200">
+                  <div class="h-full w-[85%] rounded-full bg-emerald-500"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="mb-2 flex items-center justify-between text-sm">
+                  <span class="font-medium text-slate-700">MySQL</span>
+                  <span class="text-slate-500">90%</span>
+                </div>
+                <div class="h-2 overflow-hidden rounded-full bg-slate-200">
+                  <div class="h-full w-[90%] rounded-full bg-emerald-500"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="mb-2 flex items-center justify-between text-sm">
+                  <span class="font-medium text-slate-700"
+                    >API Integration</span
+                  >
+                  <span class="text-slate-500">88%</span>
+                </div>
+                <div class="h-2 overflow-hidden rounded-full bg-slate-200">
+                  <div class="h-full w-[88%] rounded-full bg-emerald-500"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- bottom badges -->
+            <div class="mt-8 flex flex-wrap gap-2">
+              <span
+                class="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs text-slate-600"
+              >
+                Responsive UI
+              </span>
+              <span
+                class="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs text-slate-600"
+              >
+                SEO Friendly
+              </span>
+              <span
+                class="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs text-slate-600"
+              >
+                Clean Code
+              </span>
+              <span
+                class="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs text-slate-600"
+              >
+                Fast Performance
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="relative py-10 md:py-16">
+      <div class="relative mx-auto max-w-7xl px-4 md:px-6">
+        <div
+          class="flex flex-col gap-6 border-b border-slate-200 pb-8 md:flex-row md:items-end md:justify-between"
+        >
+          <div class="max-w-2xl">
+            <span
+              class="inline-flex items-center rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-emerald-700"
+            >
+              Portfolio
+            </span>
+
+            <h2
+              class="mt-4 text-3xl font-bold tracking-tight text-slate-900 md:text-4xl"
+            >
+              Selected Projects & Case Studies
+            </h2>
+
+            <p class="mt-4 text-base leading-7 text-slate-600">
+              A selection of web applications, business platforms, and modern
+              user interfaces I’ve built with a focus on performance, usability,
+              and scalable architecture.
+            </p>
+          </div>
+
+          <div class="flex flex-wrap gap-3">
+            <a
+              href="#contact"
+              class="inline-flex items-center justify-center rounded-xl bg-emerald-500 px-5 py-3 text-sm font-semibold text-white shadow-[0_10px_30px_rgba(16,185,129,0.18)] transition hover:bg-emerald-600"
+            >
+              Start a project
+            </a>
+
+            <a
+              href="#contact"
+              class="inline-flex items-center justify-center rounded-xl border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-700 transition hover:border-slate-300 hover:bg-slate-50"
+            >
+              Need similar work →
+            </a>
+          </div>
+        </div>
+
+        <!-- Project Grid -->
+        <div class="mt-10 grid grid-cols-1 gap-7 md:grid-cols-2">
+          <article
+            v-for="(p, i) in projects"
+            :key="p.title"
+            class="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white transition duration-300 hover:-translate-y-1.5 hover:shadow-2xl"
+          >
+            <div class="relative aspect-[16/10] overflow-hidden bg-slate-100">
               <img
                 :src="p.image"
                 :alt="p.title"
-                class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-              />
-              <div
-                class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"
+                class="h-full w-full object-cover transition duration-700 group-hover:scale-[1.04]"
               />
             </div>
 
-            <!-- Content -->
-            <div class="p-7 flex flex-col">
-              <h3 class="text-xl font-semibold">
-                {{ p.title }}
-              </h3>
+            <div class="p-6 md:p-7">
+              <div class="flex items-start justify-between gap-4">
+                <div>
+                  <h3
+                    class="text-xl font-semibold leading-tight text-slate-900 md:text-2xl"
+                  >
+                    {{ p.title }}
+                  </h3>
+                  <p class="mt-2 text-sm text-slate-500">
+                    Web Development Project
+                  </p>
+                </div>
+              </div>
 
-              <div class="mt-3 flex flex-wrap gap-2">
+              <p class="mt-4 text-sm leading-7 text-slate-600 md:text-[15px]">
+                {{ p.desc }}
+              </p>
+
+              <div class="mt-5 flex flex-wrap gap-2">
                 <span
                   v-for="t in p.tags"
                   :key="t"
-                  class="rounded-full border border-white/10 bg-black/20 px-3 py-1 text-xs text-white/70"
+                  class="rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-medium text-slate-600 transition hover:border-emerald-200 hover:bg-emerald-50 hover:text-emerald-700"
                 >
                   {{ t }}
                 </span>
               </div>
 
-              <p class="mt-4 text-white/70">
-                {{ p.desc }}
-              </p>
+              <div
+                class="mt-6 flex flex-col gap-4 border-t border-slate-100 pt-5 sm:flex-row sm:items-center sm:justify-between"
+              >
+                <div class="flex items-center gap-2 text-sm text-slate-500">
+                  <span class="h-2 w-2 rounded-full bg-emerald-500"></span>
+                  <span>Responsive • Clean UI • Scalable Build</span>
+                </div>
 
-              <!-- FIX: remove h-full, use mt-auto -->
-              <div class="mt-6">
-                <a
-                  :href="p.live"
-                  target="_blank"
-                  class="block w-full text-center rounded-xl px-5 py-3 text-sm font-semibold bg-emerald-500 text-black hover:opacity-90 transition"
-                >
-                  View Live →
-                </a>
+                <div class="flex items-center gap-3">
+                  <a
+                    :href="p.live"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center text-sm font-semibold text-emerald-600 transition hover:text-emerald-700"
+                  >
+                    View Project →
+                  </a>
+
+                  <a
+                    :href="p.github"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center text-sm font-semibold text-slate-700 transition hover:text-slate-900"
+                  >
+                    GitHub
+                  </a>
+                </div>
               </div>
             </div>
           </article>
@@ -383,68 +649,324 @@ const projects = [
       </div>
     </section>
 
-    <!-- Contact -->
-    <section id="contact" class="relative">
-      <div class="mx-auto max-w-7xl px-4 pb-20">
+    <!-- Testimonials -->
+    <section class="relative bg-white/70 py-12 md:py-16">
+      <div class="relative mx-auto max-w-7xl px-4 md:px-6">
         <div
-          class="rounded-[2.5rem] border border-white/10 bg-white/5 p-8 md:p-12 overflow-hidden relative"
+          class="flex flex-col gap-6 border-b border-slate-200 pb-8 md:flex-row md:items-end md:justify-between"
         >
-          <div
-            class="absolute -bottom-32 -left-20 h-96 w-96 rounded-full bg-emerald-500/12 blur-[90px]"
-          />
-          <div class="relative grid grid-cols-1 lg:grid-cols-12 gap-10">
-            <div class="lg:col-span-5">
-              <p class="text-emerald-200/80 text-sm">Have a project?</p>
-              <h2 class="text-3xl md:text-4xl font-bold mt-2">Let’s talk!</h2>
-              <p class="mt-4 text-white/70">
-                Tell me your idea—scope, timeline, budget—and I’ll reply with a
-                plan.
-              </p>
+          <div class="max-w-2xl">
+            <span
+              class="inline-flex items-center rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-emerald-700"
+            >
+              Client Feedback
+            </span>
 
-              <div class="mt-6 space-y-3 text-sm text-white/70">
-                <p>📩 email@example.com</p>
-                <p>📍 Dhaka, Bangladesh</p>
-                <p>⏱︎ Response within 24–48 hours</p>
+            <h2
+              class="mt-4 text-3xl font-bold tracking-tight text-slate-900 md:text-4xl"
+            >
+              Trusted by Clients Who Value Quality
+            </h2>
+
+            <p class="mt-4 text-base leading-7 text-slate-600">
+              I focus on clear communication, clean development, and reliable
+              delivery—so every project feels smooth from planning to launch.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3 sm:grid-cols-3">
+            <div
+              class="rounded-2xl border border-slate-200 bg-white px-4 py-4 text-center shadow-sm"
+            >
+              <p class="text-2xl font-bold text-slate-900">95%</p>
+              <p class="mt-1 text-xs text-slate-500">Client Satisfaction</p>
+            </div>
+            <div
+              class="rounded-2xl border border-slate-200 bg-white px-4 py-4 text-center shadow-sm"
+            >
+              <p class="text-2xl font-bold text-slate-900">120+</p>
+              <p class="mt-1 text-xs text-slate-500">Projects Delivered</p>
+            </div>
+            <div
+              class="rounded-2xl border border-slate-200 bg-white px-4 py-4 text-center shadow-sm col-span-2 sm:col-span-1"
+            >
+              <p class="text-2xl font-bold text-slate-900">5★</p>
+              <p class="mt-1 text-xs text-slate-500">Service Quality</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cards -->
+        <div class="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-3">
+          <article
+            v-for="item in [
+              {
+                name: 'John Doe',
+                role: 'CEO, Startup Inc.',
+                review:
+                  'Great design sense and very professional delivery. The whole process was smooth, and the final product exceeded expectations.',
+                initials: 'JD',
+              },
+              {
+                name: 'Jane Smith',
+                role: 'Product Manager',
+                review:
+                  'Amazing communication and impressive creative direction throughout the project. Everything was delivered with care and strong attention to detail.',
+                initials: 'JS',
+              },
+              {
+                name: 'Alex Martin',
+                role: 'Founder',
+                review:
+                  'He transformed our idea into a polished, modern, and engaging product very quickly. Highly reliable and easy to work with.',
+                initials: 'AM',
+              },
+            ]"
+            :key="item.name"
+            class="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-6 transition duration-300 hover:-translate-y-1.5 hover:border-emerald-200 hover:shadow-xl md:p-7"
+          >
+            <div
+              class="absolute right-5 top-4 text-6xl font-bold leading-none text-emerald-100 transition group-hover:text-emerald-200"
+            >
+              “
+            </div>
+
+            <div class="relative z-10 flex items-center gap-1">
+              <span class="text-emerald-500">★</span>
+              <span class="text-emerald-500">★</span>
+              <span class="text-emerald-500">★</span>
+              <span class="text-emerald-500">★</span>
+              <span class="text-emerald-500">★</span>
+            </div>
+
+            <p class="relative z-10 mt-5 text-[15px] leading-7 text-slate-600">
+              {{ item.review }}
+            </p>
+
+            <div
+              class="relative z-10 mt-8 flex items-center gap-4 border-t border-slate-100 pt-5"
+            >
+              <div
+                class="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-100 to-cyan-100 text-sm font-bold text-emerald-700"
+              >
+                {{ item.initials }}
+              </div>
+
+              <div class="min-w-0">
+                <h3 class="truncate text-base font-semibold text-slate-900">
+                  {{ item.name }}
+                </h3>
+                <p class="mt-1 text-sm text-slate-500">
+                  {{ item.role }}
+                </p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blog -->
+    <section class="relative py-12 md:py-16">
+      <div class="relative max-w-7xl mx-auto px-4 md:px-6">
+        <div
+          class="flex flex-col gap-6 border-b border-slate-200 pb-8 md:flex-row md:items-end md:justify-between"
+        >
+          <div class="max-w-2xl">
+            <span
+              class="inline-flex items-center rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-emerald-700"
+            >
+              Insights
+            </span>
+
+            <h2
+              class="mt-4 text-3xl font-bold tracking-tight text-slate-900 md:text-4xl"
+            >
+              Latest Articles & Resources
+            </h2>
+
+            <p class="mt-4 text-base leading-7 text-slate-600">
+              Thoughts, tutorials, and insights on web development, UI design,
+              and building scalable applications.
+            </p>
+          </div>
+
+          <a
+            href="#"
+            class="inline-flex items-center justify-center rounded-xl border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50"
+          >
+            View all articles →
+          </a>
+        </div>
+
+        <!-- Content -->
+        <div class="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-2">
+          <!-- Featured Blog -->
+          <article
+            class="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white transition hover:border-emerald-200"
+          >
+            <div class="relative aspect-[16/9] overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200"
+                class="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+              />
+
+              <div
+                class="absolute left-5 top-5 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-emerald-700 backdrop-blur"
+              >
+                Web Development
               </div>
             </div>
 
-            <form class="lg:col-span-7 space-y-4">
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label class="text-sm text-white/70">Name</label>
-                  <input
-                    type="text"
-                    class="mt-2 w-full rounded-2xl bg-black/25 border border-white/10 px-4 py-3 outline-none focus:border-emerald-500/40 focus:ring-2 focus:ring-emerald-500/15"
-                    placeholder="Your name"
-                  />
-                </div>
-                <div>
-                  <label class="text-sm text-white/70">Email</label>
-                  <input
-                    type="email"
-                    class="mt-2 w-full rounded-2xl bg-black/25 border border-white/10 px-4 py-3 outline-none focus:border-emerald-500/40 focus:ring-2 focus:ring-emerald-500/15"
-                    placeholder="you@email.com"
-                  />
-                </div>
+            <div class="p-6 md:p-7">
+              <div class="text-sm text-slate-500">
+                Jan 10, 2026 • 5 min read
               </div>
 
-              <div>
-                <label class="text-sm text-white/70">Message</label>
-                <textarea
-                  rows="5"
-                  class="mt-2 w-full rounded-2xl bg-black/25 border border-white/10 px-4 py-3 outline-none focus:border-emerald-500/40 focus:ring-2 focus:ring-emerald-500/15"
-                  placeholder="Write your message..."
+              <h3 class="mt-3 text-2xl font-semibold text-slate-900">
+                Modern Web Development Trends in 2026
+              </h3>
+
+              <p class="mt-3 text-slate-600 leading-7">
+                Explore the latest technologies, frameworks, and design
+                approaches shaping the future of web applications.
+              </p>
+
+              <a
+                href="#"
+                class="mt-5 inline-flex items-center text-sm font-semibold text-emerald-600 hover:text-emerald-700"
+              >
+                Read full article →
+              </a>
+            </div>
+          </article>
+
+          <!-- Side Blogs -->
+          <div class="flex flex-col gap-6">
+            <article
+              v-for="post in [
+                {
+                  title: 'Why Performance Matters in Web Apps',
+                  desc: 'Learn how performance impacts user experience and SEO ranking.',
+                  img: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=900',
+                  category: 'Performance',
+                  date: 'Jan 05, 2026',
+                },
+                {
+                  title: 'Building Scalable APIs with Laravel',
+                  desc: 'Best practices for secure and scalable backend systems.',
+                  img: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=900',
+                  category: 'Backend',
+                  date: 'Dec 28, 2025',
+                },
+                {
+                  title: 'Why Performance Matters in Web Apps',
+                  desc: 'Learn how performance impacts user experience and SEO ranking.',
+                  img: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=900',
+                  category: 'Performance',
+                  date: 'Jan 05, 2026',
+                },
+                {
+                  title: 'Building Scalable APIs with Laravel',
+                  desc: 'Best practices for secure and scalable backend systems.',
+                  img: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=900',
+                  category: 'Backend',
+                  date: 'Dec 28, 2025',
+                },
+              ]"
+              :key="post.title"
+              class="group flex gap-4 rounded-2xl border border-slate-200 bg-white p-4 transition hover:border-emerald-200"
+            >
+              <div class="h-24 w-28 shrink-0 overflow-hidden rounded-xl">
+                <img
+                  :src="post.img"
+                  class="h-full w-full object-cover transition group-hover:scale-105"
                 />
               </div>
 
-              <button
-                type="button"
-                class="inline-flex items-center justify-center rounded-xl px-6 py-3 text-sm font-semibold bg-emerald-500 text-[#06110D] hover:opacity-95 transition shadow-[0_0_0_1px_rgba(16,185,129,0.3),0_18px_60px_rgba(16,185,129,0.22)]"
-              >
-                Submit
-              </button>
-            </form>
+              <div class="flex flex-col">
+                <span class="text-xs text-emerald-600 font-medium">
+                  {{ post.category }}
+                </span>
+
+                <h3 class="mt-1 text-sm font-semibold text-slate-900 leading-5">
+                  {{ post.title }}
+                </h3>
+
+                <p class="mt-1 text-xs text-slate-500 line-clamp-2">
+                  {{ post.desc }}
+                </p>
+
+                <span class="mt-2 text-xs text-slate-400">
+                  {{ post.date }}
+                </span>
+              </div>
+            </article>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="py-16 bg-white/70">
+      <div class="max-w-6xl mx-auto px-4 md:px-6 grid lg:grid-cols-2 gap-10">
+        <div>
+          <h2 class="text-3xl font-bold text-emerald-600 mb-8">
+            Let’s Talk Business
+          </h2>
+
+          <div class="space-y-4">
+            <div class="bg-white rounded-2xl p-5 border border-slate-200">
+              <h3 class="font-semibold text-slate-800">Address</h3>
+              <p class="text-slate-600 mt-1">Kaliganj, Bangladesh</p>
+            </div>
+            <div class="bg-white rounded-2xl p-5 border border-slate-200">
+              <h3 class="font-semibold text-slate-800">Phone Number</h3>
+              <p class="text-slate-600 mt-1">+880 1XXXXXXXXX</p>
+            </div>
+            <div class="bg-white rounded-2xl p-5 border border-slate-200">
+              <h3 class="font-semibold text-slate-800">Email Address</h3>
+              <p class="text-slate-600 mt-1">example@email.com</p>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h2 class="text-3xl font-bold text-emerald-600 mb-8">
+            Contact Information
+          </h2>
+
+          <form class="space-y-4">
+            <div class="grid sm:grid-cols-2 gap-4">
+              <input
+                type="text"
+                placeholder="Your Name"
+                class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-800 outline-none focus:border-emerald-500"
+              />
+              <input
+                type="email"
+                placeholder="Your Email"
+                class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-800 outline-none focus:border-emerald-500"
+              />
+            </div>
+            <input
+              type="text"
+              placeholder="Subject"
+              class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-800 outline-none focus:border-emerald-500"
+            />
+            <textarea
+              rows="4"
+              placeholder="Write your message..."
+              class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-800 outline-none focus:border-emerald-500"
+            ></textarea>
+
+            <button
+              type="submit"
+              class="rounded-full bg-emerald-500 px-6 py-3 text-white font-semibold shadow hover:bg-emerald-600"
+            >
+              Send Message
+            </button>
+          </form>
         </div>
       </div>
     </section>

@@ -1,56 +1,182 @@
 <script setup>
+import { ref, computed } from "vue";
+import { useRoute } from "vue-router";
+
+const route = useRoute();
+const mobileMenuOpen = ref(false);
+
 const nav = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Projects", href: "#projects" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", to: "/" },
+  { label: "About", to: "/about" },
+  { label: "Projects", to: "/projects" },
+  { label: "Pricing", to: "/pricing" },
+  { label: "Blog", to: "/blog" },
+  { label: "Contact", to: "/contact" },
 ];
+
+const toggleMenu = () => {
+  mobileMenuOpen.value = !mobileMenuOpen.value;
+};
+
+const closeMenu = () => {
+  mobileMenuOpen.value = false;
+};
+
+const isActive = (path) => {
+  if (path === "/") return route.path === "/";
+  return route.path.startsWith(path);
+};
+
+const headerClasses = computed(
+  () =>
+    "sticky top-0 z-50 border-b border-slate-200/80 bg-white/80 backdrop-blur-xl",
+);
 </script>
 
 <template>
-  <header
-    class="sticky top-0 z-50 border-b border-white/5 bg-[#060A0F]/70 backdrop-blur-xl"
-  >
-    <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4">
-      <div class="flex items-center gap-3">
+  <header :class="headerClasses">
+    <div class="mx-auto max-w-7xl px-4 md:px-6">
+      <div class="flex h-20 items-center justify-between gap-4">
+        <!-- Brand -->
+        <NuxtLink
+          to="/"
+          class="flex min-w-0 items-center gap-3"
+          @click="closeMenu"
+        >
+          <div
+            class="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-emerald-100 bg-gradient-to-br from-emerald-50 to-cyan-50 shadow-sm"
+          >
+            <img
+              src="/ashik-ahmed.jpg"
+              alt="Ashik Ahmed Logo"
+              class="w-full object-contain"
+            />
+          </div>
+
+          <div class="min-w-0">
+            <h1
+              class="truncate text-lg font-bold tracking-tight text-slate-900 md:text-xl"
+            >
+              Ashik Ahmed
+            </h1>
+            <p class="truncate text-xs font-medium text-emerald-600 md:text-sm">
+              Full Stack Developer
+            </p>
+          </div>
+        </NuxtLink>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden items-center gap-2 md:flex">
+          <NuxtLink
+            v-for="item in nav"
+            :key="item.label"
+            :to="item.to"
+            class="rounded-xl px-4 py-2 text-base font-medium transition"
+            :class="
+              isActive(item.to)
+                ? 'bg-emerald-50 text-emerald-700'
+                : 'text-slate-600 hover:bg-slate-100 hover:text-emerald-600'
+            "
+          >
+            {{ item.label }}
+          </NuxtLink>
+        </nav>
+
+        <!-- Desktop CTA -->
+        <div class="hidden md:flex md:items-center md:gap-3">
+          <NuxtLink
+            to="/contact"
+            class="inline-flex items-center justify-center rounded-xl bg-emerald-500 px-5 py-3 text-sm font-semibold text-white shadow-[0_10px_30px_rgba(16,185,129,0.18)] transition hover:bg-emerald-600"
+          >
+            Let’s Collaborate
+          </NuxtLink>
+        </div>
+
+        <!-- Mobile Toggle -->
+        <button
+          type="button"
+          @click="toggleMenu"
+          class="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-700 shadow-sm transition hover:bg-slate-50 md:hidden"
+          :aria-expanded="mobileMenuOpen"
+          aria-label="Toggle navigation menu"
+        >
+          <svg
+            v-if="!mobileMenuOpen"
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="1.8"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+
+          <svg
+            v-else
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="1.8"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mobile Menu -->
+      <transition
+        enter-active-class="transition duration-200 ease-out"
+        enter-from-class="opacity-0 -translate-y-2"
+        enter-to-class="opacity-100 translate-y-0"
+        leave-active-class="transition duration-150 ease-in"
+        leave-from-class="opacity-100 translate-y-0"
+        leave-to-class="opacity-0 -translate-y-2"
+      >
         <div
-          class="h-10 w-10 rounded-2xl border border-white/10 bg-white/5 grid place-items-center shadow-[0_0_0_1px_rgba(16,185,129,0.2)]"
+          v-if="mobileMenuOpen"
+          class="border-t border-slate-200 py-4 md:hidden"
         >
-          <span class="text-lg">⚡</span>
-        </div>
-        <div class="leading-tight">
-          <p class="text-sm text-white/70">Portfolio</p>
-          <p class="font-semibold tracking-wide">Ashik Ahmed</p>
-        </div>
-      </div>
+          <nav class="flex flex-col gap-2">
+            <NuxtLink
+              v-for="item in nav"
+              :key="item.label"
+              :to="item.to"
+              @click="closeMenu"
+              class="rounded-xl px-4 py-3 text-sm font-medium transition"
+              :class="
+                isActive(item.to)
+                  ? 'bg-emerald-50 text-emerald-700'
+                  : 'text-slate-700 hover:bg-slate-100 hover:text-emerald-600'
+              "
+            >
+              {{ item.label }}
+            </NuxtLink>
+          </nav>
 
-      <nav class="hidden md:flex items-center gap-8 text-sm text-white/70">
-        <a
-          v-for="n in nav"
-          :key="n.href"
-          :href="n.href"
-          class="hover:text-white transition"
-        >
-          {{ n.label }}
-        </a>
-      </nav>
-
-      <div class="flex items-center gap-3">
-        <a
-          href="#contact"
-          class="inline-flex items-center justify-center rounded-xl px-4 py-2 text-sm font-semibold bg-emerald-500/15 text-emerald-200 border border-emerald-500/25 hover:bg-emerald-500/20 transition"
-        >
-          Hire Me
-        </a>
-        <a
-          href="#projects"
-          class="hidden sm:inline-flex items-center justify-center rounded-xl px-4 py-2 text-sm font-semibold bg-white/5 border border-white/10 hover:bg-white/10 transition"
-        >
-          View Work
-        </a>
-      </div>
+          <div class="mt-4 border-t border-slate-200 pt-4">
+            <NuxtLink
+              to="/contact"
+              @click="closeMenu"
+              class="inline-flex w-full items-center justify-center rounded-xl bg-emerald-500 px-5 py-3 text-sm font-semibold text-white shadow-[0_10px_30px_rgba(16,185,129,0.18)] transition hover:bg-emerald-600"
+            >
+              Let’s Collaborate
+            </NuxtLink>
+          </div>
+        </div>
+      </transition>
     </div>
   </header>
 </template>
 
-<style lang="scss" scoped></style>
+<style scoped></style>
