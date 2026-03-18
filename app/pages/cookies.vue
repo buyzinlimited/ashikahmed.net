@@ -19,8 +19,8 @@ const cookieHighlights = [
   <main class="relative overflow-hidden">
     <SeoMeta
       title="Cookie Policy | Ashik Ahmed - Full Stack Developer"
-      description="Read the cookie policy for Ashik Ahmed's website, including how cookies and analytics may be used."
-      keywords="Cookie Policy, Website Cookies, Ashik Ahmed"
+      description="Learn how cookies are used on this website to improve user experience, analyze traffic, and personalize content."
+      keywords="Cookie Policy, Website Cookies, Tracking Cookies, User Data, Privacy Cookies"
     />
 
     <section class="relative py-20 md:py-24">

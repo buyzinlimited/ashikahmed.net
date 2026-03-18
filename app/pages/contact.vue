@@ -30,9 +30,9 @@ const services = [
 <template>
   <main class="relative overflow-hidden">
     <SeoMeta
-      title="Contact | Ashik Ahmed - Full Stack Developer"
-      description="Contact Ashik Ahmed for business websites, dashboards, custom web applications, and modern full-stack development projects."
-      keywords="Contact Ashik Ahmed, Full Stack Developer Contact, Web Developer Bangladesh, Hire Vue Developer, Hire Laravel Developer"
+      title="Contact — Hire Ashik Ahmed | Full-Stack Developer"
+      description="Get in touch with Ashik Ahmed for web development projects, collaborations, or business inquiries. متخصص in Nuxt.js, Vue.js, and Laravel solutions."
+      keywords="Contact Ashik Ahmed, Hire Full Stack Developer, Web Developer Contact Bangladesh, Nuxt.js Developer Hire, Vue.js Expert, Laravel Developer Contact, Software Developer Hire"
     />
 
     <!-- Hero -->

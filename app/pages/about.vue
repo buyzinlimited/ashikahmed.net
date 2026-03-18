@@ -55,9 +55,9 @@ const values = [
 <template>
   <main class="relative overflow-hidden">
     <SeoMeta
-      title="About | Ashik Ahmed - Full Stack Developer"
-      description="Learn more about Ashik Ahmed, a full stack developer specializing in Vue, Nuxt, Laravel, Tailwind CSS, and modern web application development."
-      keywords="About Ashik Ahmed, Full Stack Developer, Vue Developer, Nuxt Developer, Laravel Developer, Web Developer Bangladesh"
+      title="About Ashik Ahmed — Full-Stack Developer (Nuxt.js, Vue.js, Laravel)"
+      description="Learn more about Ashik Ahmed, a Full-Stack Developer specializing in Nuxt.js, Vue.js, and Laravel. Passionate about building scalable, high-performance web applications with modern UI, clean architecture, and AI-driven solutions."
+      keywords="About Ashik Ahmed, Ashik Ahmed Developer, Full Stack Developer Bangladesh, Nuxt.js Developer, Vue.js Developer, Laravel Developer, Web Developer Portfolio, Software Engineer Bangladesh"
     />
 
     <!-- Hero -->

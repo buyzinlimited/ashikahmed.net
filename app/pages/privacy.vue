@@ -19,8 +19,8 @@ const privacyHighlights = [
   <main class="relative overflow-hidden">
     <SeoMeta
       title="Privacy Policy | Ashik Ahmed - Full Stack Developer"
-      description="Read the privacy policy for Ashik Ahmed's portfolio website, including how contact information, project inquiry data, and communications are collected and used."
-      keywords="Privacy Policy, Ashik Ahmed, Web Developer Privacy Policy, Portfolio Website Privacy"
+      description="Read the Privacy Policy of Ashik Ahmed to understand how we collect, use, and protect your personal information while using our website and services."
+      keywords="Privacy Policy, Data Protection, User Privacy, Personal Data Security, Website Privacy, GDPR Policy"
     />
 
     <!-- Hero -->

@@ -108,9 +108,9 @@ const projects = [
 <template>
   <main class="relative text-slate-900">
     <SeoMeta
-      title="Ashik Ahmed | Full-Stack Developer (Nuxt, Vue, Laravel)"
-      description="Ashik Ahmed is a Full-Stack Developer specializing in Nuxt.js, Vue.js, Laravel, and modern web application architecture. Building scalable, high-performance web solutions with clean UI and AI integration."
-      keywords="Ashik Ahmed, Full Stack Developer, Nuxt Developer, Vue Developer, Laravel Developer, Web Developer Bangladesh, AI Web Developer"
+      title="Ashik Ahmed — Full-Stack Developer (Nuxt.js, Vue.js, Laravel)"
+      description="Full-Stack Developer specializing in Nuxt.js, Vue.js, and Laravel. I build scalable, high-performance web applications with modern UI, clean architecture, and AI-powered features."
+      keywords="Ashik Ahmed, Full Stack Developer, Nuxt.js Developer, Vue.js Developer, Laravel Developer, Web Developer Bangladesh, Frontend Developer, Backend Developer, AI Integration"
     />
 
     <!-- Hero -->

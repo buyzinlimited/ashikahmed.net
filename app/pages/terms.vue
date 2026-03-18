@@ -19,8 +19,8 @@ const termsHighlights = [
   <main class="relative overflow-hidden">
     <SeoMeta
       title="Terms & Conditions | Ashik Ahmed - Full Stack Developer"
-      description="Read the terms and conditions for using Ashik Ahmed's website and web development services."
-      keywords="Terms and Conditions, Web Development Terms, Ashik Ahmed"
+      description="Review the Terms and Conditions governing the use of this website, including user responsibilities, service terms, and legal agreements."
+      keywords="Terms and Conditions, Website Terms, User Agreement, Legal Terms, Service Conditions"
     />
 
     <section class="relative py-20 md:py-24">

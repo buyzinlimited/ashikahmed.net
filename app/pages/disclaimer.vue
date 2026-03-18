@@ -19,8 +19,8 @@ const disclaimerHighlights = [
   <main class="relative overflow-hidden">
     <SeoMeta
       title="Disclaimer | Ashik Ahmed - Full Stack Developer"
-      description="Read the disclaimer for Ashik Ahmed's portfolio website and web development services."
-      keywords="Disclaimer, Web Development Disclaimer, Ashik Ahmed"
+      description="Read the disclaimer for this website regarding limitations of liability, accuracy of information, and use of content."
+      keywords="Disclaimer, Legal Disclaimer, Website Liability, Content Accuracy, Terms Disclaimer"
     />
 
     <section class="relative py-20 md:py-24">

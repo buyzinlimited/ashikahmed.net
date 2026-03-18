@@ -93,9 +93,9 @@ const categories = [
 <template>
   <main class="relative overflow-hidden">
     <SeoMeta
-      title="Blog | Ashik Ahmed - Full Stack Developer"
-      description="Read articles and insights from Ashik Ahmed on web development, frontend, backend, performance, UI/UX, and modern web application architecture."
-      keywords="Blog, Web Development Blog, Ashik Ahmed, Vue Blog, Nuxt Blog, Laravel Blog, UI UX Blog, Full Stack Developer Blog"
+      title="Blog — Web Development, Nuxt.js, Vue.js & Laravel Insights"
+      description="Read the latest articles on web development, Nuxt.js, Vue.js, and Laravel. Tutorials, best practices, performance tips, and insights on building modern, scalable applications."
+      keywords="Web Development Blog, Nuxt.js Tutorials, Vue.js Guide, Laravel Tips, Programming Blog, Full Stack Development Articles, JavaScript Tutorials, Software Engineering Blog"
     />
 
     <!-- Hero -->

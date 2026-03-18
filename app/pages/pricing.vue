@@ -3,9 +3,9 @@
 <template>
   <main>
     <SeoMeta
-      title="Pricing | Ashik Ahmed - Full-Stack Developer"
-      description="Flexible web development pricing for business websites, custom platforms, dashboards, and full-stack web applications."
-      keywords="Pricing, Web Development Pricing, Ashik Ahmed, Nuxt Developer, Vue Developer, Laravel Developer, Full Stack Developer"
+      title="Pricing — Affordable Web Development Packages by Ashik Ahmed"
+      description="Explore flexible and affordable pricing plans for web development services. Get high-performance Nuxt.js, Vue.js, and Laravel solutions tailored to your business needs."
+      keywords="Web Development Pricing, Website Cost Bangladesh, Nuxt.js Pricing, Vue.js Developer Cost, Laravel Development Price, Full Stack Developer Rates, Software Development Packages"
     />
 
     <section class="relative overflow-hidden py-20 md:py-24">
