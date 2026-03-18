@@ -44,10 +44,10 @@ const headerClasses = computed(
           @click="closeMenu"
         >
           <div
-            class="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-emerald-100 bg-gradient-to-br from-emerald-50 to-cyan-50 shadow-sm"
+            class="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-full border border-emerald-200"
           >
             <img
-              src="/ashik-ahmed.jpg"
+              src="/logo.jpeg"
               alt="Ashik Ahmed Logo"
               class="w-full object-contain"
             />
@@ -96,7 +96,7 @@ const headerClasses = computed(
         <button
           type="button"
           @click="toggleMenu"
-          class="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-700 shadow-sm transition hover:bg-slate-50 md:hidden"
+          class="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-700 transition hover:bg-slate-50 md:hidden"
           :aria-expanded="mobileMenuOpen"
           aria-label="Toggle navigation menu"
         >

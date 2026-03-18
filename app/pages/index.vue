@@ -15,18 +15,57 @@ const skills = [
 const services = [
   {
     title: "Website Development",
-    desc: "Modern, fast, SEO-ready websites with clean UI.",
-    icon: "💻",
+    desc: "High-performance, SEO-optimized websites with modern UI/UX, fast loading speed, and scalable architecture. Perfect for businesses, portfolios, and landing pages that convert visitors into customers.",
+    icon: "/icons/website.png",
   },
   {
-    title: "App Development",
-    desc: "Dashboard, admin panels, and web apps with auth.",
-    icon: "📱",
+    title: "Web App Development",
+    desc: "Custom web applications including dashboards, admin panels, and SaaS platforms with secure authentication, role-based access, and clean, maintainable code architecture.",
+    icon: "/icons/app.png",
   },
   {
-    title: "API & Integrations",
-    desc: "Payment, OAuth, third-party APIs, and microservices.",
-    icon: "🔌",
+    title: "API & System Integrations",
+    desc: "Robust API development and third-party integrations including payment gateways, OAuth authentication, and microservices to ensure seamless system communication and scalability.",
+    icon: "/icons/api.png",
+  },
+];
+
+const process = [
+  {
+    step: "01",
+    title: "Requirement Analysis",
+    desc: "I understand the business goal, target users, required features, and project scope before starting development.",
+    icon: "/icons/analysis.png",
+  },
+  {
+    step: "02",
+    title: "UI Planning & Architecture",
+    desc: "I plan layout structure, component hierarchy, database flow, and application architecture for clean development.",
+    icon: "/icons/wireframe.png",
+  },
+  {
+    step: "03",
+    title: "Frontend Development",
+    desc: "I build responsive, fast, and modern user interfaces using Vue, Nuxt, Tailwind CSS, and reusable components.",
+    icon: "/icons/frontend-development.png",
+  },
+  {
+    step: "04",
+    title: "Backend & API Integration",
+    desc: "I develop secure backend systems, authentication, dashboards, and API integrations using Laravel or Node.js.",
+    icon: "/icons/server-api.png",
+  },
+  {
+    step: "05",
+    title: "Testing & Optimization",
+    desc: "I test functionality, responsiveness, performance, SEO basics, and fix issues before final delivery.",
+    icon: "/icons/performance-test.png",
+  },
+  {
+    step: "06",
+    title: "Deployment & Support",
+    desc: "I deploy the project, connect domain/hosting, and provide support for updates, fixes, and improvements.",
+    icon: "/icons/cloud-deploy.png",
   },
 ];
 
@@ -75,59 +114,59 @@ const projects = [
     />
 
     <!-- Hero -->
-    <section class="relative bg-white/70 overflow-x-hidden">
-      <div class="relative mx-auto max-w-7xl px-4 py-12">
-        <div class="grid grid-cols-1 items-center gap-12 md:grid-cols-2">
+    <section class="relative overflow-x-hidden bg-white">
+      <div class="relative mx-auto max-w-7xl px-4 py-16 md:py-20">
+        <div class="grid items-center gap-14 md:grid-cols-2">
+          <!-- Left Content -->
           <div>
+            <!-- Availability Badge -->
             <div
-              class="inline-flex items-center gap-2 rounded-full border border-emerald-100 bg-white/90 px-4 py-2 shadow-sm backdrop-blur"
+              class="inline-flex items-center gap-2 rounded-full border border-emerald-100 bg-emerald-50/70 px-4 py-2 text-sm text-emerald-700"
             >
-              <span class="h-2 w-2 rounded-full bg-emerald-500" />
-              <span class="text-sm text-slate-600">
-                Available for freelance & full-time
-              </span>
+              <span
+                class="h-2 w-2 rounded-full bg-emerald-500 animate-pulse"
+              ></span>
+              Available for freelance & full-time
             </div>
 
+            <!-- Heading -->
             <h1
-              class="mt-6 text-4xl font-bold leading-tight tracking-tight text-slate-900 md:text-6xl"
+              class="mt-6 text-2xl font-bold leading-tight tracking-tight text-slate-900 md:text-5xl"
             >
-              The future of
-              <span class="block text-slate-500">development is</span>
+              Building modern
+              <span class="block text-slate-500">web experiences with</span>
               <span
                 class="bg-gradient-to-r from-emerald-600 to-cyan-500 bg-clip-text text-transparent"
               >
-                human + AI
+                performance & scalability
               </span>
             </h1>
 
-            <p class="mt-5 max-w-xl text-slate-600 md:text-lg">
-              I build modern web apps with clean UI, scalable backend, and fast
-              performance. Nuxt/Vue + Laravel/Node + Tailwind.
+            <!-- Description -->
+            <p class="mt-6 max-w-xl text-slate-600 md:text-lg">
+              I help startups and businesses build fast, scalable, and
+              user-friendly web applications using modern technologies like
+              Nuxt, Vue, Laravel, Node.js, and Tailwind CSS.
             </p>
 
+            <!-- CTA -->
             <div class="mt-8 flex flex-wrap gap-3">
-              <a
-                href="#contact"
-                class="inline-flex items-center justify-center rounded-xl bg-emerald-500 px-5 py-3 text-sm font-semibold text-white transition hover:bg-emerald-600 shadow-[0_10px_30px_rgba(16,185,129,0.18)]"
+              <NuxtLink
+                to="/contact"
+                class="inline-flex items-center justify-center rounded-xl bg-emerald-500 px-6 py-3 text-sm font-semibold text-white transition hover:bg-emerald-600 shadow-lg shadow-emerald-500/20"
               >
-                Got a project?
-              </a>
+                Start a Project
+              </NuxtLink>
 
-              <a
-                href="#projects"
-                class="inline-flex items-center justify-center rounded-xl border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-700 transition hover:border-slate-300 hover:bg-slate-50"
+              <NuxtLink
+                to="/projects"
+                class="inline-flex items-center justify-center rounded-xl border border-slate-200 bg-white px-6 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50"
               >
-                See projects →
-              </a>
-
-              <a
-                href="#"
-                class="inline-flex items-center justify-center rounded-xl border border-emerald-200 bg-emerald-50 px-5 py-3 text-sm font-semibold text-emerald-700 transition hover:bg-emerald-100"
-              >
-                Download Resume
-              </a>
+                View My Work →
+              </NuxtLink>
             </div>
 
+            <!-- Skills -->
             <div class="mt-10 flex flex-wrap gap-2">
               <span
                 v-for="s in skills"
@@ -139,78 +178,87 @@ const projects = [
             </div>
           </div>
 
+          <!-- Right Card -->
           <div class="relative isolate">
             <div class="relative mx-auto w-full max-w-md">
+              <!-- Glow -->
               <div
                 aria-hidden="true"
                 class="pointer-events-none absolute -inset-6 rounded-[2.5rem] bg-gradient-to-b from-emerald-100 via-cyan-50 to-transparent blur-2xl"
               />
 
+              <!-- Card -->
               <div
-                class="relative overflow-hidden rounded-2xl border border-slate-200 bg-white/95 p-6"
+                class="relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-6 shadow-lg"
               >
+                <!-- Decorative Rings -->
                 <div
-                  aria-hidden="true"
                   class="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full border border-emerald-200"
                 />
                 <div
-                  aria-hidden="true"
                   class="pointer-events-none absolute -right-10 -top-10 h-44 w-44 rounded-full border border-emerald-100"
                 />
                 <div
-                  aria-hidden="true"
                   class="pointer-events-none absolute -right-2 -top-2 h-28 w-28 rounded-full border border-emerald-100/80"
                 />
 
+                <!-- Profile -->
                 <div class="flex items-center gap-4">
                   <div
-                    class="h-16 w-16 shrink-0 border border-emerald-100 bg-gradient-to-br from-emerald-100 to-cyan-100"
+                    class="h-16 w-16 shrink-0 overflow-hidden rounded-xl border border-emerald-100 bg-gradient-to-br from-emerald-100 to-cyan-100"
                   >
                     <img
                       src="/ashik-ahmed.jpg"
-                      alt="ashik ahmed"
-                      class="rounded-2xl"
+                      alt="Ashik Ahmed"
+                      class="h-full w-full object-cover"
                     />
                   </div>
+
                   <div class="min-w-0">
                     <p class="text-sm text-slate-500">Hello, I’m</p>
                     <p class="truncate text-xl font-semibold text-slate-900">
                       Ashik Ahmed
                     </p>
-                    <p class="text-sm text-emerald-600">Full-Stack Developer</p>
+                    <p class="text-sm font-medium text-emerald-600">
+                      Full-Stack Developer
+                    </p>
                   </div>
                 </div>
 
+                <!-- Stats -->
                 <div class="mt-6 grid grid-cols-3 gap-3">
                   <div
-                    class="rounded-2xl border border-slate-200 bg-slate-50 p-4"
+                    class="rounded-xl border border-slate-200 bg-slate-50 p-4 text-center"
                   >
-                    <p class="text-2xl font-bold text-slate-900">120+</p>
-                    <p class="mt-1 text-xs text-slate-500">Completed</p>
+                    <p class="text-xl font-bold text-slate-900">120+</p>
+                    <p class="mt-1 text-xs text-slate-500">Projects</p>
                   </div>
 
                   <div
-                    class="rounded-2xl border border-slate-200 bg-slate-50 p-4"
+                    class="rounded-xl border border-slate-200 bg-slate-50 p-4 text-center"
                   >
-                    <p class="text-2xl font-bold text-slate-900">95%</p>
-                    <p class="mt-1 text-xs text-slate-500">Satisfaction</p>
+                    <p class="text-xl font-bold text-slate-900">95%</p>
+                    <p class="mt-1 text-xs text-slate-500">
+                      Client Satisfaction
+                    </p>
                   </div>
 
                   <div
-                    class="rounded-2xl border border-slate-200 bg-slate-50 p-4"
+                    class="rounded-xl border border-slate-200 bg-slate-50 p-4 text-center"
                   >
-                    <p class="text-2xl font-bold text-slate-900">10+</p>
-                    <p class="mt-1 text-xs text-slate-500">Years</p>
+                    <p class="text-xl font-bold text-slate-900">8+</p>
+                    <p class="mt-1 text-xs text-slate-500">Years Experience</p>
                   </div>
                 </div>
 
+                <!-- CTA -->
                 <div class="mt-6">
-                  <a
-                    href="#contact"
-                    class="inline-flex w-full items-center justify-center rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50"
+                  <NuxtLink
+                    to="/contact"
+                    class="inline-flex w-full items-center justify-center rounded-xl bg-slate-900 px-4 py-3 text-sm font-semibold text-white transition hover:bg-slate-800"
                   >
-                    Join the community
-                  </a>
+                    Let’s Work Together
+                  </NuxtLink>
                 </div>
               </div>
             </div>
@@ -222,8 +270,8 @@ const projects = [
     <!-- Services + About -->
     <section class="relative py-6">
       <div class="relative mx-auto max-w-7xl px-4 py-14 md:py-16">
-        <div class="grid grid-cols-1 items-start gap-10 lg:grid-cols-12">
-          <div class="space-y-4 lg:col-span-5">
+        <div class="grid grid-cols-1 items-start gap-10 lg:grid-cols-2">
+          <div class="space-y-4">
             <h2 class="text-2xl font-bold text-slate-900 md:text-3xl">
               What I do
             </h2>
@@ -233,22 +281,32 @@ const projects = [
               production-quality UI.
             </p>
 
-            <div class="space-y-3">
+            <div class="space-y-4">
               <div
                 v-for="s in services"
                 :key="s.title"
-                class="group rounded-2xl bg-white p-5 transition hover:-translate-y-0.5 hover:border-emerald-200"
+                class="group rounded-2xl border border-slate-200 bg-white p-4 transition-all duration-300 hover:-translate-y-1 hover:border-emerald-200 hover:shadow-lg hover:shadow-emerald-100/60"
               >
-                <div class="flex gap-4">
+                <div class="flex items-start gap-4">
+                  <!-- Icon -->
                   <div
-                    class="grid h-11 w-11 place-items-center rounded-2xl border border-slate-200 bg-slate-50 transition group-hover:border-emerald-200 group-hover:bg-emerald-50"
+                    class="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl border border-slate-200 bg-slate-50 transition-all duration-300 group-hover:border-emerald-200 group-hover:bg-emerald-50"
                   >
-                    <span class="text-lg">{{ s.icon }}</span>
+                    <img
+                      :src="s.icon"
+                      :alt="s.title"
+                      class="h-12 w-12 object-contain transition duration-300 group-hover:scale-110"
+                    />
                   </div>
 
-                  <div>
-                    <p class="font-semibold text-slate-900">{{ s.title }}</p>
-                    <p class="mt-1 text-sm leading-6 text-slate-600">
+                  <!-- Content -->
+                  <div class="min-w-0">
+                    <h3
+                      class="text-base font-semibold tracking-tight text-slate-900 transition-colors duration-300 group-hover:text-emerald-600"
+                    >
+                      {{ s.title }}
+                    </h3>
+                    <p class="mt-1.5 text-sm leading-6 text-slate-600">
                       {{ s.desc }}
                     </p>
                   </div>
@@ -257,7 +315,7 @@ const projects = [
             </div>
           </div>
 
-          <div class="lg:col-span-7">
+          <div class="block">
             <div
               class="relative overflow-hidden rounded-xl bg-white p-8 md:p-10"
             >
@@ -266,14 +324,29 @@ const projects = [
               ></div>
 
               <div class="relative">
-                <h3 class="text-2xl font-bold text-slate-900 md:text-3xl">
-                  About me
+                <h3
+                  class="text-2xl font-bold tracking-tight text-slate-900 md:text-3xl"
+                >
+                  About Me
                 </h3>
 
-                <p class="mt-4 leading-relaxed text-slate-600">
-                  I build modern web experiences—from design systems to scalable
-                  APIs. Strong focus on performance, accessibility, and
-                  maintainable code.
+                <p
+                  class="mt-4 max-w-2xl leading-relaxed text-slate-600 md:text-[15px]"
+                >
+                  I design and develop premium web experiences that combine
+                  modern UI/UX, scalable backend architecture, and
+                  high-performance engineering. My goal is to build digital
+                  products that are not only visually refined but also fast,
+                  secure, and built for long-term growth.
+                </p>
+
+                <p
+                  class="mt-3 max-w-2xl leading-relaxed text-slate-600 md:text-[15px]"
+                >
+                  Whether it's a business website, SaaS platform, or custom web
+                  application, I deliver clean, maintainable solutions using
+                  Nuxt, Vue, Laravel, Node.js, and Tailwind CSS — tailored to
+                  real business needs.
                 </p>
 
                 <div class="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
@@ -349,44 +422,7 @@ const projects = [
         <div class="mt-12 grid grid-cols-1 gap-6 lg:grid-cols-3">
           <div class="lg:col-span-2 grid sm:grid-cols-2 gap-6">
             <div
-              v-for="(item, i) in [
-                {
-                  step: '01',
-                  title: 'Requirement Analysis',
-                  desc: 'I understand the business goal, target users, required features, and project scope before starting development.',
-                  icon: '📌',
-                },
-                {
-                  step: '02',
-                  title: 'UI Planning & Architecture',
-                  desc: 'I plan layout structure, component hierarchy, database flow, and application architecture for clean development.',
-                  icon: '🧩',
-                },
-                {
-                  step: '03',
-                  title: 'Frontend Development',
-                  desc: 'I build responsive, fast, and modern user interfaces using Vue, Nuxt, Tailwind CSS, and reusable components.',
-                  icon: '💻',
-                },
-                {
-                  step: '04',
-                  title: 'Backend & API Integration',
-                  desc: 'I develop secure backend systems, authentication, dashboards, and API integrations using Laravel or Node.js.',
-                  icon: '⚙️',
-                },
-                {
-                  step: '05',
-                  title: 'Testing & Optimization',
-                  desc: 'I test functionality, responsiveness, performance, SEO basics, and fix issues before final delivery.',
-                  icon: '🚀',
-                },
-                {
-                  step: '06',
-                  title: 'Deployment & Support',
-                  desc: 'I deploy the project, connect domain/hosting, and provide support for updates, fixes, and improvements.',
-                  icon: '🌐',
-                },
-              ]"
+              v-for="(item, i) in process"
               :key="i"
               class="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-6 transition duration-300 hover:-translate-y-1 hover:border-emerald-200 hover:shadow-xl"
             >
@@ -397,9 +433,13 @@ const projects = [
               </div>
 
               <div
-                class="relative z-10 flex h-12 w-12 items-center justify-center rounded-2xl border border-emerald-100 bg-emerald-50 text-xl"
+                class="relative z-10 flex h-12 w-12 items-center justify-center rounded-2xl border border-emerald-100 bg-emerald-50"
               >
-                {{ item.icon }}
+                <img
+                  :src="item.icon"
+                  alt="icon"
+                  class="h-10 w-10 object-contain"
+                />
               </div>
 
               <div class="relative z-10 mt-5">
@@ -426,9 +466,13 @@ const projects = [
               </div>
 
               <div
-                class="flex h-11 w-11 items-center justify-center rounded-2xl bg-slate-100 text-lg"
+                class="flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-100 text-lg"
               >
-                🛠️
+                <img
+                  src="/icons/tools.png"
+                  alt="icon"
+                  class="h-10 w-10 object-contain"
+                />
               </div>
             </div>
 
@@ -557,7 +601,7 @@ const projects = [
 
           <div class="flex flex-wrap gap-3">
             <a
-              href="#contact"
+              href="/contact"
               class="inline-flex items-center justify-center rounded-xl bg-emerald-500 px-5 py-3 text-sm font-semibold text-white shadow-[0_10px_30px_rgba(16,185,129,0.18)] transition hover:bg-emerald-600"
             >
               Start a project
@@ -579,7 +623,7 @@ const projects = [
             :key="p.title"
             class="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white transition duration-300 hover:-translate-y-1.5 hover:shadow-2xl"
           >
-            <div class="relative aspect-[16/10] overflow-hidden bg-slate-100">
+            <div class="relative aspect-auto overflow-hidden bg-slate-100">
               <img
                 :src="p.image"
                 :alt="p.title"
@@ -805,7 +849,7 @@ const projects = [
           <article
             class="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white transition hover:border-emerald-200"
           >
-            <div class="relative aspect-[16/9] overflow-hidden">
+            <div class="relative aspect-auto overflow-hidden">
               <img
                 src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200"
                 class="h-full w-full object-cover transition duration-700 group-hover:scale-105"
@@ -918,15 +962,17 @@ const projects = [
           <div class="space-y-4">
             <div class="bg-white rounded-2xl p-5 border border-slate-200">
               <h3 class="font-semibold text-slate-800">Address</h3>
-              <p class="text-slate-600 mt-1">Kaliganj, Bangladesh</p>
+              <p class="text-slate-600 mt-1">
+                Rowmari, Kurigram 5640, Bangladesh
+              </p>
             </div>
             <div class="bg-white rounded-2xl p-5 border border-slate-200">
               <h3 class="font-semibold text-slate-800">Phone Number</h3>
-              <p class="text-slate-600 mt-1">+880 1XXXXXXXXX</p>
+              <p class="text-slate-600 mt-1">+880 1911742233</p>
             </div>
             <div class="bg-white rounded-2xl p-5 border border-slate-200">
               <h3 class="font-semibold text-slate-800">Email Address</h3>
-              <p class="text-slate-600 mt-1">example@email.com</p>
+              <p class="text-slate-600 mt-1">info@ashikahmed.net</p>
             </div>
           </div>
         </div>

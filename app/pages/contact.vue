@@ -127,7 +127,7 @@ const services = [
 
     <!-- Contact Form + Info -->
     <section class="bg-white/70 md:py-20">
-      <div class="mx-auto max-w-7xl px-4 md:px-6">
+      <div class="mx-auto max-w-7xl px-4 py-6 md:px-6">
         <div class="grid gap-8 lg:grid-cols-12">
           <!-- Form -->
           <div class="lg:col-span-7">
