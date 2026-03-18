@@ -90,7 +90,7 @@
                 <span
                   class="text-4xl font-extrabold tracking-tight text-slate-900"
                 >
-                  ৳15,000
+                  $250
                 </span>
                 <span class="pb-1 text-sm text-slate-500">starting from</span>
               </div>
@@ -101,32 +101,32 @@
 
             <ul class="mt-6 space-y-4 text-sm text-slate-600">
               <li class="flex items-start gap-3">
-                <span class="mt-0.5 text-emerald-500">✔</span
-                ><span>1–5 pages website</span>
+                <IconsCircleCheck class="size-5 text-emerald-500" />
+                <span>1–5 pages website</span>
               </li>
               <li class="flex items-start gap-3">
-                <span class="mt-0.5 text-emerald-500">✔</span
-                ><span>Responsive mobile-friendly design</span>
+                <IconsCircleCheck class="size-5 text-emerald-500" />
+                <span>Responsive mobile-friendly design</span>
               </li>
               <li class="flex items-start gap-3">
-                <span class="mt-0.5 text-emerald-500">✔</span
-                ><span>Contact form integration</span>
+                <IconsCircleCheck class="size-5 text-emerald-500" />
+                <span>Contact form integration</span>
               </li>
               <li class="flex items-start gap-3">
-                <span class="mt-0.5 text-emerald-500">✔</span
-                ><span>Basic SEO setup</span>
+                <IconsCircleCheck class="size-5 text-emerald-500" />
+                <span>Basic SEO setup</span>
               </li>
               <li class="flex items-start gap-3">
-                <span class="mt-0.5 text-emerald-500">✔</span
-                ><span>Fast loading layout</span>
+                <IconsCircleCheck class="size-5 text-emerald-500" />
+                <span>Fast loading layout</span>
               </li>
               <li class="flex items-start gap-3">
-                <span class="mt-0.5 text-emerald-500">✔</span
-                ><span>1 round revision</span>
+                <IconsCircleCheck class="size-5 text-emerald-500" />
+                <span>1 round revision</span>
               </li>
               <li class="flex items-start gap-3">
-                <span class="mt-0.5 text-emerald-500">✔</span
-                ><span>Delivery in 5–7 days</span>
+                <IconsCircleCheck class="size-5 text-emerald-500" />
+                <span>Delivery in 15–20 days</span>
               </li>
             </ul>
 
@@ -177,9 +177,7 @@
 
             <div class="border-b border-white/10 pb-6">
               <div class="flex items-end gap-2">
-                <span class="text-4xl font-extrabold tracking-tight"
-                  >৳30,000</span
-                >
+                <span class="text-4xl font-extrabold tracking-tight">$450</span>
                 <span class="pb-1 text-sm text-slate-300">starting from</span>
               </div>
               <p class="mt-2 text-sm text-slate-300">
@@ -189,36 +187,36 @@
 
             <ul class="mt-6 space-y-4 text-sm text-slate-200">
               <li class="flex items-start gap-3">
-                <span class="mt-0.5 text-amber-400">✔</span
-                ><span>5–10 pages website</span>
+                <IconsCircleCheck class="size-5 text-amber-400" />
+                <span>5–10 pages website</span>
               </li>
               <li class="flex items-start gap-3">
-                <span class="mt-0.5 text-amber-400">✔</span
-                ><span>Custom UI design</span>
+                <IconsCircleCheck class="size-5 text-amber-400" />
+                <span>Custom UI design</span>
               </li>
               <li class="flex items-start gap-3">
-                <span class="mt-0.5 text-amber-400">✔</span
-                ><span>Admin panel / CMS</span>
+                <IconsCircleCheck class="size-5 text-amber-400" />
+                <span>Admin panel / CMS</span>
               </li>
               <li class="flex items-start gap-3">
-                <span class="mt-0.5 text-amber-400">✔</span
-                ><span>Blog or service pages</span>
+                <IconsCircleCheck class="size-5 text-amber-400" />
+                <span>Blog or service pages</span>
               </li>
               <li class="flex items-start gap-3">
-                <span class="mt-0.5 text-amber-400">✔</span
-                ><span>On-page SEO optimization</span>
+                <IconsCircleCheck class="size-5 text-amber-400" />
+                <span>On-page SEO optimization</span>
               </li>
               <li class="flex items-start gap-3">
-                <span class="mt-0.5 text-amber-400">✔</span
-                ><span>Speed optimization</span>
+                <IconsCircleCheck class="size-5 text-amber-400" />
+                <span>Speed optimization</span>
               </li>
               <li class="flex items-start gap-3">
-                <span class="mt-0.5 text-amber-400">✔</span
-                ><span>2 rounds revision</span>
+                <IconsCircleCheck class="size-5 text-amber-400" />
+                <span>2 rounds revision</span>
               </li>
               <li class="flex items-start gap-3">
-                <span class="mt-0.5 text-amber-400">✔</span
-                ><span>Delivery in 7–14 days</span>
+                <IconsCircleCheck class="size-5 text-amber-400" />
+                <span>Delivery in 20–30 days</span>
               </li>
             </ul>
 
@@ -273,7 +271,7 @@
                 <span
                   class="text-4xl font-extrabold tracking-tight text-slate-900"
                 >
-                  ৳80,000+
+                  $999+
                 </span>
                 <span class="pb-1 text-sm text-slate-500">custom pricing</span>
               </div>
@@ -284,36 +282,35 @@
 
             <ul class="mt-6 space-y-4 text-sm text-slate-600">
               <li class="flex items-start gap-3">
-                <span class="mt-0.5 text-emerald-500">✔</span>
-
+                <IconsCircleCheck class="size-5 text-emerald-500" />
                 <span>Fully custom web application</span>
               </li>
               <li class="flex items-start gap-3">
-                <span class="mt-0.5 text-emerald-500">✔</span
-                ><span>Dashboard & user authentication</span>
+                <IconsCircleCheck class="size-5 text-emerald-500" />
+                <span>Dashboard & user authentication</span>
               </li>
               <li class="flex items-start gap-3">
-                <span class="mt-0.5 text-emerald-500">✔</span
-                ><span>API integrations</span>
+                <IconsCircleCheck class="size-5 text-emerald-500" />
+                <span>API integrations</span>
               </li>
               <li class="flex items-start gap-3">
-                <span class="mt-0.5 text-emerald-500">✔</span
-                ><span>Payment gateway integration</span>
+                <IconsCircleCheck class="size-5 text-emerald-500" />
+                <span>Payment gateway integration</span>
               </li>
               <li class="flex items-start gap-3">
-                <span class="mt-0.5 text-emerald-500">✔</span
-                ><span>Database architecture design</span>
+                <IconsCircleCheck class="size-5 text-emerald-500" />
+                <span>Database architecture design</span>
               </li>
               <li class="flex items-start gap-3">
-                <span class="mt-0.5 text-emerald-500">✔</span
-                ><span>Advanced security implementation</span>
+                <IconsCircleCheck class="size-5 text-emerald-500" />
+                <span>Advanced security implementation</span>
               </li>
               <li class="flex items-start gap-3">
-                <span class="mt-0.5 text-emerald-500">✔</span
-                ><span>Priority support</span>
+                <IconsCircleCheck class="size-5 text-emerald-500" />
+                <span>Priority support</span>
               </li>
               <li class="flex items-start gap-3">
-                <span class="mt-0.5 text-emerald-500">✔</span
+                <IconsCircleCheck class="size-5 text-emerald-500" />
                 ><span>Timeline based on project scope</span>
               </li>
             </ul>

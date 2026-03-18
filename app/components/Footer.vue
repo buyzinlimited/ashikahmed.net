@@ -89,6 +89,25 @@ const year = new Date().getFullYear();
                 />
               </svg>
             </a>
+            <!-- WhatsApp -->
+            <a
+              href="https://wa.me/8801911742233"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="WhatsApp"
+              class="group flex h-11 w-11 items-center justify-center rounded-xl border border-slate-800 bg-slate-900 text-slate-300 transition duration-300 hover:-translate-y-0.5 hover:border-emerald-500/40 hover:bg-emerald-500 hover:text-white"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5 transition duration-300 group-hover:scale-110"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M20.52 3.48A11.86 11.86 0 0012 0C5.373 0 0 5.373 0 12c0 2.11.55 4.07 1.52 5.82L0 24l6.38-1.5A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12 0-3.22-1.26-6.2-3.48-8.52zM12 21.6a9.57 9.57 0 01-5.02-1.43l-.36-.22-3.78.88.9-3.69-.23-.38A9.58 9.58 0 012.4 12 9.6 9.6 0 1112 21.6zm5.04-7.8c-.27-.13-1.58-.78-1.83-.87-.25-.09-.43-.13-.61.13-.18.26-.7.87-.86 1.05-.16.18-.32.2-.59.07-.27-.13-1.14-.42-2.17-1.34-.8-.71-1.34-1.58-1.5-1.85-.16-.27-.02-.42.12-.55.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.04-.33-.02-.46-.06-.13-.61-1.48-.84-2.03-.22-.53-.44-.46-.61-.47-.16-.01-.35-.01-.54-.01s-.46.07-.7.33c-.25.26-.95.93-.95 2.27 0 1.34.97 2.64 1.11 2.82.14.18 1.91 2.91 4.64 4.08.65.28 1.16.45 1.56.58.66.21 1.27.18 1.75.11.53-.08 1.58-.64 1.8-1.26.22-.62.22-1.15.16-1.26-.06-.11-.23-.18-.5-.31z"
+                />
+              </svg>
+            </a>
             <!-- Email -->
             <a
               href="mailto:info@ashikahmed.net"
