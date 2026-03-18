@@ -16,12 +16,11 @@ export default defineNuxtConfig({
   },
 
   
-  modules: [
-    
-  ],
+  modules: ['@nuxtjs/supabase'],
 
   supabase: {
     // Options
+    redirect: false
   },
 
   app: {

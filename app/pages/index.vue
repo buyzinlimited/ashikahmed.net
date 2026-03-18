@@ -114,7 +114,7 @@ const projects = [
     />
 
     <!-- Hero -->
-    <section class="relative overflow-x-hidden bg-white">
+    <section class="relative overflow-x-hidden bg-white/50">
       <div class="relative mx-auto max-w-7xl px-4 py-16 md:py-20">
         <div class="grid items-center gap-14 md:grid-cols-2">
           <!-- Left Content -->
