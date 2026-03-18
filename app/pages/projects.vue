@@ -96,7 +96,7 @@ const techStack = [
     />
 
     <!-- Hero -->
-    <section class="relative py-20 md:py-24">
+    <section class="relative py-8 md:py-16">
       <div class="relative mx-auto max-w-7xl px-4 md:px-6">
         <div class="grid items-center gap-12 lg:grid-cols-2">
           <div>
@@ -195,7 +195,7 @@ const techStack = [
     </section>
 
     <!-- Featured Project -->
-    <section class="py-16 md:py-20">
+    <section class="py-8 md:py-12">
       <div class="mx-auto max-w-7xl px-4 md:px-6">
         <div class="max-w-2xl">
           <span class="text-sm font-semibold text-emerald-600">
@@ -359,7 +359,7 @@ const techStack = [
     </section>
 
     <!-- Tech Stack -->
-    <section class="py-16 md:py-20">
+    <section class="py-8 md:py-12">
       <div class="mx-auto max-w-7xl px-4 md:px-6">
         <div class="grid gap-10 lg:grid-cols-12">
           <div class="lg:col-span-4">
@@ -423,7 +423,7 @@ const techStack = [
     </section>
 
     <!-- CTA -->
-    <section class="py-16 md:py-20">
+    <section class="py-8 md:py-16">
       <div class="mx-auto max-w-7xl px-4 md:px-6">
         <div
           class="relative overflow-hidden rounded-2xl border border-slate-200 bg-white px-6 py-10 md:px-10 md:py-14"

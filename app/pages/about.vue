@@ -61,7 +61,7 @@ const values = [
     />
 
     <!-- Hero -->
-    <section class="relative py-20 md:py-24">
+    <section class="relative py-8 md:py-12">
       <div class="relative mx-auto max-w-7xl px-4 md:px-6">
         <div class="grid items-center gap-12 lg:grid-cols-2">
           <div>
@@ -162,7 +162,7 @@ const values = [
     </section>
 
     <!-- Story / Bio -->
-    <section class="py-16 md:py-20">
+    <section class="py-8 md:py-12">
       <div class="mx-auto max-w-7xl px-4 md:px-6">
         <div class="grid gap-10 lg:grid-cols-12">
           <div class="lg:col-span-5">

@@ -720,19 +720,19 @@ const projects = [
 
           <div class="grid grid-cols-2 gap-3 sm:grid-cols-3">
             <div
-              class="rounded-2xl border border-slate-200 bg-white px-4 py-4 text-center shadow-sm"
+              class="rounded-2xl border border-slate-200 bg-white px-4 py-4 text-center"
             >
               <p class="text-2xl font-bold text-slate-900">95%</p>
               <p class="mt-1 text-xs text-slate-500">Client Satisfaction</p>
             </div>
             <div
-              class="rounded-2xl border border-slate-200 bg-white px-4 py-4 text-center shadow-sm"
+              class="rounded-2xl border border-slate-200 bg-white px-4 py-4 text-center"
             >
               <p class="text-2xl font-bold text-slate-900">120+</p>
               <p class="mt-1 text-xs text-slate-500">Projects Delivered</p>
             </div>
             <div
-              class="rounded-2xl border border-slate-200 bg-white px-4 py-4 text-center shadow-sm col-span-2 sm:col-span-1"
+              class="rounded-2xl border border-slate-200 bg-white px-4 py-4 text-center col-span-2 sm:col-span-1"
             >
               <p class="text-2xl font-bold text-slate-900">5★</p>
               <p class="mt-1 text-xs text-slate-500">Service Quality</p>

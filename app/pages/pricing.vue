@@ -8,7 +8,7 @@
       keywords="Web Development Pricing, Website Cost Bangladesh, Nuxt.js Pricing, Vue.js Developer Cost, Laravel Development Price, Full Stack Developer Rates, Software Development Packages"
     />
 
-    <section class="relative overflow-hidden py-20 md:py-24">
+    <section class="relative overflow-hidden py-8 md:py-12">
       <div class="mx-auto max-w-7xl px-4 md:px-6">
         <!-- Header -->
         <div class="mx-auto max-w-3xl text-center">
