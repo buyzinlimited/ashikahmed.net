@@ -1,80 +1,94 @@
 <script setup>
-import { ref, reactive } from "vue";
-import { useRouter } from "vue-router";
-
 const supabase = useSupabaseClient();
 const router = useRouter();
 
 definePageMeta({
   layout: "dashboard",
+  middleware: "auth",
 });
 
+const loading = ref(false);
 const message = ref("");
-const uploading = ref(false);
+const categories = ref([]);
 
 const form = reactive({
   title: "",
+  slug: "",
   summary: "",
   content: "",
-  image_url: "",
+  meta_title: "",
+  meta_description: "",
+  meta_keyword: "",
+  canonical_url: "",
+  status: "draft",
+  is_featured: false,
+  category_id: "",
+  cover_url: "",
 });
 
-// Upload image to Supabase Storage
-const handleImageUpload = async (event) => {
-  const file = event.target.files[0];
-  if (!file) return;
+// Auto slug generate
+watch(
+  () => form.title,
+  (val) => {
+    form.slug = val
+      ?.toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/(^-|-$)/g, "");
+  },
+);
 
-  uploading.value = true;
-
-  // Create a unique file path
-  const fileExt = file.name.split(".").pop();
-  const fileName = `${Date.now()}.${fileExt}`;
-  const filePath = `posts/${fileName}`;
-
-  const { data, error } = await supabase.storage
-    .from("posts") // Your storage bucket name
-    .upload(filePath, file);
+// Load Categories
+const loadCategories = async () => {
+  const { data, error } = await supabase
+    .from("categories")
+    .select("id, name")
+    .order("name", { ascending: true });
 
   if (error) {
-    message.value = error.message;
-    uploading.value = false;
-    return;
-  }
-
-  // Get public URL
-  const { publicUrl, error: urlError } = supabase.storage
-    .from("posts")
-    .getPublicUrl(filePath);
-
-  if (urlError) {
-    message.value = urlError.message;
+    console.error(error);
   } else {
-    form.image_url = publicUrl;
+    categories.value = data;
   }
-
-  uploading.value = false;
 };
 
+onMounted(() => {
+  loadCategories();
+});
+
+// Create Post
 const createPost = async () => {
-  // Basic validation
   if (!form.title || !form.summary || !form.content) {
     message.value = "Title, Summary, and Content are required!";
     return;
   }
 
+  message.value = "";
+  loading.value = true;
+
   const { data, error } = await supabase.from("posts").insert([
     {
       title: form.title,
+      slug: form.slug,
       summary: form.summary,
       content: form.content,
-      image_url: form.image_url || null,
-      created_at: new Date().toISOString(),
+      meta_title: form.meta_title,
+      meta_description: form.meta_description,
+      meta_keyword: form.meta_keyword,
+      canonical_url: form.canonical_url,
+      status: form.status,
+      is_featured: form.is_featured,
+      category_id: form.category_id || null,
+      cover_url: form.cover_url || null,
     },
   ]);
+
+  loading.value = false;
 
   if (error) {
     message.value = error.message;
   } else {
+    message.value = "Post created successfully";
+
     router.push("/dashboard/posts");
   }
 };
@@ -82,7 +96,7 @@ const createPost = async () => {
 
 <template>
   <main>
-    <nav class="flex items-center justify-between">
+    <nav class="flex items-center justify-between py-4">
       <NuxtLink to="/dashboard/posts">All Posts</NuxtLink>
       <NuxtLink
         to="/dashboard/posts/create"
@@ -91,62 +105,77 @@ const createPost = async () => {
       >
     </nav>
 
-    <div class="max-w-5xl mx-auto p-6 bg-white rounded-lg">
+    <form
+      @submit.prevent="createPost"
+      class="max-w-5xl mx-auto p-6 bg-white rounded-lg"
+    >
       <h2 class="text-2xl font-bold mb-4">Create New Post</h2>
 
       <div class="space-y-4">
-        <div>
-          <label class="block font-semibold mb-1">Title</label>
-          <input
-            v-model="form.title"
-            type="text"
-            class="w-full border border-gray-300 rounded px-3 py-2"
-          />
-        </div>
+        <BaseInput label="Title" v-model="form.title" />
+        <BaseInput label="Slug" v-model="form.slug" />
+        <BaseInput label="Meta Title" v-model="form.meta_title" />
+        <BaseTextarea
+          label="Meta Description"
+          v-model="form.meta_description"
+        />
+        <BaseTextarea label="Meta Keyword" v-model="form.meta_keyword" />
+        <BaseInput label="canonical url" v-model="form.canonical_url" />
 
-        <div>
-          <label class="block font-semibold mb-1">Summary</label>
-          <textarea
-            v-model="form.summary"
-            class="w-full border border-gray-300 rounded px-3 py-2"
-            rows="2"
-          ></textarea>
-        </div>
+        <BaseTextarea label="Summary" v-model="form.summary" />
 
         <div>
           <label class="block font-semibold mb-1">Content</label>
           <ClientOnly>
-            <BaseEditor />
+            <BaseEditor v-model="form.content" />
           </ClientOnly>
         </div>
-        <div>
-          <label class="block font-semibold mb-1">Image</label>
-          <input
-            type="file"
-            accept="image/*"
-            @change="handleImageUpload"
-            class="w-full"
-          />
-          <p v-if="uploading" class="text-blue-500 mt-1">Uploading...</p>
+        <BaseInput label="Image" v-model="form.image_url" />
 
-          <div v-if="form.image_url" class="mt-2">
-            <img
-              :src="form.image_url"
-              alt="Preview"
-              class="h-40 rounded shadow"
-            />
-          </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <BaseSelect
+            label="Categories"
+            v-model="form.category_id"
+            placeholder="Select Categories"
+            :options="categories"
+          />
+
+          <BaseSelect
+            label="Featired"
+            v-model="form.is_featured"
+            placeholder="Select featured"
+            :options="[
+              {
+                id: true,
+                name: 'Yes',
+              },
+              {
+                id: false,
+                name: 'No',
+              },
+            ]"
+          />
+
+          <BaseSelect
+            label="Status"
+            placeholder="Select status"
+            :options="[
+              {
+                id: 'draft',
+                name: 'Draft',
+              },
+              {
+                id: 'published',
+                name: 'Published',
+              },
+            ]"
+          />
         </div>
 
-        <p v-if="message" class="text-red-500">{{ message }}</p>
+        <span class="text-red-500">{{ message }}</span>
 
-        <button
-          @click="createPost"
-          class="bg-emerald-500 text-white px-4 py-2 rounded hover:bg-emerald-600 transition"
-        >
-          Create Post
-        </button>
+        <BaseButton :loading="loading">Create Post</BaseButton>
       </div>
-    </div>
+    </form>
   </main>
 </template>

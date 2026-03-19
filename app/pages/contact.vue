@@ -355,7 +355,7 @@ const services = [
 
             <div class="flex flex-wrap gap-3">
               <a
-                href="mailto:hello@ashikahmed.dev"
+                href="mailto:info@ashikahmed.net"
                 class="inline-flex items-center justify-center rounded-xl bg-emerald-500 px-5 py-3 text-sm font-semibold text-white shadow-[0_10px_30px_rgba(16,185,129,0.18)] transition hover:bg-emerald-600"
               >
                 Email Me

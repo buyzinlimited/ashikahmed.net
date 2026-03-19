@@ -1,6 +1,7 @@
 <script setup>
 definePageMeta({
   layout: "dashboard",
+  middleware: "auth",
 });
 
 const supabase = useSupabaseClient();
@@ -48,31 +49,35 @@ onMounted(() => loadPosts());
         <div
           v-for="post in posts"
           :key="post.id"
-          class="bg-white rounded-xl shadow hover:shadow-xl transition p-6 flex flex-col justify-between"
+          class="bg-white rounded-xl overflow-hidden transition"
         >
-          <!-- Post Header -->
-          <div class="mb-4">
+          <NuxtImg
+            :src="post.cover_url"
+            :alt="post.title"
+            class="object-cover"
+          />
+
+          <div class="p-4">
             <h2 class="font-bold text-lg text-slate-900 mb-2 truncate">
               {{ post.title }}
             </h2>
-            <p class="text-slate-600 line-clamp-3">{{ post.content }}</p>
-          </div>
+            <p class="text-slate-600 line-clamp-3">{{ post.summary }}</p>
 
-          <!-- Action Buttons -->
-          <div class="mt-4 flex justify-between items-center">
-            <NuxtLink
-              :to="`/dashboard/posts/${post.id}`"
-              class="text-emerald-500 hover:text-emerald-600 font-semibold transition"
-            >
-              Edit
-            </NuxtLink>
+            <div class="mt-4 flex justify-between items-center">
+              <NuxtLink
+                :to="`/dashboard/posts/${post.id}`"
+                class="text-emerald-500 hover:text-emerald-600 font-semibold transition"
+              >
+                Edit
+              </NuxtLink>
 
-            <button
-              @click="deletePost(post.id)"
-              class="text-red-500 hover:text-red-600 font-semibold transition"
-            >
-              Delete
-            </button>
+              <button
+                @click="deletePost(post.id)"
+                class="text-red-500 hover:text-red-600 font-semibold transition"
+              >
+                Delete
+              </button>
+            </div>
           </div>
         </div>
       </div>

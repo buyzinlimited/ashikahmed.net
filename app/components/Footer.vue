@@ -137,22 +137,34 @@ const year = new Date().getFullYear();
       <div
         class="mt-10 flex flex-col gap-4 border-t border-slate-800/80 pt-6 text-sm text-slate-500 md:flex-row md:items-center md:justify-between"
       >
-        <p>
+        <p class="text-sm">
           © {{ year }} Ashik Ahmed. Designed and developed with a focus on
           quality, usability, and long-term scalability.
         </p>
 
         <div class="flex flex-wrap items-center gap-x-5 gap-y-2">
-          <NuxtLink to="/privacy" class="transition hover:text-emerald-400">
+          <NuxtLink
+            to="/privacy"
+            class="transition hover:text-emerald-400 no-underline"
+          >
             Privacy Policy
           </NuxtLink>
-          <NuxtLink to="/terms" class="transition hover:text-emerald-400">
+          <NuxtLink
+            to="/terms"
+            class="transition hover:text-emerald-400 no-underline"
+          >
             Terms & Conditions
           </NuxtLink>
-          <NuxtLink to="/cookies" class="transition hover:text-emerald-400">
+          <NuxtLink
+            to="/cookies"
+            class="transition hover:text-emerald-400 no-underline"
+          >
             Cookie Policy
           </NuxtLink>
-          <NuxtLink to="/disclaimer" class="transition hover:text-emerald-400">
+          <NuxtLink
+            to="/disclaimer"
+            class="transition hover:text-emerald-400 no-underline"
+          >
             Disclaimer
           </NuxtLink>
         </div>

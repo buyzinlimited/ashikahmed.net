@@ -40,7 +40,7 @@ const headerClasses = computed(
         <!-- Brand -->
         <NuxtLink
           to="/"
-          class="flex min-w-0 items-center gap-3"
+          class="flex min-w-0 items-center gap-3 no-underline"
           @click="closeMenu"
         >
           <div
@@ -59,7 +59,9 @@ const headerClasses = computed(
             >
               Ashik Ahmed
             </h1>
-            <p class="truncate text-xs font-medium text-emerald-600 md:text-sm">
+            <p
+              class="truncate text-xs font-medium text-emerald-600 md:text-sm mb-0"
+            >
               Full Stack Developer
             </p>
           </div>
@@ -71,7 +73,7 @@ const headerClasses = computed(
             v-for="item in nav"
             :key="item.label"
             :to="item.to"
-            class="rounded-xl px-4 py-2 text-base font-medium transition"
+            class="rounded-xl px-4 py-2 text-base font-medium transition no-underline"
             :class="
               isActive(item.to)
                 ? 'bg-emerald-50 text-emerald-700'
@@ -168,7 +170,7 @@ const headerClasses = computed(
             <NuxtLink
               to="/contact"
               @click="closeMenu"
-              class="inline-flex w-full items-center justify-center rounded-xl bg-emerald-500 px-5 py-3 text-sm font-semibold text-white shadow-[0_10px_30px_rgba(16,185,129,0.18)] transition hover:bg-emerald-600"
+              class="no-underline inline-flex w-full items-center justify-center rounded-xl bg-emerald-500 px-5 py-3 text-sm font-semibold text-white transition hover:bg-emerald-600"
             >
               Let’s Collaborate
             </NuxtLink>

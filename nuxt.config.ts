@@ -16,11 +16,23 @@ export default defineNuxtConfig({
   },
 
   
-  modules: ['@nuxtjs/supabase'],
+  modules: ['@nuxtjs/supabase', '@nuxt/image'],
 
   supabase: {
     // Options
     redirect: false
+  },
+
+  image: {
+    quality: 80,
+    format: ['webp'],
+    screens: {
+      'sm': 640,
+      'md': 768,
+      'lg': 1024,
+      'xl': 1280,
+      '2xl': 1536
+    }
   },
 
   app: {

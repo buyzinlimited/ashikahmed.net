@@ -8,7 +8,7 @@ const props = defineProps({
   },
   image: {
     type: String,
-    default: "",
+    default: "/logo.png",
   },
   url: {
     type: String,

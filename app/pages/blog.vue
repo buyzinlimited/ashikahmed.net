@@ -1,93 +1,62 @@
 <script setup>
-const featuredPost = {
-  title: "Modern Web Development Trends in 2026",
-  category: "Web Development",
-  date: "January 10, 2026",
-  readTime: "5 min read",
-  image:
-    "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1400&auto=format&fit=crop",
-  excerpt:
-    "Explore the latest technologies, frameworks, and UI patterns shaping the future of modern web applications, performance, and scalable product development.",
-  slug: "/blog/modern-web-development-trends-2026",
+const supabase = useSupabaseClient();
+const categories = ref([]);
+const featured = ref([]);
+const posts = ref([]);
+const loading = ref(true);
+
+const loadFeatured = async () => {
+  const { data, error } = await supabase
+    .from("posts")
+    .select(
+      `
+      *,
+      category:categories (id, name, slug)
+    `,
+    )
+    .eq("is_featured", true)
+    .order("created_at", { ascending: false });
+
+  if (error) console.error(error);
+  else featured.value = data;
+
+  loading.value = false;
 };
 
-const posts = [
-  {
-    title: "Why Performance Matters in Modern Web Apps",
-    category: "Performance",
-    date: "January 05, 2026",
-    readTime: "4 min read",
-    image:
-      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=900&auto=format&fit=crop",
-    excerpt:
-      "Learn how website speed affects user experience, conversion rate, and search visibility in modern digital products.",
-    slug: "/blog/why-performance-matters",
-  },
-  {
-    title: "Building Scalable APIs with Laravel",
-    category: "Backend",
-    date: "December 28, 2025",
-    readTime: "6 min read",
-    image:
-      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=900&auto=format&fit=crop",
-    excerpt:
-      "A practical overview of structuring Laravel APIs for security, maintainability, and future growth.",
-    slug: "/blog/building-scalable-apis-with-laravel",
-  },
-  {
-    title: "How to Design a Better Portfolio Website",
-    category: "UI/UX",
-    date: "December 20, 2025",
-    readTime: "4 min read",
-    image:
-      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=900&auto=format&fit=crop",
-    excerpt:
-      "Key sections, hierarchy, and design decisions that make a portfolio website look professional and convert better.",
-    slug: "/blog/better-portfolio-website",
-  },
-  {
-    title: "Nuxt.js vs Traditional Frontend Setup",
-    category: "Frontend",
-    date: "December 12, 2025",
-    readTime: "5 min read",
-    image:
-      "https://images.unsplash.com/photo-1504639725590-34d0984388bd?q=80&w=900&auto=format&fit=crop",
-    excerpt:
-      "A quick comparison of why Nuxt can improve developer workflow, SEO, and performance for production projects.",
-    slug: "/blog/nuxt-vs-traditional-frontend",
-  },
-  {
-    title: "Best Practices for Responsive Web Design",
-    category: "Responsive Design",
-    date: "December 04, 2025",
-    readTime: "4 min read",
-    image:
-      "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=900&auto=format&fit=crop",
-    excerpt:
-      "Build layouts that feel polished across mobile, tablet, and desktop with a practical responsive design strategy.",
-    slug: "/blog/responsive-web-design-best-practices",
-  },
-  {
-    title: "Improving Website Conversion with Better UI",
-    category: "Business",
-    date: "November 26, 2025",
-    readTime: "5 min read",
-    image:
-      "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=900&auto=format&fit=crop",
-    excerpt:
-      "Discover how layout, typography, CTA placement, and content structure can improve conversions and trust.",
-    slug: "/blog/improving-website-conversion-ui",
-  },
-];
+const loadPosts = async () => {
+  const { data, error } = await supabase
+    .from("posts")
+    .select(
+      `
+      *,
+      category:categories (id, name, slug)
+    `,
+    )
+    .order("created_at", { ascending: false });
 
-const categories = [
-  "Web Development",
-  "Frontend",
-  "Backend",
-  "Performance",
-  "UI/UX",
-  "Business",
-];
+  if (error) console.error(error);
+  else posts.value = data;
+
+  loading.value = false;
+};
+
+const loadCategories = async () => {
+  const { data, error } = await supabase
+    .from("categories")
+    .select("*")
+    .order("created_at", { ascending: false });
+
+  if (error) console.error(error);
+  else categories.value = data;
+
+  loading.value = false;
+};
+
+onMounted(() => {
+  loadFeatured();
+  loadPosts();
+  loadCategories();
+});
 </script>
 
 <template>
@@ -148,7 +117,7 @@ const categories = [
                 class="absolute -right-20 -top-20 h-56 w-56 rounded-full bg-emerald-100/80 blur-3xl"
               ></div>
 
-              <div class="relative">
+              <article v-for="post in featured.slice(0, 1)" class="relative">
                 <span
                   class="inline-flex items-center rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-semibold text-slate-700"
                 >
@@ -158,30 +127,28 @@ const categories = [
                 <h2
                   class="mt-4 text-2xl font-bold tracking-tight text-slate-900"
                 >
-                  {{ featuredPost.title }}
+                  {{ post.title }}
                 </h2>
 
                 <div
                   class="mt-3 flex flex-wrap items-center gap-3 text-sm text-slate-500"
                 >
-                  <span>{{ featuredPost.category }}</span>
+                  <span>{{ post.category?.name }}</span>
                   <span>•</span>
-                  <span>{{ featuredPost.date }}</span>
-                  <span>•</span>
-                  <span>{{ featuredPost.readTime }}</span>
+                  <span>{{ $date(post.created_at) }}</span>
                 </div>
 
                 <p class="mt-4 text-sm leading-7 text-slate-600">
-                  {{ featuredPost.excerpt }}
+                  {{ post.summary }}
                 </p>
 
                 <NuxtLink
-                  :to="featuredPost.slug"
+                  :to="`article/${post.slug}`"
                   class="mt-6 inline-flex items-center text-sm font-semibold text-emerald-600 transition hover:text-emerald-700"
                 >
                   Read article →
                 </NuxtLink>
-              </div>
+              </article>
             </div>
           </div>
         </div>
@@ -207,14 +174,15 @@ const categories = [
         </div>
 
         <article
+          v-for="post in featured.slice(0, 1)"
           class="mt-10 grid items-center gap-8 overflow-hidden rounded-2xl border border-slate-200 bg-white p-6 lg:grid-cols-2 lg:p-8"
         >
           <div
             class="overflow-hidden rounded-2xl border border-slate-200 bg-slate-100"
           >
-            <img
-              :src="featuredPost.image"
-              :alt="featuredPost.title"
+            <NuxtImg
+              :src="post.cover_url"
+              :alt="post.title"
               class="h-full w-full object-cover"
             />
           </div>
@@ -223,37 +191,29 @@ const categories = [
             <span
               class="inline-flex items-center rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700"
             >
-              {{ featuredPost.category }}
+              {{ post.category?.name }}
             </span>
 
             <h3
               class="mt-4 text-2xl font-bold tracking-tight text-slate-900 md:text-3xl"
             >
-              {{ featuredPost.title }}
+              {{ post.title }}
             </h3>
 
-            <div
-              class="mt-3 flex flex-wrap items-center gap-3 text-sm text-slate-500"
-            >
-              <span>{{ featuredPost.date }}</span>
-              <span>•</span>
-              <span>{{ featuredPost.readTime }}</span>
-            </div>
-
-            <p class="mt-4 leading-7 text-slate-600">
-              {{ featuredPost.excerpt }}
+            <p class="mt-4 leading-7 text-slate-600 line-clamp-4">
+              {{ post.summary }}
             </p>
 
             <div class="mt-8 flex flex-wrap gap-3">
               <NuxtLink
-                :to="featuredPost.slug"
+                :to="`/article/${post.slug}`"
                 class="inline-flex items-center justify-center rounded-xl bg-emerald-500 px-5 py-3 text-sm font-semibold text-white transition hover:bg-emerald-600"
               >
                 Read Full Article
               </NuxtLink>
 
               <NuxtLink
-                to="/contact"
+                to="/blog"
                 class="inline-flex items-center justify-center rounded-xl border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50"
               >
                 Need Similar Help?
@@ -290,10 +250,10 @@ const categories = [
               <div class="flex flex-wrap gap-3">
                 <span
                   v-for="item in categories"
-                  :key="item"
+                  :key="item.id"
                   class="rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-medium text-slate-700 transition hover:border-emerald-200 hover:bg-emerald-50 hover:text-emerald-700"
                 >
-                  {{ item }}
+                  {{ item.name }}
                 </span>
               </div>
 
@@ -329,7 +289,7 @@ const categories = [
     </section>
 
     <!-- Posts Grid -->
-    <section class="py-16 md:py-20">
+    <section class="py-8 md:py-12">
       <div class="mx-auto max-w-7xl px-4 md:px-6">
         <div class="max-w-2xl">
           <span class="text-sm font-semibold text-emerald-600">
@@ -352,9 +312,9 @@ const categories = [
             :key="post.title"
             class="group overflow-hidden rounded-2xl border border-slate-200 bg-white transition hover:-translate-y-1 hover:shadow-lg"
           >
-            <div class="aspect-[16/10] overflow-hidden bg-slate-100">
-              <img
-                :src="post.image"
+            <div class="aspect-auto overflow-hidden bg-slate-100">
+              <NuxtImg
+                :src="post.cover_url"
                 :alt="post.title"
                 class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
               />
@@ -364,33 +324,23 @@ const categories = [
               <div
                 class="flex flex-wrap items-center gap-3 text-xs font-semibold uppercase tracking-[0.14em] text-emerald-600"
               >
-                <span>{{ post.category }}</span>
+                <span>{{ post.category?.name }}</span>
               </div>
 
               <h3 class="mt-3 text-xl font-semibold text-slate-900">
                 {{ post.title }}
               </h3>
 
-              <div
-                class="mt-3 flex flex-wrap items-center gap-3 text-sm text-slate-500"
-              >
-                <span>{{ post.date }}</span>
-                <span>•</span>
-                <span>{{ post.readTime }}</span>
-              </div>
-
-              <p class="mt-4 text-sm leading-7 text-slate-600">
-                {{ post.excerpt }}
+              <p class="mt-4 text-sm leading-7 text-slate-600 line-clamp-3">
+                {{ post.summary }}
               </p>
 
-              <div class="mt-6">
-                <NuxtLink
-                  :to="post.slug"
-                  class="text-sm font-semibold text-emerald-600 transition hover:text-emerald-700"
-                >
-                  Read More →
-                </NuxtLink>
-              </div>
+              <NuxtLink
+                :to="`/article/${post.slug}`"
+                class="text-sm font-semibold text-emerald-600 transition hover:text-emerald-700"
+              >
+                Read More →
+              </NuxtLink>
             </div>
           </article>
         </div>
@@ -398,7 +348,7 @@ const categories = [
     </section>
 
     <!-- CTA -->
-    <section class="py-16 md:py-20">
+    <section class="py-8">
       <div class="mx-auto max-w-7xl px-4 md:px-6">
         <div
           class="relative overflow-hidden rounded-2xl border border-slate-200 bg-white px-6 py-10 md:px-10 md:py-14"

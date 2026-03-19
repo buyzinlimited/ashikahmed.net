@@ -12,31 +12,42 @@ const editor = ref(null);
 let quillInstance = null;
 
 onMounted(async () => {
-  // Import Quill only in the client
   const Quill = (await import("quill")).default;
   await import("quill/dist/quill.snow.css");
+
+  // 👉 Import font format
+  const Font = Quill.import("formats/font");
+
+  Quill.register(Font, true);
 
   quillInstance = new Quill(editor.value, {
     theme: "snow",
     placeholder: props.placeholder,
     readOnly: props.readOnly,
     modules: {
-      formula: true,
       toolbar: [
-        ["bold", "italic", "underline", "strike"],
-        [{ list: "ordered" }, { list: "bullet" }],
+        ["bold", "italic", "underline", "strike"], // toggled buttons
         ["blockquote", "code-block"],
         ["link", "image", "video", "formula"],
+
+        [{ list: "ordered" }, { list: "bullet" }, { list: "check" }],
         [{ script: "sub" }, { script: "super" }],
-        ["clean"],
+        [{ indent: "-1" }, { indent: "+1" }], // outdent/indent
+        [{ direction: "rtl" }], // text direction
+
+        [{ header: [1, 2, 3, 4, 5, 6, false] }],
+
+        [{ color: [] }, { background: [] }],
+        [{ font: [] }],
+        [{ align: [] }],
+
+        ["clean"], // remove formatting button
       ],
     },
   });
 
-  // Set initial content
   quillInstance.clipboard.dangerouslyPasteHTML(props.modelValue || "");
 
-  // Listen for changes
   quillInstance.on("text-change", () => {
     emit("update:modelValue", quillInstance.root.innerHTML);
   });

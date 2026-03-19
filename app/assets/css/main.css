@@ -1,1 +1,144 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+
 @import "tailwindcss";
+
+@theme {
+  /* Colors */
+  --color-primary: #00bc7d;
+  --color-background: #f9f9f9;
+  --color-light: #fff6fa;
+  --color-border: #eeeeee;
+  --color-success: #0e9a5f;
+  --color-warning: #fdae1c;
+  --color-danger: #ff4040;
+  --color-info: #1c8bef;
+  --color-title: #1e2939;
+  --color-body: #1e2939;
+  --color-black: #000000;
+  --color-dark: #1d304c;
+  --color-white: #ffffff;
+
+  /* Typography */
+  --font-sans: "Noto Sans", sans-serif;
+
+  /* Container */
+  --container-max-width: 32rem;
+}
+
+/* Base layer */
+@layer base {
+  html {
+    font-family: var(
+      --font-sans,
+      "Inter",
+      system-ui,
+      -apple-system,
+      sans-serif
+    );
+    line-height: 1.6;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    color: var(--color-body, #1f2937); /* slate-800 */
+    background-color: var(--color-background, #f9fafb); /* slate-50 */
+  }
+
+  /* Headings */
+  h1 {
+    @apply text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl font-bold text-slate-900 tracking-tight;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl font-semibold text-slate-900 tracking-normal;
+  }
+
+  h4 {
+    @apply text-xl md:text-2xl font-semibold text-slate-800;
+  }
+
+  h5 {
+    @apply text-lg font-medium text-slate-800;
+  }
+
+  h6 {
+    @apply text-base font-medium text-slate-700 uppercase tracking-wide;
+  }
+
+  /* Paragraphs */
+  p {
+    @apply text-base text-slate-700 leading-relaxed;
+  }
+
+  /* Small text / span / labels */
+  span,
+  small {
+    @apply text-sm text-slate-500;
+  }
+
+  /* Links */
+  a {
+    @apply text-emerald-600 hover:text-emerald-700 decoration-emerald-200;
+  }
+
+  /* Lists */
+  ul,
+  ol {
+    @apply list-inside list-disc mb-4 space-y-2;
+  }
+
+  li {
+    @apply text-slate-700;
+  }
+
+  /* Blockquotes */
+  blockquote {
+    @apply border-l-4 border-emerald-300 pl-4 italic text-slate-600 mb-4;
+  }
+
+  /* Code */
+  code {
+    @apply font-mono bg-slate-100 text-slate-800 px-1 rounded;
+  }
+
+  pre {
+    @apply bg-slate-900 text-slate-100 p-4 rounded-lg overflow-x-auto mb-4;
+  }
+
+  /* Images */
+  img {
+    @apply rounded-lg shadow-md;
+  }
+
+  table {
+    @apply w-full text-left border border-slate-200;
+  }
+
+  thead {
+    @apply bg-slate-50;
+  }
+
+  th {
+    @apply px-6 py-3 text-sm font-semibold text-slate-700 uppercase tracking-wider;
+  }
+
+  tbody tr {
+    @apply border-b border-slate-200 transition hover:bg-slate-50;
+  }
+
+  td {
+    @apply px-6 py-3 text-sm text-slate-600;
+  }
+
+  tbody tr:nth-child(even) {
+    @apply bg-slate-50/50; /* alternating row color */
+  }
+
+  tfoot {
+    @apply bg-slate-100 font-medium text-slate-700;
+  }
+}
