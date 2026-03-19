@@ -431,7 +431,7 @@ const process = [
               </div>
 
               <div
-                class="flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-100 text-lg"
+                class="flex h-16 w-16 items-center justify-center rounded-2xl bg-slate-100 text-lg"
               >
                 <img
                   src="/icons/tools.png"
@@ -461,6 +461,16 @@ const process = [
                 <div class="mb-2 flex items-center justify-between text-sm">
                   <span class="font-medium text-slate-700">Laravel</span>
                   <span class="text-slate-500">92%</span>
+                </div>
+                <div class="h-2 overflow-hidden rounded-full bg-slate-200">
+                  <div class="h-full w-[92%] rounded-full bg-emerald-500"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="mb-2 flex items-center justify-between text-sm">
+                  <span class="font-medium text-slate-700">WordPress</span>
+                  <span class="text-slate-500">95%</span>
                 </div>
                 <div class="h-2 overflow-hidden rounded-full bg-slate-200">
                   <div class="h-full w-[92%] rounded-full bg-emerald-500"></div>

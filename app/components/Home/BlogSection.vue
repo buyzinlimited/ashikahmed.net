@@ -137,9 +137,12 @@ onMounted(() => {
             v-if="!loading"
             v-for="post in posts"
             :key="post.title"
-            class="group flex gap-4 rounded-2xl border border-slate-200 bg-white p-4 transition hover:border-emerald-200"
+            class="group flex flex-col md:flex-row gap-4 rounded-2xl border border-slate-200 bg-white p-4 transition hover:border-emerald-200"
           >
-            <div class="h-32 w-auto shrink-0 overflow-hidden rounded-xl">
+            <!-- Image -->
+            <div
+              class="w-full md:w-40 h-auto md:h-32 shrink-0 overflow-hidden rounded-xl"
+            >
               <NuxtLink :to="`/article/${post?.slug}`">
                 <NuxtImg
                   :src="post.cover_url"
@@ -149,17 +152,20 @@ onMounted(() => {
               </NuxtLink>
             </div>
 
-            <div class="flex flex-col">
-              <div class="flex items-center justify-between gap-4">
+            <!-- Content -->
+            <div class="flex flex-col flex-1">
+              <div class="flex items-center justify-between gap-2 flex-wrap">
                 <span class="text-xs text-emerald-600 font-medium">
                   {{ post.category?.name }}
                 </span>
-                <span class="mt-2 text-xs text-slate-400">
+                <span class="text-xs text-slate-400">
                   {{ $date(post.created_at) }}
                 </span>
               </div>
 
-              <h3 class="mt-1 text-sm font-semibold text-slate-900 leading-5">
+              <h3
+                class="mt-2 text-base md:text-sm font-semibold text-slate-900 leading-5"
+              >
                 {{ post.title }}
               </h3>
 
