@@ -1,12 +1,10 @@
 <script setup>
-import { ref } from "vue";
-import { useRouter } from "vue-router";
 const supabase = useSupabaseClient();
 const router = useRouter();
 
 const form = reactive({
-  email: "info@ashikahmed.net",
-  password: "password",
+  email: "",
+  password: "",
 });
 
 const errorMessage = ref("");
@@ -34,11 +32,9 @@ const login = async () => {
 
 <template>
   <div class="min-h-screen flex items-center justify-center bg-slate-50">
-    <!-- Login Card -->
     <div
       class="w-full max-w-md bg-white rounded-3xl border border-emerald-200 p-8"
     >
-      <!-- Header -->
       <h2 class="text-3xl font-bold text-slate-900 text-center mb-2">
         Welcome Back
       </h2>
@@ -46,14 +42,11 @@ const login = async () => {
         Login to your portfolio account
       </p>
 
-      <!-- Error Message -->
       <p v-if="errorMessage" class="text-red-500 text-center mb-4">
         {{ errorMessage }}
       </p>
 
-      <!-- Form -->
       <form @submit.prevent="login" class="space-y-4">
-        <!-- Email -->
         <div>
           <label
             for="email"
@@ -70,7 +63,6 @@ const login = async () => {
           />
         </div>
 
-        <!-- Password -->
         <div>
           <label
             for="password"
@@ -87,7 +79,6 @@ const login = async () => {
           />
         </div>
 
-        <!-- Submit -->
         <button
           type="submit"
           :disabled="loading"

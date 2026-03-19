@@ -84,7 +84,6 @@ onMounted(() => {
         </div>
       </div>
 
-      <!-- Project Grid -->
       <div class="mt-10 grid grid-cols-1 gap-7 md:grid-cols-2">
         <template v-if="loading">
           <div
@@ -92,7 +91,6 @@ onMounted(() => {
             :key="i"
             class="animate-pulse overflow-hidden rounded-2xl border border-slate-200 bg-white"
           >
-            <!-- Image -->
             <div class="h-56 w-full bg-slate-200"></div>
 
             <div class="p-6 space-y-4">
@@ -124,7 +122,7 @@ onMounted(() => {
           <article
             v-for="project in projects"
             :key="project.id"
-            class="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white transition duration-300 hover:-translate-y-1.5 hover:shadow-2xl"
+            class="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white transition duration-300 hover:-translate-y-1.5 hover:border-emerald-200"
           >
             <div class="relative aspect-auto overflow-hidden bg-slate-100">
               <NuxtLink :to="`/project/${project.slug}`">
@@ -144,9 +142,6 @@ onMounted(() => {
                   >
                     {{ project.title }}
                   </h3>
-                  <p class="mt-2 text-sm text-slate-500">
-                    Web Development Project
-                  </p>
                 </div>
               </div>
 
@@ -169,7 +164,9 @@ onMounted(() => {
               >
                 <div class="flex items-center gap-2 text-sm text-slate-500">
                   <span class="h-2 w-2 rounded-full bg-emerald-500"></span>
-                  <span>Responsive • Clean UI • Scalable Build</span>
+                  <p class="text-sm text-slate-500">
+                    {{ project.category?.name }}
+                  </p>
                 </div>
 
                 <div class="flex items-center gap-4">
