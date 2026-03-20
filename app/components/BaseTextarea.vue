@@ -28,7 +28,7 @@ const updateValue = (e) => {
       :value="modelValue"
       :disabled="disabled"
       @input="updateValue"
-      class="w-full px-4 py-2 rounded border border-gray-200 focus:border-gray-200 disabled:border-gray-200 disabled:bg-gray-50 disabled:text-gray-500"
+      class="w-full px-4 py-2 rounded border border-gray-200 outline-none focus:border-primary disabled:border-gray-200 disabled:bg-gray-50 disabled:text-gray-500"
     ></textarea>
 
     <small v-if="error" class="text-red-500">{{ error[0] }}</small>

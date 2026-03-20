@@ -16,7 +16,7 @@ export default defineNuxtConfig({
   },
 
   
-  modules: ['@nuxtjs/supabase', '@nuxt/image'],
+  modules: ['@nuxtjs/supabase', '@nuxt/image', 'nuxt-mail'],
 
   supabase: {
     // Options
@@ -35,6 +35,22 @@ export default defineNuxtConfig({
     }
   },
 
+  mail: {
+    message: {
+    to: 'info@ashikahmed.net',
+  },
+    smtp: {
+      host: 'smtp.gmail.com', 
+      port: 465,
+      auth: {
+        user: 'ashik9121295621@gmail.com',
+        pass: "ppdkoszmoafngcgm"
+
+      }
+    }
+  },
+
+  
   app: {
     head: {
       charset: 'utf-8',
@@ -42,9 +58,13 @@ export default defineNuxtConfig({
       htmlAttrs: {
         lang: 'en',
       },
+      link: [
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      ],
       bodyAttrs: {
         class: 'antialiased text-base font-body text-dark overflow-x-hidden',
       },
+      
     },
   },
 })

@@ -90,9 +90,9 @@ const techStack = [
 <template>
   <main class="relative overflow-hidden">
     <SeoMeta
-      title="Products — Web Applications & Digital Solutions by Ashik Ahmed"
-      description="Explore high-quality web applications and digital products built with Nuxt.js, Vue.js, and Laravel. Scalable, performance-driven solutions designed for modern businesses and startups."
-      keywords="Web Products, Digital Products, SaaS Applications, Nuxt.js Projects, Vue.js Apps, Laravel Systems, Web Solutions Bangladesh, Software Products, Full Stack Projects"
+      title="Projects — Web Applications & Digital Solutions by Ashik Ahmed"
+      description="Explore high-quality web applications and digital Projects built with Nuxt.js, Vue.js, and Laravel. Scalable, performance-driven solutions designed for modern businesses and startups."
+      keywords="Web Projects, Digital Projects, SaaS Applications, Nuxt.js Projects, Vue.js Apps, Laravel Systems, Web Solutions Bangladesh, Software Products, Full Stack Projects"
     />
 
     <!-- Hero -->

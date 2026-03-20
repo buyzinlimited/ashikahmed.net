@@ -177,7 +177,10 @@
 
             <div class="border-b border-white/10 pb-6">
               <div class="flex items-end gap-2">
-                <span class="text-4xl font-extrabold tracking-tight">$450</span>
+                <span
+                  class="text-4xl font-extrabold tracking-tight text-slate-300"
+                  >$450</span
+                >
                 <span class="pb-1 text-sm text-slate-300">starting from</span>
               </div>
               <p class="mt-2 text-sm text-slate-300">

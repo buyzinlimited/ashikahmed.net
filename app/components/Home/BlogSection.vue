@@ -130,6 +130,11 @@ onMounted(() => {
           <div
             class="animate-pulse rounded-2xl border border-slate-200 bg-slate-100 h-96 w-full"
           ></div>
+          <div class="flex-1 space-y-2 py-1">
+            <div class="h-10 bg-slate-200 rounded w-1/2"></div>
+            <div class="h-8 bg-slate-200 rounded w-3/4"></div>
+            <div class="h-6 bg-slate-200 rounded w-1/4"></div>
+          </div>
         </div>
 
         <div class="flex flex-col gap-6">
@@ -139,7 +144,6 @@ onMounted(() => {
             :key="post.title"
             class="group flex flex-col md:flex-row gap-4 rounded-2xl border border-slate-200 bg-white p-4 transition hover:border-emerald-200"
           >
-            <!-- Image -->
             <div
               class="w-full md:w-40 h-auto md:h-32 shrink-0 overflow-hidden rounded-xl"
             >
@@ -152,7 +156,6 @@ onMounted(() => {
               </NuxtLink>
             </div>
 
-            <!-- Content -->
             <div class="flex flex-col flex-1">
               <div class="flex items-center justify-between gap-2 flex-wrap">
                 <span class="text-xs text-emerald-600 font-medium">

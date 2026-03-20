@@ -25,7 +25,7 @@ const emit = defineEmits(["update:modelValue"]);
     </label>
 
     <select
-      class="w-full block px-4 py-2 border border-gray-300 rounded bg-white text-sm text-gray-700 focus:outline-none focus:ring-0 focus:border-primary transition"
+      class="w-full block px-4 py-2 border border-gray-300 rounded bg-white text-sm text-gray-700 focus:border-primary transition"
       :value="modelValue"
       @change="emit('update:modelValue', $event.target.value)"
     >

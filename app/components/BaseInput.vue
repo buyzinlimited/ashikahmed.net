@@ -31,7 +31,7 @@ const props = defineProps({
 
 <template>
   <div class="relative block mb-2">
-    <label v-if="label" class="block mb-2 text-black capitalize font-medium">{{
+    <label v-if="label" class="block text-sm font-medium text-slate-700">{{
       label
     }}</label>
     <input
@@ -40,7 +40,7 @@ const props = defineProps({
       @input="$emit('update:modelValue', $event.target.value)"
       :placeholder="placeholder"
       :class="[
-        'w-full px-4 py-2 rounded border border-gray-200 focus:border-primary  disabled:border-gray-200 disabled:bg-gray-50 disabled:text-gray-500 disabled:shadow-none',
+        'w-full px-4 py-2 rounded border border-gray-200 outline-none focus:border-primary  disabled:border-gray-200 disabled:bg-gray-50 disabled:text-gray-500 disabled:shadow-none',
         error ? 'border-dander' : 'border-border',
       ]"
     />

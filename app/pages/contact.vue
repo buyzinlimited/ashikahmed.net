@@ -1,4 +1,6 @@
 <script setup>
+const mail = useMail();
+
 const contactInfo = [
   {
     title: "Email",
@@ -25,6 +27,53 @@ const services = [
   "eCommerce Website",
   "API Integration",
 ];
+
+const form = reactive({
+  name: "",
+  email: "",
+  subject: "",
+  message: "",
+});
+
+const loading = ref(false);
+
+const submit = async () => {
+  // Validation
+  if (!form.name || !form.email || !form.message) {
+    alert("Please fill all required fields!");
+    return;
+  }
+
+  // Simple email format validation
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(form.email)) {
+    alert("Please enter a valid email address!");
+    return;
+  }
+
+  loading.value = true;
+
+  try {
+    await mail.send({
+      from: `"${form.name} - ${form.email}" <ashik9121295621@gmail.com>`,
+      subject: form.subject,
+      text: form.message,
+    });
+
+    alert("Email sent successfully!");
+
+    // Reset form
+    form.name = "";
+    form.email = "";
+    form.subject = "";
+    form.message = "";
+  } catch (error) {
+    console.error(error);
+    alert("Failed to send email. Please try again later.");
+  } finally {
+    loading.value = false;
+  }
+};
 </script>
 
 <template>
@@ -129,7 +178,6 @@ const services = [
     <section class="bg-white/70 md:py-20">
       <div class="mx-auto max-w-7xl px-4 py-6 md:px-6">
         <div class="grid gap-8 lg:grid-cols-12">
-          <!-- Form -->
           <div class="lg:col-span-7">
             <div
               class="rounded-2xl border border-slate-200 bg-white p-6 md:p-8"
@@ -149,98 +197,67 @@ const services = [
                 </p>
               </div>
 
-              <form class="mt-8 space-y-5">
+              <form @submit.prevent="submit" class="mt-8 space-y-5">
                 <div class="grid gap-5 md:grid-cols-2">
-                  <div>
-                    <label
-                      class="mb-2 block text-sm font-medium text-slate-700"
-                    >
-                      Full Name
-                    </label>
-                    <input
-                      type="text"
-                      placeholder="Your full name"
-                      class="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3.5 text-sm text-slate-900 outline-none transition focus:border-emerald-400"
-                    />
-                  </div>
+                  <BaseInput
+                    label="Full Name"
+                    v-model="form.name"
+                    placeholder="Enter full name"
+                    error=""
+                  />
 
-                  <div>
-                    <label
-                      class="mb-2 block text-sm font-medium text-slate-700"
-                    >
-                      Email Address
-                    </label>
-                    <input
-                      type="email"
-                      placeholder="your@email.com"
-                      class="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3.5 text-sm text-slate-900 outline-none transition focus:border-emerald-400"
-                    />
-                  </div>
-                </div>
-
-                <div class="grid gap-5 md:grid-cols-2">
-                  <div>
-                    <label
-                      class="mb-2 block text-sm font-medium text-slate-700"
-                    >
-                      Budget Range
-                    </label>
-                    <select
-                      class="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3.5 text-sm text-slate-900 outline-none transition focus:border-emerald-400"
-                    >
-                      <option>Select budget range</option>
-                      <option>৳15,000 - ৳30,000</option>
-                      <option>৳30,000 - ৳60,000</option>
-                      <option>৳60,000 - ৳100,000</option>
-                      <option>৳100,000+</option>
-                    </select>
-                  </div>
-
-                  <div>
-                    <label
-                      class="mb-2 block text-sm font-medium text-slate-700"
-                    >
-                      Project Type
-                    </label>
-                    <select
-                      class="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3.5 text-sm text-slate-900 outline-none transition focus:border-emerald-400"
-                    >
-                      <option>Select project type</option>
-                      <option v-for="service in services" :key="service">
-                        {{ service }}
-                      </option>
-                    </select>
-                  </div>
-                </div>
-
-                <div>
-                  <label class="mb-2 block text-sm font-medium text-slate-700">
-                    Subject
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="Project subject"
-                    class="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3.5 text-sm text-slate-900 outline-none transition focus:border-emerald-400"
+                  <BaseInput
+                    label="Email Address"
+                    v-model="form.email"
+                    placeholder="your@example.com"
+                    error=""
                   />
                 </div>
 
-                <div>
-                  <label class="mb-2 block text-sm font-medium text-slate-700">
-                    Project Details
-                  </label>
-                  <textarea
-                    rows="7"
-                    placeholder="Tell me about your project, features, goals, timeline, or any important details..."
-                    class="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3.5 text-sm text-slate-900 outline-none transition focus:border-emerald-400"
-                  ></textarea>
-                </div>
+                <BaseSelect
+                  label="How can we help you?"
+                  v-model="form.subject"
+                  placeholder="Please select option"
+                  :options="[
+                    { id: 'Website Development', name: 'Website Development' },
+                    {
+                      id: 'Custom Web Application',
+                      name: 'Custom Web Application',
+                    },
+                    { id: 'E-commerce Website', name: 'E-commerce Website' },
+                    {
+                      id: 'NGO / Microfinance Software',
+                      name: 'NGO / Microfinance Software',
+                    },
+                    { id: 'UI/UX Design', name: 'UI/UX Design' },
+                    {
+                      id: 'Bug Fix / Maintenance',
+                      name: 'Bug Fix / Maintenance',
+                    },
+                    {
+                      id: 'Website Speed Optimization',
+                      name: 'Website Speed Optimization',
+                    },
+                    {
+                      id: 'SEO & Google Ranking',
+                      name: 'SEO & Google Ranking',
+                    },
+                    {
+                      id: 'Hosting / VPS / Cloud Setup',
+                      name: 'Hosting / VPS / Cloud Setup',
+                    },
+                    { id: 'Custom Service', name: 'Other (Custom Request)' },
+                  ]"
+                  error=""
+                />
 
-                <button
-                  type="submit"
-                  class="inline-flex items-center justify-center rounded-xl bg-emerald-500 px-6 py-3.5 text-sm font-semibold text-white shadow-[0_10px_30px_rgba(16,185,129,0.18)] transition hover:bg-emerald-600"
-                >
-                  Send Inquiry
-                </button>
+                <BaseTextarea
+                  label="Project Details"
+                  v-model="form.message"
+                  placeholder="Tell me about your project, features, goals, timeline, or any important details..."
+                />
+
+                <BaseButton :loading="loading">Send Inquiry</BaseButton>
               </form>
             </div>
           </div>
