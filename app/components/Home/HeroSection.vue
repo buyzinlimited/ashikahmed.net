@@ -1,30 +1,17 @@
 <script setup>
 const skills = [
-  "Vue.js",
-  "Nuxt.js",
-  "React.js",
-  "Next.js",
-  "Tailwind CSS",
-  "Bootstrap",
-
-  "MySQL",
-  "PostgreSQL",
-
+  "Vue/Nuxt",
   "Node.js",
   "Laravel",
   "WordPress",
-
   "VPS Server",
   "Nginx",
   "Apache",
   "Cloud Hosting",
-  "AWS (EC2, S3, RDS)",
+  "AWS",
   "DigitalOcean",
   "cPanel / WHM",
-  "SSL Setup (HTTPS)",
-
   "Git/GitHub",
-  "GitHub",
   "Docker",
 ];
 </script>
