@@ -137,13 +137,14 @@ const skills = [
               </div>
 
               <div class="mt-6">
-                <NuxtLink
-                  to="/contact"
-                  class="inline-flex w-full items-center justify-center rounded-xl bg-slate-900 px-4 py-3 text-sm font-semibold text-white transition hover:bg-slate-800"
-                >
-                  Let’s Work Together
-                </NuxtLink>
-              </div>
+				  <NuxtLink
+					to="https://www.facebook.com/groups/developer.commutity"
+					target="_blank"
+					class="inline-flex w-full items-center justify-center rounded-xl bg-slate-900 px-4 py-3 text-sm font-semibold text-white transition hover:bg-slate-800"
+				  >
+					Join Developer Community
+				  </NuxtLink>
+				</div>
             </div>
           </div>
         </div>
