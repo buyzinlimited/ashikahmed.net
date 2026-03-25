@@ -1,15 +1,12 @@
 <script setup>
 const skills = [
   "Vue/Nuxt",
-  "Node.js",
   "Laravel",
   "WordPress",
-  "VPS Server",
   "Nginx",
   "Apache",
   "Cloud Hosting",
-  "AWS",
-  "DigitalOcean",
+  "VPS Server",
   "cPanel / WHM",
   "Git/GitHub",
   "Docker",
