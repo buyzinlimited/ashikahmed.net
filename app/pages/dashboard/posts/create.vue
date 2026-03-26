@@ -1,15 +1,15 @@
 <script setup>
-const supabase = useSupabaseClient();
-const router = useRouter();
-
 definePageMeta({
   layout: "dashboard",
   middleware: "auth",
 });
 
+const categoryStore = useCategoryStore();
+const postStore = usePostStore();
+const { categories } = storeToRefs(categoryStore);
+
 const loading = ref(false);
 const message = ref("");
-const categories = ref([]);
 
 const form = reactive({
   title: "",
@@ -18,12 +18,12 @@ const form = reactive({
   content: "",
   meta_title: "",
   meta_description: "",
-  meta_keyword: "",
+  meta_keywords: "",
   canonical_url: "",
-  status: "draft",
+  cover_url: "",
   is_featured: false,
   category_id: "",
-  cover_url: "",
+  status: "draft",
 });
 
 // Auto slug generate
@@ -39,63 +39,35 @@ watch(
 
 // Load Categories
 const loadCategories = async () => {
-  const { data, error } = await supabase
-    .from("categories")
-    .select("id, name")
-    .order("name", { ascending: true });
-
-  if (error) {
-    console.error(error);
-  } else {
-    categories.value = data;
-  }
+  await categoryStore.all();
 };
 
 onMounted(() => {
   loadCategories();
 });
 
-// Create Post
-const createPost = async () => {
-  if (!form.title || !form.summary || !form.content) {
-    message.value = "Title, Summary, and Content are required!";
-    return;
-  }
-
-  message.value = "";
+const create = async () => {
   loading.value = true;
 
-  const { data, error } = await supabase.from("posts").insert([
-    {
-      title: form.title,
-      slug: form.slug,
-      summary: form.summary,
-      content: form.content,
-      meta_title: form.meta_title,
-      meta_description: form.meta_description,
-      meta_keyword: form.meta_keyword,
-      canonical_url: form.canonical_url,
-      status: form.status,
-      is_featured: form.is_featured,
-      category_id: form.category_id || null,
-      cover_url: form.cover_url || null,
-    },
-  ]);
+  try {
+    const response = await postStore.store(form);
 
-  loading.value = false;
-
-  if (error) {
-    message.value = error.message;
-  } else {
-    message.value = "Post created successfully";
-
-    router.push("/dashboard/posts");
+    if (response) {
+      await navigateTo("/dashboard/posts");
+    }
+  } catch (error) {
+    message.value = error.message || "Project insert failed";
+  } finally {
+    loading.value = false;
   }
 };
 </script>
 
 <template>
   <main>
+    <Head>
+      <Title>Create Post</Title>
+    </Head>
     <nav
       class="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between"
     >
@@ -115,7 +87,7 @@ const createPost = async () => {
     </nav>
 
     <form
-      @submit.prevent="createPost"
+      @submit.prevent="create"
       class="max-w-5xl mx-auto p-6 bg-white rounded-lg"
     >
       <h2 class="text-2xl font-bold mb-4">Create New Post</h2>
@@ -128,7 +100,7 @@ const createPost = async () => {
           label="Meta Description"
           v-model="form.meta_description"
         />
-        <BaseTextarea label="Meta Keyword" v-model="form.meta_keyword" />
+        <BaseTextarea label="Meta Keyword" v-model="form.meta_keywords" />
         <BaseInput label="canonical url" v-model="form.canonical_url" />
 
         <BaseTextarea label="Summary" v-model="form.summary" />
@@ -139,7 +111,7 @@ const createPost = async () => {
             <BaseEditor v-model="form.content" />
           </ClientOnly>
         </div>
-        <BaseInput label="Image" v-model="form.image_url" />
+        <BaseInput label="Cover" v-model="form.cover_url" />
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
           <BaseSelect
@@ -154,14 +126,8 @@ const createPost = async () => {
             v-model="form.is_featured"
             placeholder="Select featured"
             :options="[
-              {
-                id: true,
-                name: 'Yes',
-              },
-              {
-                id: false,
-                name: 'No',
-              },
+              { id: true, name: 'Yes' },
+              { id: false, name: 'No' },
             ]"
           />
 
@@ -169,21 +135,13 @@ const createPost = async () => {
             label="Status"
             placeholder="Select status"
             :options="[
-              {
-                id: 'draft',
-                name: 'Draft',
-              },
-              {
-                id: 'published',
-                name: 'Published',
-              },
+              { id: 'draft', name: 'Draft' },
+              { id: 'published', name: 'Published' },
             ]"
           />
         </div>
 
-        <span class="text-red-500">{{ message }}</span>
-
-        <BaseButton :loading="loading">Create Post</BaseButton>
+        <BaseButton :loading="postStore.loading">Create Post</BaseButton>
       </div>
     </form>
   </main>

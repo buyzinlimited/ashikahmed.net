@@ -1,6 +1,5 @@
 <script setup>
 const route = useRoute();
-const router = useRouter();
 
 const categoryStore = useCategoryStore();
 const projectStore = useProjectStore();
@@ -106,6 +105,9 @@ const update = async () => {
 
 <template>
   <main>
+    <Head>
+      <Title>Update Project</Title>
+    </Head>
     <nav class="flex items-center justify-between py-4">
       <ul class="flex items-center gap-2">
         <li><NuxtLink to="/dashboard/projects">Dashboard</NuxtLink></li>

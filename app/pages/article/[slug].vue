@@ -1,37 +1,10 @@
 <script setup>
 const route = useRoute();
-const supabase = useSupabaseClient();
-
-const post = ref(null);
-const loading = ref(true);
-const error = ref(null);
+const postStore = usePostStore();
+const { post } = storeToRefs(postStore);
 
 const loadPost = async () => {
-  const slug = route.params.slug;
-
-  const { data, error: err } = await supabase
-    .from("posts")
-    .select(
-      `
-      *,
-      category:categories (
-        id,
-        name,
-        slug
-      )
-    `,
-    )
-    .eq("slug", slug)
-    .single();
-
-  if (err) {
-    console.error(err);
-    error.value = "Post not found";
-  } else {
-    post.value = data;
-  }
-
-  loading.value = false;
+  await postStore.getPostBySlug(route.params.slug);
 };
 
 onMounted(() => {
@@ -41,8 +14,9 @@ onMounted(() => {
 
 <template>
   <main class="bg-white/70">
-    <section class="max-w-3xl mx-auto px-4 py-12">
-      <div v-if="loading" class="animate-pulse space-y-4">
+    <SeoMeta :title="post.title" />
+    <section class="max-w-5xl mx-auto px-4 py-12">
+      <div v-if="postStore.loading" class="animate-pulse space-y-4">
         <div class="h-8 bg-slate-200 rounded"></div>
         <div class="h-4 bg-slate-200 rounded"></div>
         <div class="h-64 bg-slate-200 rounded"></div>
@@ -68,9 +42,7 @@ onMounted(() => {
         </div>
       </div>
 
-      <div v-else class="text-center text-slate-500">
-        {{ error }}
-      </div>
+      <div v-else class="text-center text-slate-500">Post Not found!</div>
     </section>
   </main>
 </template>

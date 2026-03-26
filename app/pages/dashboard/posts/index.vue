@@ -4,37 +4,30 @@ definePageMeta({
   middleware: "auth",
 });
 
-const supabase = useSupabaseClient();
-const posts = ref([]);
+const postStore = usePostStore();
+const { posts } = storeToRefs(postStore);
 
 const loadPosts = async () => {
-  const { data, error } = await supabase
-    .from("posts")
-    .select("*")
-    .order("id", { ascending: false });
-
-  if (error) console.error(error);
-  else posts.value = data;
+  await postStore.all();
 };
 
 const deletePost = async (id) => {
-  const confirmed = confirm("Are you sure you want to delete this post?");
-  if (!confirmed) return;
+  if (!confirm("Are you sure you want to delete this post?")) return;
 
-  const { error } = await supabase.from("posts").delete().eq("id", id);
-
-  if (error) {
-    alert(error.message);
-  } else {
-    posts.value = posts.value.filter((p) => p.id !== id);
-  }
+  await postStore.delete(id);
+  await loadPosts();
 };
 
-onMounted(() => loadPosts());
+onMounted(() => {
+  loadPosts();
+});
 </script>
 
 <template>
   <main>
+    <Head>
+      <Title>Manage Posts</Title>
+    </Head>
     <nav
       class="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between"
     >

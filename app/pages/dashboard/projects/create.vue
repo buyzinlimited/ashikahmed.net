@@ -78,6 +78,9 @@ const submit = async () => {
 
 <template>
   <main>
+    <Head>
+      <Title>Project Create</Title>
+    </Head>
     <nav
       class="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between"
     >

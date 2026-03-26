@@ -77,6 +77,9 @@ const statusClass = (status) => {
 
 <template>
   <main>
+    <Head>
+      <Title>Dashboard</Title>
+    </Head>
     <section class="space-y-6">
       <!-- Header -->
       <div

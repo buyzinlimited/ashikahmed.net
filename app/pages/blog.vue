@@ -1,59 +1,18 @@
 <script setup>
-const supabase = useSupabaseClient();
-const categories = ref([]);
-const featured = ref([]);
-const posts = ref([]);
-const loading = ref(true);
-
-const loadFeatured = async () => {
-  const { data, error } = await supabase
-    .from("posts")
-    .select(
-      `
-      *,
-      category:categories (id, name, slug)
-    `,
-    )
-    .eq("is_featured", true)
-    .order("created_at", { ascending: false });
-
-  if (error) console.error(error);
-  else featured.value = data;
-
-  loading.value = false;
-};
+const categoryStore = useCategoryStore();
+const postStore = usePostStore();
+const { posts } = storeToRefs(postStore);
+const { categories } = storeToRefs(categoryStore);
 
 const loadPosts = async () => {
-  const { data, error } = await supabase
-    .from("posts")
-    .select(
-      `
-      *,
-      category:categories (id, name, slug)
-    `,
-    )
-    .order("created_at", { ascending: false });
-
-  if (error) console.error(error);
-  else posts.value = data;
-
-  loading.value = false;
+  await postStore.getPosts();
 };
 
 const loadCategories = async () => {
-  const { data, error } = await supabase
-    .from("categories")
-    .select("*")
-    .order("created_at", { ascending: false });
-
-  if (error) console.error(error);
-  else categories.value = data;
-
-  loading.value = false;
+  await categoryStore.getCategories();
 };
 
 onMounted(() => {
-  loadFeatured();
   loadPosts();
   loadCategories();
 });
@@ -117,7 +76,7 @@ onMounted(() => {
                 class="absolute -right-20 -top-20 h-56 w-56 rounded-full bg-emerald-100/80 blur-3xl"
               ></div>
 
-              <article v-for="post in featured.slice(0, 1)" class="relative">
+              <article v-for="post in posts.slice(0, 1)" class="relative">
                 <span
                   class="inline-flex items-center rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-semibold text-slate-700"
                 >
@@ -146,81 +105,12 @@ onMounted(() => {
                   :to="`article/${post.slug}`"
                   class="mt-6 inline-flex items-center text-sm font-semibold text-emerald-600 transition hover:text-emerald-700"
                 >
-                  Read article →
+                  Read article
                 </NuxtLink>
               </article>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-
-    <!-- Featured Article -->
-    <section class="py-8 md:py-12">
-      <div class="mx-auto max-w-7xl px-4 md:px-6">
-        <div class="max-w-2xl">
-          <span class="text-sm font-semibold text-emerald-600">
-            Editor’s Pick
-          </span>
-          <h2
-            class="mt-3 text-3xl font-bold tracking-tight text-slate-900 md:text-4xl"
-          >
-            Featured blog post
-          </h2>
-          <p class="mt-4 leading-7 text-slate-600">
-            A highlighted article covering important ideas in modern web
-            development and digital product building.
-          </p>
-        </div>
-
-        <article
-          v-for="post in featured.slice(0, 1)"
-          class="mt-10 grid items-center gap-8 overflow-hidden rounded-2xl border border-slate-200 bg-white p-6 lg:grid-cols-2 lg:p-8"
-        >
-          <div
-            class="overflow-hidden rounded-2xl border border-slate-200 bg-slate-100"
-          >
-            <NuxtImg
-              :src="post.cover_url"
-              :alt="post.title"
-              class="h-full w-full object-cover"
-            />
-          </div>
-
-          <div>
-            <span
-              class="inline-flex items-center rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700"
-            >
-              {{ post.category?.name }}
-            </span>
-
-            <h3
-              class="mt-4 text-2xl font-bold tracking-tight text-slate-900 md:text-3xl"
-            >
-              {{ post.title }}
-            </h3>
-
-            <p class="mt-4 leading-7 text-slate-600 line-clamp-4">
-              {{ post.summary }}
-            </p>
-
-            <div class="mt-8 flex flex-wrap gap-3">
-              <NuxtLink
-                :to="`/article/${post.slug}`"
-                class="inline-flex items-center justify-center rounded-xl bg-emerald-500 px-5 py-3 text-sm font-semibold text-white transition hover:bg-emerald-600"
-              >
-                Read Full Article
-              </NuxtLink>
-
-              <NuxtLink
-                to="/blog"
-                class="inline-flex items-center justify-center rounded-xl border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50"
-              >
-                Need Similar Help?
-              </NuxtLink>
-            </div>
-          </div>
-        </article>
       </div>
     </section>
 
@@ -313,25 +203,31 @@ onMounted(() => {
             class="group overflow-hidden rounded-2xl border border-slate-200 bg-white transition hover:-translate-y-1 hover:shadow-lg"
           >
             <div class="aspect-auto overflow-hidden bg-slate-100">
-              <NuxtImg
-                :src="post.cover_url"
-                :alt="post.title"
-                class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-              />
+              <NuxtLink :to="`article/${post.slug}`">
+                <NuxtImg
+                  :src="post.cover_url"
+                  :alt="post.title"
+                  class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                />
+              </NuxtLink>
             </div>
 
             <div class="p-6">
               <div
-                class="flex flex-wrap items-center gap-3 text-xs font-semibold uppercase tracking-[0.14em] text-emerald-600"
+                class="flex flex-wrap items-center gap-3 text-xs font-semibold uppercase mb-2 text-emerald-600"
               >
                 <span>{{ post.category?.name }}</span>
               </div>
 
-              <h3 class="mt-3 text-xl font-semibold text-slate-900">
-                {{ post.title }}
-              </h3>
+              <NuxtLink :to="`article/${post.slug}`">
+                <h3
+                  class="text-xl font-semibold text-slate-900 line-clamp-2 mb-2"
+                >
+                  {{ post.title }}
+                </h3>
+              </NuxtLink>
 
-              <p class="mt-4 text-sm leading-7 text-slate-600 line-clamp-3">
+              <p class="text-sm leading-7 text-slate-600 line-clamp-3">
                 {{ post.summary }}
               </p>
 
@@ -339,7 +235,7 @@ onMounted(() => {
                 :to="`/article/${post.slug}`"
                 class="text-sm font-semibold text-emerald-600 transition hover:text-emerald-700"
               >
-                Read More →
+                Read More
               </NuxtLink>
             </div>
           </article>
