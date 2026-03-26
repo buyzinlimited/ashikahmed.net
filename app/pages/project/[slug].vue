@@ -1,37 +1,11 @@
 <script setup>
 const route = useRoute();
-const supabase = useSupabaseClient();
+const projectStore = useProjectStore();
 
-const loading = ref(true);
-const error = ref(null);
-const project = ref(null);
+const { errors, loading, project } = storeToRefs(projectStore);
 
 const loadProject = async () => {
-  const slug = route.params.slug;
-
-  const { data, error: err } = await supabase
-    .from("projects")
-    .select(
-      `
-      *,
-      category:categories (
-        id,
-        name,
-        slug
-      )
-    `,
-    )
-    .eq("slug", slug)
-    .single();
-
-  if (err) {
-    console.error(err);
-    error.value = "Project not found";
-  } else {
-    project.value = data;
-  }
-
-  loading.value = false;
+  await projectStore.getProjectBySlug(route.params.slug);
 };
 
 onMounted(() => {
@@ -41,7 +15,13 @@ onMounted(() => {
 
 <template>
   <main class="bg-white/70">
-    <div class="max-w-6xl mx-auto px-4 py-10 md:py-16">
+    <SeoMeta
+      :title="project?.title"
+      :description="project?.meta_description"
+      :keywords="project?.meta_keywords"
+      :image="project?.cover_url"
+    />
+    <div class="max-w-6xl mx-auto px-4 py-6">
       <template v-if="loading">
         <div class="space-y-6 animate-pulse">
           <div class="h-8 w-2/3 bg-slate-200 rounded"></div>
@@ -96,14 +76,14 @@ onMounted(() => {
         <div class="grid md:grid-cols-3 gap-10 items-start">
           <div class="md:col-span-2">
             <div class="prose max-w-none prose-slate">
-              <h2 class="py-2">Project Overview</h2>
+              <h2 class="font-semibold text-2xl py-2">Project Overview</h2>
               <div v-html="project.description"></div>
             </div>
           </div>
 
           <aside class="space-y-6 md:sticky md:top-24 h-fit">
             <div
-              class="p-6 rounded-2xl border border-emerald-100 bg-gradient-to-br from-white to-emerald-50 shadow-sm"
+              class="p-6 rounded-2xl border border-emerald-100 bg-gradient-to from-white to-emerald-50 shadow-sm"
             >
               <h3 class="text-lg font-semibold text-slate-900 mb-5">
                 Technologies Used
@@ -121,23 +101,21 @@ onMounted(() => {
 
               <div class="my-6 h-px bg-slate-200"></div>
 
-              <div class="space-y-3">
+              <div class="space-y-4">
                 <a
-                  v-if="project.live_url"
                   :href="project.live_url"
                   target="_blank"
-                  class="flex items-center justify-center w-full bg-emerald-500 text-white py-3 rounded-xl font-semibold"
+                  class="group bg-primary flex items-center justify-center gap-2 w-full text-white py-3 rounded-xl font-semibold transition-all duration-200"
                 >
-                  Live Preview
+                  <span>Live Preview</span>
                 </a>
 
                 <a
-                  v-if="project.github_url"
                   :href="project.github_url"
                   target="_blank"
-                  class="flex items-center justify-center w-full border py-3 rounded-xl font-semibold"
+                  class="group flex items-center justify-center gap-2 w-full border border-slate-300 bg-white py-3 rounded-xl font-semibold text-slate-700 hover:bg-slate-50 hover:border-slate-400 transition-all duration-200"
                 >
-                  View Code
+                  <span>View Code</span>
                 </a>
               </div>
             </div>
@@ -147,9 +125,9 @@ onMounted(() => {
 
       <template v-else>
         <div class="text-center py-20">
-          <h2 class="text-2xl font-semibold text-red-500">{{ error }}</h2>
+          <h2 class="text-2xl font-semibold text-red-500">{{ errors }}</h2>
           <a href="/" class="mt-4 inline-block text-emerald-600">
-            ← Back to Home
+            Back to Home
           </a>
         </div>
       </template>

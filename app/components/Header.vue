@@ -2,6 +2,15 @@
 import { ref, computed } from "vue";
 import { useRoute } from "vue-router";
 
+const supabase = useSupabaseClient();
+
+const user = ref(null);
+
+onMounted(async () => {
+  const { data } = await supabase.auth.getUser();
+  user.value = data.user;
+});
+
 const route = useRoute();
 const mobileMenuOpen = ref(false);
 
@@ -31,6 +40,25 @@ const headerClasses = computed(
   () =>
     "sticky top-0 z-50 border-b border-slate-200/80 bg-white/80 backdrop-blur-xl",
 );
+
+const updateProfile = async () => {
+  try {
+    const { error } = await supabase.auth.updateUser({
+      email: "info@ashikahmed.net",
+      name: "Ashik Ahmed",
+    });
+
+    if (error) throw error;
+
+    alert("Profile updated successfully");
+  } catch (error) {
+    alert(error.message || "Profile update failed");
+  }
+};
+
+const logout = async () => {
+  await supabase.auth.signOut();
+};
 </script>
 
 <template>
@@ -86,12 +114,32 @@ const headerClasses = computed(
 
         <!-- Desktop CTA -->
         <div class="hidden md:flex md:items-center md:gap-3">
-          <NuxtLink
-            to="/contact"
-            class="inline-flex items-center justify-center rounded-xl bg-emerald-500 px-5 py-3 text-sm font-semibold text-white shadow-[0_10px_30px_rgba(16,185,129,0.18)] transition hover:bg-emerald-600"
-          >
-            Let’s Collaborate
-          </NuxtLink>
+          <template v-if="user">
+            <NuxtLink
+              to="/dashboard"
+              class="flex items-center gap-2 rounded-xl border border-slate-200 bg-slate-50"
+            >
+              <div
+                class="flex h-10 w-10 items-center justify-center rounded-full text-sm font-bold text-primary"
+              >
+                A
+              </div>
+            </NuxtLink>
+            <div class="flex-1">
+              <h4 class="text-sm font-semibold text-slate-900">
+                {{ user?.email }}
+              </h4>
+              <p class="text-xs text-slate-500">Administrator</p>
+            </div>
+          </template>
+          <template v-else>
+            <NuxtLink
+              to="/contact"
+              class="inline-flex items-center justify-center rounded-xl bg-emerald-500 px-5 py-3 text-sm font-semibold text-white shadow-[0_10px_30px_rgba(16,185,129,0.18)] transition hover:bg-emerald-600"
+            >
+              Let’s Collaborate
+            </NuxtLink>
+          </template>
         </div>
 
         <!-- Mobile Toggle -->

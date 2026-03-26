@@ -96,13 +96,22 @@ const createPost = async () => {
 
 <template>
   <main>
-    <nav class="flex items-center justify-between py-4">
-      <NuxtLink to="/dashboard/posts">All Posts</NuxtLink>
+    <nav
+      class="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between"
+    >
+      <div>
+        <h1 class="text-3xl font-bold text-slate-900">Posts</h1>
+        <p class="mt-1 text-sm text-slate-500">
+          Manage your blog posts, articles, and published content
+        </p>
+      </div>
+
       <NuxtLink
         to="/dashboard/posts/create"
-        class="bg-emerald-400 px-4 py-2 rounded inline-block text-white hover:underline"
-        >Create New</NuxtLink
+        class="inline-flex items-center justify-center rounded-xl bg-emerald-500 px-5 py-3 text-sm font-semibold text-white transition hover:bg-emerald-600"
       >
+        Create Post
+      </NuxtLink>
     </nav>
 
     <form

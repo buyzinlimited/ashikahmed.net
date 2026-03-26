@@ -16,7 +16,7 @@ export default defineNuxtConfig({
   },
 
   
-  modules: ['@nuxtjs/supabase', '@nuxt/image', 'nuxt-mail'],
+  modules: ['@nuxtjs/supabase', '@nuxt/image', 'nuxt-mail', '@pinia/nuxt'],
 
   supabase: {
     // Options
