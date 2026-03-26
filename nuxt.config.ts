@@ -16,7 +16,7 @@ export default defineNuxtConfig({
   },
 
   
-  modules: ['@nuxtjs/supabase', '@nuxt/image', 'nuxt-mail', '@pinia/nuxt'],
+  modules: ['@nuxtjs/supabase', '@nuxt/image', 'nuxt-mail', '@pinia/nuxt', '@nuxtjs/sitemap'],
 
   supabase: {
     // Options
@@ -50,6 +50,21 @@ export default defineNuxtConfig({
     }
   },
 
+  site: {
+    url: 'https://www.ashikahmed.net',
+    name: 'Ashik Ahmed | Full Stack Developer & Web Application Specialist'
+  },
+
+  sitemap: {
+    exclude: [
+      '/login',
+      '/dashboard/**'
+    ]
+  },
+
+  robots: {
+    blockNonSeoBots: true
+  },
   
   app: {
     head: {

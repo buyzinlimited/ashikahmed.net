@@ -1,2 +1,29 @@
-User-Agent: *
-Disallow:
+User-agent: *
+Allow: /
+
+# Block sensitive routes
+Disallow: /login
+Disallow: /dashboard
+Disallow: /dashboard/*
+Disallow: /admin
+Disallow: /api
+
+# Block query parameters (avoid duplicate content)
+Disallow: /*?*
+
+# Block system/internal files
+Disallow: /_nuxt/
+Disallow: /server/
+Disallow: /node_modules/
+
+# Allow static assets for SEO
+Allow: /_nuxt/*.js$
+Allow: /_nuxt/*.css$
+Allow: /images/
+Allow: /public/
+
+# Crawl delay (optional for smaller servers)
+Crawl-delay: 5
+
+# Sitemap
+Sitemap: https://www.ashikahmed.net/sitemap.xml
