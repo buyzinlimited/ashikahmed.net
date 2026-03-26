@@ -1,4 +1,11 @@
 <script setup>
+const projectStore = useProjectStore();
+const { loading, projects } = storeToRefs(projectStore);
+
+const loadProjects = async () => {
+  await projectStore.getProjects();
+};
+
 const projectStats = [
   { value: "120+", label: "Projects Completed" },
   { value: "95%", label: "Client Satisfaction" },
@@ -16,63 +23,6 @@ const featuredProject = {
   github: "https://github.com/yourname/lms",
 };
 
-const projects = [
-  {
-    title: "SaaS Landing Page",
-    category: "Business Website",
-    desc: "A modern conversion-focused landing page designed for startups and SaaS products with clean UI, strong CTA sections, and responsive layout.",
-    image: "/projects/saas.png",
-    tags: ["Vue.js", "Tailwind CSS", "UI/UX"],
-    live: "https://yourdomain.com/saas",
-    github: "https://github.com/yourname/saas-landing",
-  },
-  {
-    title: "Movie Titles API",
-    category: "Backend Development",
-    desc: "A REST API for searching, filtering, and managing movie data with pagination, clean structure, and scalable endpoint design.",
-    image: "/projects/movie.png",
-    tags: ["Node.js", "Express", "REST API", "MongoDB"],
-    live: "https://yourdomain.com/movie-api",
-    github: "https://github.com/yourname/movie-api",
-  },
-  {
-    title: "E-commerce Mini Shop",
-    category: "eCommerce Platform",
-    desc: "A complete mini eCommerce system with product listing, cart, checkout flow, order management, and admin control panel.",
-    image: "/projects/shop.png",
-    tags: ["Laravel", "MySQL", "Payment Gateway", "Admin Panel"],
-    live: "https://yourdomain.com/shop",
-    github: "https://github.com/yourname/mini-shop",
-  },
-  {
-    title: "Portfolio Website",
-    category: "Personal Branding",
-    desc: "A clean and professional personal portfolio website built to showcase services, projects, skills, and contact flow for client conversion.",
-    image: "/projects/lms.png",
-    tags: ["Nuxt.js", "Tailwind CSS", "SEO"],
-    live: "https://yourdomain.com/portfolio",
-    github: "https://github.com/yourname/portfolio",
-  },
-  {
-    title: "Admin Dashboard UI",
-    category: "Dashboard System",
-    desc: "A reusable admin dashboard interface with charts, tables, cards, analytics blocks, and modern component-based design.",
-    image: "/projects/movie.png",
-    tags: ["Vue.js", "Tailwind CSS", "Dashboard"],
-    live: "https://yourdomain.com/dashboard",
-    github: "https://github.com/yourname/dashboard-ui",
-  },
-  {
-    title: "Business Service Website",
-    category: "Corporate Website",
-    desc: "A service-based company website with pricing, testimonials, about page, lead generation form, and responsive business layout.",
-    image: "/projects/shop.png",
-    tags: ["Nuxt.js", "Tailwind CSS", "Business"],
-    live: "https://yourdomain.com/business",
-    github: "https://github.com/yourname/business-site",
-  },
-];
-
 const techStack = [
   "Nuxt.js",
   "Vue.js",
@@ -85,6 +35,10 @@ const techStack = [
   "MySQL",
   "MongoDB",
 ];
+
+onMounted(() => {
+  loadProjects();
+});
 </script>
 
 <template>
@@ -148,9 +102,13 @@ const techStack = [
               <div class="relative">
                 <div class="flex items-center gap-4">
                   <div
-                    class="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-100 to-cyan-100 text-lg font-bold text-emerald-700"
+                    class="flex h-16 w-16 shrink-0 items-center justify-center bg-emerald-100"
                   >
-                    PR
+                    <NuxtImg
+                      src="/logo.jpg"
+                      alt="Full Stack web developer - ashik ahmed"
+                      class="rounded-2xl overflow-hidden ring-4 ring-primary"
+                    />
                   </div>
 
                   <div>
@@ -194,163 +152,83 @@ const techStack = [
       </div>
     </section>
 
-    <!-- Featured Project -->
-    <section class="py-8 md:py-12">
-      <div class="mx-auto max-w-7xl px-4 md:px-6">
-        <div class="max-w-2xl">
-          <span class="text-sm font-semibold text-emerald-600">
-            Featured Work
-          </span>
-          <h2
-            class="mt-3 text-3xl font-bold tracking-tight text-slate-900 md:text-4xl"
-          >
-            Highlighted case study
-          </h2>
-          <p class="mt-4 leading-7 text-slate-600">
-            One of my selected projects with modern UI, backend structure, and
-            production-ready implementation.
-          </p>
-        </div>
-
-        <div
-          class="mt-10 grid items-center gap-8 overflow-hidden rounded-2xl border border-slate-200 bg-white p-6 lg:grid-cols-2 lg:p-8"
-        >
-          <div
-            class="overflow-hidden rounded-xl border border-slate-200 bg-slate-100"
-          >
-            <img
-              :src="featuredProject.image"
-              :alt="featuredProject.title"
-              class="h-full w-full object-cover"
-            />
-          </div>
-
-          <div>
-            <span
-              class="inline-flex items-center rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700"
-            >
-              {{ featuredProject.category }}
-            </span>
-
-            <h3
-              class="mt-4 text-2xl font-bold tracking-tight text-slate-900 md:text-3xl"
-            >
-              {{ featuredProject.title }}
-            </h3>
-
-            <p class="mt-4 leading-7 text-slate-600">
-              {{ featuredProject.desc }}
-            </p>
-
-            <div class="mt-5 flex flex-wrap gap-2">
-              <span
-                v-for="tag in featuredProject.tags"
-                :key="tag"
-                class="rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-medium text-slate-700"
-              >
-                {{ tag }}
-              </span>
-            </div>
-
-            <div class="mt-8 flex flex-wrap gap-3">
-              <a
-                :href="featuredProject.live"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="inline-flex items-center justify-center rounded-xl bg-emerald-500 px-5 py-3 text-sm font-semibold text-white transition hover:bg-emerald-600"
-              >
-                Live Preview
-              </a>
-
-              <a
-                :href="featuredProject.github"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="inline-flex items-center justify-center rounded-xl border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50"
-              >
-                Source Code
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- Projects Grid -->
-    <section class="py-16 md:py-20 bg-slate-50/80">
-      <div class="mx-auto max-w-7xl px-4 md:px-6">
+    <section class="py-8 bg-slate-50/80">
+      <div class="mx-auto max-w-7xl px-4">
         <div class="max-w-2xl">
           <span class="text-sm font-semibold text-emerald-600">
             Project Collection
           </span>
           <h2
-            class="mt-3 text-3xl font-bold tracking-tight text-slate-900 md:text-4xl"
+            class="mt-3 text-4xl font-bold tracking-tight text-slate-900 md:text-5xl"
           >
-            More selected projects
+            Web Development Projects & Case Studies
           </h2>
           <p class="mt-4 leading-7 text-slate-600">
-            A curated selection of development work across different business
-            needs, platforms, and technologies.
+            Discover my portfolio of web applications and software projects
+            built using modern technologies, featuring responsive UI design,
+            robust backend systems, and scalable architecture for real-world use
+            cases.
           </p>
         </div>
 
-        <div class="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+        <div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
           <article
             v-for="project in projects"
-            :key="project.title"
-            class="group overflow-hidden rounded-2xl border border-slate-200 bg-white transition hover:-translate-y-1 hover:border-emerald-200"
+            :key="project.id"
+            class="group overflow-hidden rounded-2xl border border-slate-200 bg-white transition-all duration-300 hover:-translate-y-1 hover:border-emerald-200"
           >
-            <div class="aspect-[16/10] overflow-hidden bg-slate-100">
-              <img
-                :src="project.image"
-                :alt="project.title"
-                class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-              />
+            <div class="relative aspect-auto overflow-hidden bg-slate-100">
+              <NuxtLink :to="`/project/${project.slug}`" :title="project.title">
+                <NuxtImg
+                  :src="project.cover_url"
+                  :alt="project.title"
+                  class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                />
+              </NuxtLink>
+
+              <div
+                class="absolute inset-x-0 top-0 flex items-center justify-between p-4"
+              >
+                <span
+                  class="inline-flex rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-emerald-600 shadow-sm backdrop-blur"
+                >
+                  {{ project.category?.name || "Uncategorized" }}
+                </span>
+
+                <span
+                  v-if="project.is_featured"
+                  class="inline-flex rounded-full bg-emerald-500 px-3 py-1 text-xs font-semibold text-white shadow-sm"
+                >
+                  Featured
+                </span>
+              </div>
             </div>
 
             <div class="p-6">
-              <span
-                class="text-xs font-semibold uppercase tracking-[0.16em] text-emerald-600"
-              >
-                {{ project.category }}
-              </span>
+              <NuxtLink :to="`/project/${project.slug}`" :title="project.title">
+                <h3
+                  class="text-2xl md:text-3xl font-bold tracking-tight text-slate-900 transition group-hover:text-emerald-600 line-clamp-2"
+                >
+                  {{ project.title }}
+                </h3>
+              </NuxtLink>
 
-              <h3 class="mt-3 text-xl font-semibold text-slate-900">
-                {{ project.title }}
-              </h3>
-
-              <p class="mt-3 text-sm leading-7 text-slate-600">
-                {{ project.desc }}
+              <p class="mb-3 text-sm leading-7 text-slate-600 line-clamp-3">
+                {{ project.summary }}
               </p>
 
-              <div class="mt-5 flex flex-wrap gap-2">
+              <div
+                v-if="project.tech_stack?.length"
+                class="flex flex-wrap gap-2"
+              >
                 <span
-                  v-for="tag in project.tags"
-                  :key="tag"
-                  class="rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-medium text-slate-700"
+                  v-for="tech in project.tech_stack || []"
+                  :key="tech"
+                  class="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-medium text-slate-700"
                 >
-                  {{ tag }}
+                  {{ tech }}
                 </span>
-              </div>
-
-              <div class="mt-6 flex items-center gap-4">
-                <a
-                  :href="project.live"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="text-sm font-semibold text-emerald-600 transition hover:text-emerald-700"
-                >
-                  Live Preview →
-                </a>
-
-                <a
-                  :href="project.github"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="text-sm font-semibold text-slate-700 transition hover:text-slate-900"
-                >
-                  GitHub
-                </a>
               </div>
             </div>
           </article>

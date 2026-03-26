@@ -4,17 +4,11 @@ definePageMeta({
   middleware: "auth",
 });
 
-const supabase = useSupabaseClient();
-const projects = ref([]);
+const projectStore = useProjectStore();
+const { projects } = storeToRefs(projectStore);
 
 const loadProjects = async () => {
-  const { data, error } = await supabase
-    .from("projects")
-    .select("*")
-    .order("created_at", { ascending: false });
-
-  if (error) console.error(error);
-  else projects.value = data;
+  await projectStore.all();
 };
 
 onMounted(() => {

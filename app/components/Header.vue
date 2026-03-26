@@ -75,7 +75,7 @@ const logout = async () => {
             class="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-full border border-emerald-200"
           >
             <img
-              src="/logo.jpeg"
+              src="/logo.jpg"
               alt="Ashik Ahmed Logo"
               class="w-full object-contain"
             />

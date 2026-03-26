@@ -1,15 +1,15 @@
 <script setup>
-const supabase = useSupabaseClient();
-const router = useRouter();
-
 definePageMeta({
   layout: "dashboard",
   middleware: "auth",
 });
 
+const categoryStore = useCategoryStore();
+const projectStore = useProjectStore();
+
+const { categories } = storeToRefs(categoryStore);
+
 const loading = ref(false);
-const message = ref("");
-const categories = ref([]);
 
 const form = reactive({
   title: "",
@@ -18,9 +18,8 @@ const form = reactive({
   description: "",
   cover_url: "",
   live_url: "",
-  github_url: "",
-  tech_stack_input: "",
-  tech_stack: [],
+  video_url: "",
+  tech_stack: "",
   category_id: null,
   is_featured: false,
   status: "draft",
@@ -36,6 +35,7 @@ watch(
   (val) => {
     form.slug = val
       ?.toLowerCase()
+      .trim()
       .replace(/[^a-z0-9]+/g, "-")
       .replace(/(^-|-$)/g, "");
   },
@@ -43,67 +43,35 @@ watch(
 
 // Load Categories
 const loadCategories = async () => {
-  const { data, error } = await supabase
-    .from("categories")
-    .select("id, name")
-    .order("name", { ascending: true });
-
-  if (error) {
-    console.error(error);
-  } else {
-    categories.value = data;
-  }
+  await categoryStore.all();
 };
 
 onMounted(() => {
   loadCategories();
 });
 
-// Create Post
-const createPost = async () => {
-  if (!form.title || !form.summary || !form.description) {
-    message.value = "Title, Summary, and Description are required!";
-    return;
-  }
-
-  // Convert tech_stack_input to array
-  form.tech_stack = form.tech_stack_input
-    ? form.tech_stack_input
-        .split(",")
-        .map((s) => s.trim())
-        .filter(Boolean)
-    : [];
-
-  message.value = "";
+const submit = async () => {
   loading.value = true;
+  try {
+    const payload = {
+      ...form,
+      tech_stack: form.tech_stack
+        ? form.tech_stack
+            .split(",")
+            .map((item) => item.trim())
+            .filter(Boolean)
+        : [],
+    };
 
-  const { data, error } = await supabase.from("projects").insert([
-    {
-      title: form.title,
-      slug: form.slug,
-      summary: form.summary,
-      description: form.description,
-      cover_url: form.cover_url || null,
-      live_url: form.live_url || null,
-      github_url: form.github_url || null,
-      tech_stack: form.tech_stack,
-      category_id: form.category_id,
-      is_featured: form.is_featured,
-      status: form.status,
-      meta_title: form.meta_title,
-      meta_description: form.meta_description,
-      meta_keywords: form.meta_keywords,
-      canonical_url: form.canonical_url,
-    },
-  ]);
+    const response = await projectStore.store(payload);
 
-  loading.value = false;
-
-  if (error) {
-    message.value = error.message;
-  } else {
-    message.value = "Project created successfully!";
-    router.push("/dashboard/projects");
+    if (response) {
+      await navigateTo("/dashboard/projects");
+    }
+  } catch (error) {
+    message.value = error.message || "Project insert failed";
+  } finally {
+    loading.value = false;
   }
 };
 </script>
@@ -129,41 +97,77 @@ const createPost = async () => {
     </nav>
 
     <form
-      @submit.prevent="createPost"
+      @submit.prevent="submit"
       class="max-w-5xl mx-auto p-6 bg-white rounded-lg"
     >
       <h2 class="text-2xl font-bold mb-4">Create New Project</h2>
 
       <div class="space-y-4">
-        <BaseInput label="Title" v-model="form.title" />
-        <BaseInput label="Slug" v-model="form.slug" />
-        <BaseTextarea label="Summary" v-model="form.summary" />
+        <BaseInput
+          label="Title"
+          v-model="form.title"
+          placeholder="Enter title"
+        />
+        <BaseInput label="Slug" v-model="form.slug" placeholder="Enter sug" />
+        <BaseTextarea
+          label="Summary"
+          v-model="form.summary"
+          placeholder="Enter summary"
+        />
 
         <div>
           <label class="block font-semibold mb-1">Description</label>
-          <ClientOnly>
-            <BaseEditor v-model="form.description" />
-          </ClientOnly>
+
+          <BaseEditor
+            v-model="form.description"
+            placeholder="Enter description"
+          />
         </div>
 
-        <BaseInput label="Meta Title" v-model="form.meta_title" />
+        <BaseInput
+          label="Meta Title"
+          v-model="form.meta_title"
+          placeholder="Enter meta keyword"
+        />
         <BaseTextarea
           label="Meta Description"
           v-model="form.meta_description"
+          placeholder="Enter meta description"
         />
-        <BaseTextarea label="Meta Keyword" v-model="form.meta_keywords" />
-        <BaseInput label="Canonical URL" v-model="form.canonical_url" />
+        <BaseTextarea
+          label="Meta Keyword"
+          v-model="form.meta_keywords"
+          placeholder="Enter keywords url"
+        />
+        <BaseInput
+          label="Canonical URL"
+          v-model="form.canonical_url"
+          placeholder="Enter canonical url"
+        />
 
-        <BaseInput label="Cover Image URL" v-model="form.cover_url" />
+        <BaseInput
+          label="Cover Image URL"
+          v-model="form.cover_url"
+          placeholder="Enter cover url"
+        />
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <BaseInput label="Live URL" v-model="form.live_url" />
-          <BaseInput label="Github URL" v-model="form.github_url" />
+          <BaseInput
+            label="Live URL"
+            v-model="form.live_url"
+            placeholder="Enter live url"
+          />
+          <BaseInput
+            label="Video URL"
+            v-model="form.video_url"
+            placeholder="Enter video url"
+          />
         </div>
 
         <BaseInput
           label="Tech Stack (comma separated)"
-          v-model="form.tech_stack_input"
+          v-model="form.tech_stack"
+          placeholder="Vue, Nuxt, Tailwind, Laravel"
         />
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">

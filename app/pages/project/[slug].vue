@@ -2,7 +2,7 @@
 const route = useRoute();
 const projectStore = useProjectStore();
 
-const { errors, loading, project } = storeToRefs(projectStore);
+const { loading, project } = storeToRefs(projectStore);
 
 const loadProject = async () => {
   await projectStore.getProjectBySlug(route.params.slug);
@@ -44,7 +44,7 @@ onMounted(() => {
           </span>
 
           <h1
-            class="mt-3 text-3xl md:text-4xl font-bold text-slate-900 leading-tight"
+            class="text-3xl md:text-4xl font-bold text-slate-900 leading-tight"
           >
             {{ project.title }}
           </h1>
@@ -52,17 +52,6 @@ onMounted(() => {
           <p class="mt-4 text-slate-600 max-w-2xl">
             {{ project.summary }}
           </p>
-
-          <!-- Tags -->
-          <div class="mt-5 flex flex-wrap gap-2">
-            <span
-              v-for="tech in project.tech_stack || []"
-              :key="tech"
-              class="rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-medium text-slate-600 transition hover:border-emerald-200 hover:bg-emerald-50 hover:text-emerald-700"
-            >
-              {{ tech }}
-            </span>
-          </div>
         </div>
 
         <div class="overflow-hidden rounded-2xl py-6">
@@ -111,11 +100,11 @@ onMounted(() => {
                 </a>
 
                 <a
-                  :href="project.github_url"
+                  :href="project.video_url"
                   target="_blank"
                   class="group flex items-center justify-center gap-2 w-full border border-slate-300 bg-white py-3 rounded-xl font-semibold text-slate-700 hover:bg-slate-50 hover:border-slate-400 transition-all duration-200"
                 >
-                  <span>View Code</span>
+                  <span>Watch Demo</span>
                 </a>
               </div>
             </div>
