@@ -58,7 +58,7 @@ const loadPost = async () => {
   form.cover_url = response?.cover_url || "";
   form.is_featured = response?.is_featured ?? false;
   form.category_id = response?.category_id || null;
-  form.status = response?.status || "draft";
+  form.status = response?.status;
 };
 
 onMounted(() => {
@@ -125,12 +125,7 @@ const update = async () => {
 
         <BaseTextarea label="Summary" v-model="form.summary" />
 
-        <div>
-          <label class="block font-semibold mb-1">Content</label>
-          <ClientOnly>
-            <BaseEditor v-model="form.content" />
-          </ClientOnly>
-        </div>
+        <BaseEditor label="Content" v-model="form.content" />
         <BaseInput label="Cover" v-model="form.cover_url" />
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
