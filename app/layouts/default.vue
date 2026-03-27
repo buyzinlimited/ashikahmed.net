@@ -2,7 +2,7 @@
 
 <template>
   <div
-    class="min-h-screen bg-slate-50 text-slate-900 selection:bg-emerald-500/20 selection:text-slate-900"
+    class="min-h-screen bg-white text-slate-900 selection:bg-emerald-500/20 selection:text-slate-900"
   >
     <!-- Background Glow -->
     <div
