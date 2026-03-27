@@ -18,4 +18,9 @@ const props = defineProps({
   />
 </template>
 
-<style scoped></style>
+<style scoped>
+:deep(.md-editor-preview),
+:deep(.md-editor-preview *) {
+  word-break: break-word;
+}
+</style>

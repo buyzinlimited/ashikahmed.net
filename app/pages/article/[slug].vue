@@ -13,7 +13,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <main class="bg-white/90">
+  <main class="bg-white">
     <SeoMeta :title="post.title" />
     <section class="max-w-5xl mx-auto px-4 py-12">
       <div v-if="postStore.loading" class="animate-pulse space-y-4">
