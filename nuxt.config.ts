@@ -16,7 +16,13 @@ export default defineNuxtConfig({
   },
 
   
-  modules: ['@nuxtjs/supabase', '@nuxt/image', 'nuxt-mail', '@pinia/nuxt', '@nuxtjs/sitemap'],
+  modules: [
+    '@nuxtjs/supabase',
+    '@nuxt/image',
+    'nuxt-mail',
+    '@pinia/nuxt',
+    '@nuxtjs/sitemap',
+  ],
 
   supabase: {
     // Options

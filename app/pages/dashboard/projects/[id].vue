@@ -138,13 +138,6 @@ const update = async () => {
         <BaseInput label="Slug" v-model="form.slug" />
         <BaseTextarea label="Summary" v-model="form.summary" />
 
-        <div>
-          <label class="block font-semibold mb-1">Description</label>
-          <ClientOnly>
-            <BaseEditor v-model="form.description" />
-          </ClientOnly>
-        </div>
-
         <BaseInput label="Meta Title" v-model="form.meta_title" />
         <BaseTextarea
           label="Meta Description"
@@ -192,6 +185,12 @@ const update = async () => {
             ]"
           />
         </div>
+
+        <MarkdownEditor
+          label="Description"
+          v-model="form.description"
+          placeholder="Enter description"
+        />
 
         <BaseButton :loading="loading">Update Project</BaseButton>
       </div>

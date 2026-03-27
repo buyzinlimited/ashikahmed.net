@@ -37,7 +37,7 @@ onMounted(() => {
         />
 
         <div class="prose lg:prose-xl text-slate-700">
-          <div v-html="post.content"></div>
+          <MarkdownPreview :content="post.content" />
         </div>
       </div>
 

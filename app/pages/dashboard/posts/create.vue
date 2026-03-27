@@ -68,81 +68,79 @@ const create = async () => {
     <Head>
       <Title>Create Post</Title>
     </Head>
-    <nav
-      class="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between"
-    >
-      <div>
-        <h1 class="text-3xl font-bold text-slate-900">Posts</h1>
-        <p class="mt-1 text-sm text-slate-500">
-          Manage your blog posts, articles, and published content
-        </p>
-      </div>
 
-      <NuxtLink
-        to="/dashboard/posts/create"
-        class="inline-flex items-center justify-center rounded-xl bg-emerald-500 px-5 py-3 text-sm font-semibold text-white transition hover:bg-emerald-600"
-      >
-        Create Post
-      </NuxtLink>
-    </nav>
-
-    <form
-      @submit.prevent="create"
-      class="max-w-5xl mx-auto p-6 bg-white rounded-lg"
-    >
-      <h2 class="text-2xl font-bold mb-4">Create New Post</h2>
-
-      <div class="space-y-4">
-        <BaseInput label="Title" v-model="form.title" />
-        <BaseInput label="Slug" v-model="form.slug" />
-        <BaseInput label="Meta Title" v-model="form.meta_title" />
-        <BaseTextarea
-          label="Meta Description"
-          v-model="form.meta_description"
-        />
-        <BaseTextarea label="Meta Keyword" v-model="form.meta_keywords" />
-        <BaseInput label="canonical url" v-model="form.canonical_url" />
-
-        <BaseTextarea label="Summary" v-model="form.summary" />
-
-        <BaseEditor
-          label="Content"
-          v-model="form.content"
-          placeholder="Enter content"
-        />
-
-        <BaseInput label="Cover" v-model="form.cover_url" />
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <BaseSelect
-            label="Categories"
-            v-model="form.category_id"
-            placeholder="Select Categories"
-            :options="categories"
-          />
-
-          <BaseSelect
-            label="Featired"
-            v-model="form.is_featured"
-            placeholder="Select featured"
-            :options="[
-              { id: true, name: 'Yes' },
-              { id: false, name: 'No' },
-            ]"
-          />
-
-          <BaseSelect
-            label="Status"
-            placeholder="Select status"
-            :options="[
-              { id: 'draft', name: 'Draft' },
-              { id: 'published', name: 'Published' },
-            ]"
-          />
+    <div class="card">
+      <div class="card__header">
+        <div class="card__header__content">
+          <h2 class="card__title">Posts</h2>
+          <p class="card__description">
+            Manage your blog posts, articles, and published content
+          </p>
         </div>
 
-        <BaseButton :loading="postStore.loading">Create Post</BaseButton>
+        <div class="card__header-action">
+          <NuxtLink to="/dashboard/posts/create" class="card__button">
+            Create Post
+          </NuxtLink>
+        </div>
       </div>
-    </form>
+
+      <div class="card__body">
+        <form @submit.prevent="create" class="bg-white rounded-lg">
+          <h2 class="text-2xl font-bold mb-4">Create New Post</h2>
+
+          <div class="space-y-4">
+            <BaseInput label="Title" v-model="form.title" />
+            <BaseInput label="Slug" v-model="form.slug" />
+            <BaseInput label="Meta Title" v-model="form.meta_title" />
+            <BaseTextarea
+              label="Meta Description"
+              v-model="form.meta_description"
+            />
+            <BaseTextarea label="Meta Keyword" v-model="form.meta_keywords" />
+            <BaseInput label="canonical url" v-model="form.canonical_url" />
+
+            <BaseTextarea label="Summary" v-model="form.summary" />
+
+            <BaseInput label="Cover" v-model="form.cover_url" />
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <BaseSelect
+                label="Categories"
+                v-model="form.category_id"
+                placeholder="Select Categories"
+                :options="categories"
+              />
+
+              <BaseSelect
+                label="Featired"
+                v-model="form.is_featured"
+                placeholder="Select featured"
+                :options="[
+                  { id: true, name: 'Yes' },
+                  { id: false, name: 'No' },
+                ]"
+              />
+
+              <BaseSelect
+                label="Status"
+                placeholder="Select status"
+                :options="[
+                  { id: 'draft', name: 'Draft' },
+                  { id: 'published', name: 'Published' },
+                ]"
+              />
+            </div>
+
+            <MarkdownEditor
+              v-model="form.content"
+              placeholder="Enter content"
+            />
+
+            <BaseButton :loading="postStore.loading">Create Post</BaseButton>
+          </div>
+        </form>
+      </div>
+    </div>
   </main>
 </template>

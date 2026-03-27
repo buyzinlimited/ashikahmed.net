@@ -118,15 +118,6 @@ const submit = async () => {
           placeholder="Enter summary"
         />
 
-        <div>
-          <label class="block font-semibold mb-1">Description</label>
-
-          <BaseEditor
-            v-model="form.description"
-            placeholder="Enter description"
-          />
-        </div>
-
         <BaseInput
           label="Meta Title"
           v-model="form.meta_title"
@@ -208,7 +199,11 @@ const submit = async () => {
           />
         </div>
 
-        <span class="text-red-500">{{ message }}</span>
+        <MarkdownEditor
+          label="Description"
+          v-model="form.description"
+          placeholder="Enter description"
+        />
 
         <BaseButton :loading="loading">Create Project</BaseButton>
       </div>

@@ -125,7 +125,6 @@ const update = async () => {
 
         <BaseTextarea label="Summary" v-model="form.summary" />
 
-        <BaseEditor label="Content" v-model="form.content" />
         <BaseInput label="Cover" v-model="form.cover_url" />
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -148,6 +147,7 @@ const update = async () => {
 
           <BaseSelect
             label="Status"
+            v-model="form.status"
             placeholder="Select status"
             :options="[
               { id: 'draft', name: 'Draft' },
@@ -155,6 +155,8 @@ const update = async () => {
             ]"
           />
         </div>
+
+        <MarkdownEditor v-model="form.content" placeholder="Enter content" />
 
         <BaseButton :loading="postStore.loading">Update Post</BaseButton>
       </div>

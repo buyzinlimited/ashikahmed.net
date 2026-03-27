@@ -8,13 +8,35 @@ const logout = async () => {
 
 <template>
   <div class="min-h-screen bg-slate-100">
-    <Header />
-
     <div class="flex items-start">
       <aside
-        class="bg-white h-screen fixed top-16 left-0 w-64 md:block hidden z-50"
+        class="bg-white h-screen fixed left-0 w-64 md:block hidden z-50 px-4 py-6"
       >
-        <nav class="flex-1 px-4 py-6 overflow-y-auto">
+        <NuxtLink to="/" class="flex min-w-0 items-center gap-3 no-underline">
+          <div
+            class="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-full border border-emerald-200"
+          >
+            <img
+              src="/logo.jpg"
+              alt="Ashik Ahmed Logo"
+              class="w-full object-contain"
+            />
+          </div>
+
+          <div class="min-w-0">
+            <h1
+              class="truncate text-lg font-bold tracking-tight text-slate-900 md:text-xl"
+            >
+              Ashik Ahmed
+            </h1>
+            <p
+              class="truncate text-xs font-medium text-emerald-600 md:text-sm mb-0"
+            >
+              Full Stack Developer
+            </p>
+          </div>
+        </NuxtLink>
+        <nav class="flex-1 overflow-y-auto py-6">
           <ul class="space-y-2">
             <li>
               <NuxtLink

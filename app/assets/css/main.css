@@ -55,7 +55,7 @@
   }
 
   table {
-    @apply w-full text-sm text-left text-slate-700 bg-white/80 backdrop-blur border border-slate-200 rounded-2xl mb-6 block overflow-x-auto;
+    @apply w-full overflow-x-auto;
   }
 
   thead {
@@ -76,5 +76,38 @@
 
   tbody tr:nth-child(even) {
     @apply bg-emerald-50;
+  }
+
+  .card {
+    @apply bg-white rounded-2xl  border border-slate-200 p-6;
+  }
+
+  .card__header {
+    @apply flex items-center justify-between gap-4 mb-6;
+  }
+
+  .card__header-content {
+    @apply flex flex-col;
+  }
+
+  .card__title {
+    @apply text-lg font-semibold text-slate-900;
+  }
+
+  .card__description {
+    @apply text-sm text-slate-500 mt-1;
+  }
+
+  .card__header-action {
+  }
+
+  .card__button {
+    @apply inline-flex items-center px-4 py-2 text-sm font-medium 
+         bg-blue-600 text-white rounded-lg 
+         hover:bg-blue-700 transition;
+  }
+
+  .card__body {
+    @apply overflow-x-auto;
   }
 }

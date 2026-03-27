@@ -220,7 +220,7 @@ const logout = async () => {
               @click="closeMenu"
               class="no-underline inline-flex w-full items-center justify-center rounded-xl bg-emerald-500 px-5 py-3 text-sm font-semibold text-white transition hover:bg-emerald-600"
             >
-              Let’s Collaborate
+              Work With Me
             </NuxtLink>
           </div>
         </div>

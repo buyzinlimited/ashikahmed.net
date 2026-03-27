@@ -21,7 +21,7 @@ onMounted(() => {
       :keywords="project?.meta_keywords"
       :image="project?.cover_url"
     />
-    <div class="max-w-6xl mx-auto px-4 py-6">
+    <div class="max-w-7xl mx-auto px-4 py-6">
       <template v-if="loading">
         <div class="space-y-6 animate-pulse">
           <div class="h-8 w-2/3 bg-slate-200 rounded"></div>
@@ -36,7 +36,7 @@ onMounted(() => {
       </template>
 
       <template v-else-if="project">
-        <div class="py-4">
+        <div class="px-6 py-4">
           <span
             class="text-sm text-emerald-600 font-medium uppercase tracking-wide"
           >
@@ -62,11 +62,11 @@ onMounted(() => {
           />
         </div>
 
-        <div class="grid md:grid-cols-3 gap-10 items-start">
-          <div class="md:col-span-2">
+        <div class="grid md:grid-cols-3 gap-6 items-start">
+          <div class="md:col-span-2 bg-white p-6">
             <div class="prose max-w-none prose-slate">
               <h2 class="font-semibold text-2xl py-2">Project Overview</h2>
-              <div v-html="project.description"></div>
+              <MarkdownPreview :content="project.description" />
             </div>
           </div>
 
