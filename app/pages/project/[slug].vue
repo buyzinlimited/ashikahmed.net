@@ -131,7 +131,7 @@ onMounted(() => {
               <NuxtImg
                 :src="project.cover_url"
                 :alt="project.title"
-                class="h-full w-full object-cover"
+                class="w-full overflow-hidden rounded-xl bg-white ring-1 ring-slate-200"
               />
 
               <MarkdownPreview

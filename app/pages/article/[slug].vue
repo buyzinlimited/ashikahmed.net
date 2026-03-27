@@ -52,7 +52,7 @@ onMounted(() => {
       <template v-else-if="post">
         <!-- Hero -->
         <section
-          class="relative overflow-hidden rounded-[32px] bg-slate-900 text-white"
+          class="relative overflow-hidden rounded-xl bg-slate-900 text-white"
         >
           <div class="absolute inset-0">
             <NuxtImg
@@ -127,7 +127,7 @@ onMounted(() => {
 
               <div
                 v-if="post.cover_url"
-                class="overflow-hidden rounded-xl bg-white ring-1 ring-slate-200"
+                class="w-full overflow-hidden rounded-xl bg-white ring-1 ring-slate-200"
               >
                 <NuxtImg
                   :src="post.cover_url"
