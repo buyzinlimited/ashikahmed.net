@@ -117,9 +117,13 @@ const values = [
               <div class="relative">
                 <div class="flex items-center gap-4">
                   <div
-                    class="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-100 to-cyan-100 text-lg font-bold text-emerald-700"
+                    class="flex h-16 w-16 shrink-0 items-center justify-center bg-emerald-100"
                   >
-                    AA
+                    <NuxtImg
+                      src="/logo.jpg"
+                      alt="Ashik Ahmed - Full Stack web developer in bangladesh"
+                      class="rounded-2xl overflow-hidden ring-4 ring-primary"
+                    />
                   </div>
 
                   <div>

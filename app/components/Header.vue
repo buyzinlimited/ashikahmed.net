@@ -135,9 +135,9 @@ const logout = async () => {
           <template v-else>
             <NuxtLink
               to="/contact"
-              class="inline-flex items-center justify-center rounded-xl bg-emerald-500 px-5 py-3 text-sm font-semibold text-white shadow-[0_10px_30px_rgba(16,185,129,0.18)] transition hover:bg-emerald-600"
+              class="inline-flex items-center justify-center rounded bg-emerald-500 px-5 py-3 text-sm font-semibold text-white shadow-[0_10px_30px_rgba(16,185,129,0.18)] transition hover:bg-emerald-600"
             >
-              Let’s Collaborate
+              Work With Me
             </NuxtLink>
           </template>
         </div>
@@ -146,7 +146,7 @@ const logout = async () => {
         <button
           type="button"
           @click="toggleMenu"
-          class="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-700 transition hover:bg-slate-50 md:hidden"
+          class="inline-flex h-11 w-11 items-center justify-center rounded border border-slate-200 bg-white text-slate-700 transition hover:bg-slate-50 md:hidden"
           :aria-expanded="mobileMenuOpen"
           aria-label="Toggle navigation menu"
         >

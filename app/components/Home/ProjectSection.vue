@@ -170,8 +170,8 @@ onMounted(() => {
                 </div>
 
                 <div class="flex items-center gap-4">
-                  <a
-                    :href="project.live_url"
+                  <NuxtLink
+                    :to="`/project/${project.slug}`"
                     target="_blank"
                     rel="noopener noreferrer"
                     class="inline-flex items-center text-sm font-semibold text-emerald-600 transition hover:text-emerald-700"
@@ -190,15 +190,15 @@ onMounted(() => {
                       <path d="M7 7h10v10" />
                       <path d="M7 17 17 7" />
                     </svg>
-                  </a>
+                  </NuxtLink>
 
                   <a
-                    :href="project.github_url"
+                    :href="project.live_url"
                     target="_blank"
                     rel="noopener noreferrer"
                     class="inline-flex items-center text-sm font-semibold text-slate-700 transition hover:text-slate-900"
                   >
-                    GitHub
+                    Live Preview
                   </a>
                 </div>
               </div>

@@ -30,18 +30,6 @@ const logout = async () => {
 
             <li>
               <NuxtLink
-                to="/dashboard/projects"
-                active-class="bg-emerald-50 text-emerald-600 font-medium"
-                exact-active-class="bg-emerald-50 text-emerald-700 font-semibold"
-                class="flex items-center p-2 rounded-lg hover:bg-gray-50 transition"
-              >
-                <LazyIconsProject class="size-5 mr-2" />
-                <span>Projects</span>
-              </NuxtLink>
-            </li>
-
-            <li>
-              <NuxtLink
                 to="/dashboard/posts"
                 active-class="bg-emerald-50 text-emerald-600 font-medium"
                 exact-active-class="bg-emerald-50 text-emerald-700 font-semibold"
@@ -54,13 +42,25 @@ const logout = async () => {
 
             <li>
               <NuxtLink
-                to="/dashboard/clients"
+                to="/dashboard/projects"
+                active-class="bg-emerald-50 text-emerald-600 font-medium"
+                exact-active-class="bg-emerald-50 text-emerald-700 font-semibold"
+                class="flex items-center p-2 rounded-lg hover:bg-gray-50 transition"
+              >
+                <LazyIconsProject class="size-5 mr-2" />
+                <span>Projects</span>
+              </NuxtLink>
+            </li>
+
+            <li>
+              <NuxtLink
+                to="/dashboard/testimonials"
                 active-class="bg-emerald-50 text-emerald-600 font-medium"
                 exact-active-class="bg-emerald-50 text-emerald-700 font-semibold"
                 class="flex items-center p-2 rounded-lg hover:bg-gray-50 transition"
               >
                 <LazyIconsClients class="size-5 mr-2" />
-                <span>Clients</span>
+                <span>Testimonials</span>
               </NuxtLink>
             </li>
 

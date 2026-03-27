@@ -46,7 +46,7 @@ onMounted(() => {
       <div
         v-for="project in projects"
         :key="project.id"
-        class="group overflow-hidden rounded-3xl border border-slate-200 bg-white transition duration-300 hover:-translate-y-1"
+        class="group overflow-hidden rounded border border-slate-200 bg-white transition duration-300 hover:-translate-y-1"
       >
         <div class="relative">
           <img

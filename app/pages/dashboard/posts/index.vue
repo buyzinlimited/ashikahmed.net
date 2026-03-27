@@ -53,7 +53,7 @@ onMounted(() => {
       <div
         v-for="post in posts"
         :key="post.id"
-        class="group overflow-hidden rounded-3xl border border-slate-200 bg-white transition duration-300 hover:-translate-y-1 hover:shadow-lg"
+        class="group overflow-hidden rounded border border-slate-200 bg-white transition duration-300 hover:-translate-y-1 hover:shadow-lg"
       >
         <div class="relative">
           <NuxtImg

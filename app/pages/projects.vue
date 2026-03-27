@@ -106,7 +106,7 @@ onMounted(() => {
                   >
                     <NuxtImg
                       src="/logo.jpg"
-                      alt="Full Stack web developer - ashik ahmed"
+                      alt="Ashik Ahmed - Full Stack web developer in bangladesh"
                       class="rounded-2xl overflow-hidden ring-4 ring-primary"
                     />
                   </div>

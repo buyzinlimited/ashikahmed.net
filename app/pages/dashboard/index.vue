@@ -83,7 +83,7 @@ const statusClass = (status) => {
     <section class="space-y-6">
       <!-- Header -->
       <div
-        class="flex flex-col justify-between gap-6 rounded-3xl border border-slate-200 bg-gradient-to from-white via-slate-50 to-cyan-50 p-6 lg:flex-row lg:items-center"
+        class="bg-white flex flex-col justify-between gap-6 rounded-3xl border border-slate-200 bg-gradient-to from-white via-slate-50 to-cyan-50 p-6 lg:flex-row lg:items-center"
       >
         <div class="flex items-center gap-4">
           <div
