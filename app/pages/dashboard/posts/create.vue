@@ -105,12 +105,12 @@ const create = async () => {
 
         <BaseTextarea label="Summary" v-model="form.summary" />
 
-        <div>
-          <label class="block font-semibold mb-1">Content</label>
-          <ClientOnly>
-            <BaseEditor v-model="form.content" />
-          </ClientOnly>
-        </div>
+        <BaseEditor
+          label="Content"
+          v-model="form.content"
+          placeholder="Enter content"
+        />
+
         <BaseInput label="Cover" v-model="form.cover_url" />
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">

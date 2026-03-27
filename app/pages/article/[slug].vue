@@ -13,7 +13,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <main class="bg-white/70">
+  <main class="bg-white/90">
     <SeoMeta :title="post.title" />
     <section class="max-w-5xl mx-auto px-4 py-12">
       <div v-if="postStore.loading" class="animate-pulse space-y-4">
@@ -37,7 +37,6 @@ onMounted(() => {
         />
 
         <div class="prose lg:prose-xl text-slate-700">
-          <!-- raw HTML content -->
           <div v-html="post.content"></div>
         </div>
       </div>

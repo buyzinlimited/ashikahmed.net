@@ -53,4 +53,28 @@
   ol {
     @apply list-decimal pl-6 mb-4 text-slate-700 space-y-2;
   }
+
+  table {
+    @apply w-full text-sm text-left text-slate-700 bg-white/80 backdrop-blur border border-slate-200 rounded-2xl mb-6 block overflow-x-auto;
+  }
+
+  thead {
+    @apply bg-slate-100/70 backdrop-blur;
+  }
+
+  th {
+    @apply px-5 py-3 font-semibold text-slate-800 border-b border-slate-200;
+  }
+
+  td {
+    @apply px-5 py-3 border-b border-slate-100;
+  }
+
+  tbody tr {
+    @apply transition duration-200 hover:bg-slate-50/70;
+  }
+
+  tbody tr:nth-child(even) {
+    @apply bg-emerald-50;
+  }
 }
