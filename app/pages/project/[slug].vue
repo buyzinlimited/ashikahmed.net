@@ -36,7 +36,7 @@ onMounted(() => {
       </template>
 
       <template v-else-if="project">
-        <div class="px-6 py-4">
+        <div class="py-4">
           <span
             class="text-sm text-emerald-600 font-medium uppercase tracking-wide"
           >
@@ -63,8 +63,8 @@ onMounted(() => {
         </div>
 
         <div class="grid md:grid-cols-3 gap-6 items-start">
-          <div class="md:col-span-2 bg-white p-6">
-            <div class="prose max-w-none prose-slate">
+          <div class="md:col-span-2">
+            <div class="bg-white max-w-none prose prose-slate px-4">
               <h2 class="font-semibold text-2xl py-2">Project Overview</h2>
               <MarkdownPreview :content="project.description" />
             </div>

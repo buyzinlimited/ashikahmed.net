@@ -12,10 +12,9 @@ const props = defineProps({
 
 <template>
   <MdPreview
-    id="preview-only"
     :modelValue="props.content || ''"
-    previewTheme="github"
-    codeTheme="atom"
+    previewTheme="default"
+    codeTheme="github"
   />
 </template>
 
