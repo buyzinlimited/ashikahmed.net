@@ -23,7 +23,6 @@ onMounted(() => {
     />
 
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
-      <!-- Loading -->
       <template v-if="loading">
         <div class="animate-pulse space-y-8">
           <div class="space-y-4">
@@ -32,9 +31,7 @@ onMounted(() => {
             <div class="h-5 w-2/3 rounded-lg bg-slate-200"></div>
           </div>
 
-          <div
-            class="h-[260px] md:h-[480px] w-full rounded-[28px] bg-slate-200"
-          ></div>
+          <div class="h-96 w-full rounded-xl bg-slate-200"></div>
 
           <div class="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-10">
             <div class="space-y-4">
@@ -48,9 +45,7 @@ onMounted(() => {
         </div>
       </template>
 
-      <!-- Post Content -->
       <template v-else-if="post">
-        <!-- Hero -->
         <section
           class="relative overflow-hidden rounded-xl bg-slate-900 text-white"
         >
@@ -59,7 +54,7 @@ onMounted(() => {
               v-if="post.cover_url"
               :src="post.cover_url"
               :alt="post.title"
-              class="h-full w-full object-cover opacity-70"
+              class="w-full h-full object-cover opacity-70"
             />
             <div
               class="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-900/95 to-emerald-900/70"
@@ -80,26 +75,11 @@ onMounted(() => {
                 {{ post.title }}
               </h1>
 
-              <div
-                class="mt-5 flex flex-wrap items-center gap-3 text-sm text-slate-300"
-              >
-                <span class="rounded-full bg-white/10 px-3 py-1 backdrop-blur">
-                  Published: {{ $date(post.created_at) }}
-                </span>
-
-                <span
-                  v-if="post.author?.name"
-                  class="rounded-full bg-white/10 px-3 py-1 backdrop-blur"
-                >
-                  Author: {{ post.author.name }}
-                </span>
-              </div>
-
               <p
-                v-if="post.short_description"
+                v-if="post.summary"
                 class="mt-5 max-w-3xl text-sm leading-7 text-slate-200 sm:text-base lg:text-lg lg:leading-8"
               >
-                {{ post.short_description }}
+                {{ post.summary }}
               </p>
             </div>
           </div>
@@ -255,13 +235,13 @@ onMounted(() => {
 }
 
 :deep(.post-markdown h1) {
-  font-size: 2rem;
-}
-:deep(.post-markdown h2) {
   font-size: 1.65rem;
 }
-:deep(.post-markdown h3) {
+:deep(.post-markdown h2) {
   font-size: 1.35rem;
+}
+:deep(.post-markdown h3) {
+  font-size: 1rem;
 }
 
 :deep(.post-markdown p) {
@@ -280,7 +260,7 @@ onMounted(() => {
 }
 
 :deep(.post-markdown li) {
-  margin-bottom: 0.4rem;
+  margin: 0;
 }
 
 :deep(.post-markdown a) {

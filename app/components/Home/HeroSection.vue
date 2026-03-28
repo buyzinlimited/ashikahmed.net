@@ -75,11 +75,10 @@ const skills = [
         <div class="relative isolate">
           <div class="relative mx-auto w-full max-w-md">
             <div
-              aria-hidden="true"
               class="pointer-events-none absolute -inset-6 rounded-[2.5rem] bg-gradient-to-b from-emerald-100 via-cyan-50 to-transparent blur-2xl"
             />
             <div
-              class="relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-6 shadow-lg"
+              class="relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-6"
             >
               <div
                 class="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full border border-emerald-200"
@@ -93,7 +92,7 @@ const skills = [
 
               <div class="flex items-center gap-4">
                 <div
-                  class="h-16 w-16 shrink-0 overflow-hidden rounded-xl border border-emerald-100 bg-gradient-to-br from-emerald-100 to-cyan-100"
+                  class="h-16 w-16 shrink-0 overflow-hidden rounded-xl border border-emerald-100"
                 >
                   <img
                     src="/ashik-ahmed.jpg"
@@ -137,14 +136,14 @@ const skills = [
               </div>
 
               <div class="mt-6">
-				  <NuxtLink
-					to="https://www.facebook.com/groups/developer.commutity"
-					target="_blank"
-					class="inline-flex w-full items-center justify-center rounded-xl bg-slate-900 px-4 py-3 text-sm font-semibold text-white transition hover:bg-slate-800"
-				  >
-					Join Developer Community
-				  </NuxtLink>
-				</div>
+                <NuxtLink
+                  to="https://www.facebook.com/groups/developer.commutity"
+                  target="_blank"
+                  class="inline-flex w-full items-center justify-center rounded-xl bg-slate-900 px-4 py-3 text-sm font-semibold text-white transition hover:bg-slate-800"
+                >
+                  Join Developer Community
+                </NuxtLink>
+              </div>
             </div>
           </div>
         </div>

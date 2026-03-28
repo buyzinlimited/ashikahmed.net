@@ -75,6 +75,7 @@ export const usePostStore = defineStore("post", {
     async update(id, formData) {
       const supabase = useSupabaseClient();
 
+      this.loading = true;
       try {
         const { data, error } = await supabase
           .from("posts")
@@ -90,6 +91,8 @@ export const usePostStore = defineStore("post", {
       } catch (error) {
         this.errors = error.message || "Project update failed";
         throw error;
+      } finally {
+        this.loading = false;
       }
     },
 
