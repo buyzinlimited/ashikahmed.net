@@ -66,8 +66,8 @@ const logout = async () => {
     <div class="mx-auto max-w-7xl px-4 md:px-6">
       <div class="flex h-20 items-center justify-between gap-4">
         <!-- Brand -->
-        <NuxtLink
-          to="/"
+        <a
+          href="/"
           class="flex min-w-0 items-center gap-3 no-underline"
           @click="closeMenu"
         >
@@ -93,7 +93,7 @@ const logout = async () => {
               Full Stack Developer
             </p>
           </div>
-        </NuxtLink>
+        </a>
 
         <!-- Desktop Navigation -->
         <nav class="hidden items-center gap-2 md:flex">

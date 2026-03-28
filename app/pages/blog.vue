@@ -83,11 +83,13 @@ onMounted(() => {
                   Featured Article
                 </span>
 
-                <h2
-                  class="mt-4 text-2xl font-bold tracking-tight text-slate-900"
-                >
-                  {{ post.title }}
-                </h2>
+                <NuxtLink :to="`article/${post.slug}`">
+                  <h2
+                    class="mt-4 text-primary text-2xl font-bold tracking-tight"
+                  >
+                    {{ post.title }}
+                  </h2>
+                </NuxtLink>
 
                 <div
                   class="mt-3 flex flex-wrap items-center gap-3 text-sm text-slate-500"

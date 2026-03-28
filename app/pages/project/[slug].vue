@@ -2,20 +2,26 @@
 const route = useRoute();
 const projectStore = useProjectStore();
 
-const { loading, project, errors } = storeToRefs(projectStore);
+const slug = computed(() => route.params.slug);
 
 const loadProject = async () => {
-  await projectStore.getProjectBySlug(route.params.slug);
+  return projectStore.getProjectBySlug(slug.value);
 };
 
-onMounted(() => {
-  loadProject();
+const {
+  data: project,
+  pending: loading,
+  error,
+  refresh,
+} = await useAsyncData(() => `project-${slug.value}`, loadProject, {
+  watch: [slug],
 });
 </script>
 
 <template>
   <main class="min-h-screen bg-[#f8fafc]">
     <SeoMeta
+      v-if="project"
       :title="project?.title"
       :description="project?.meta_description"
       :keywords="project?.meta_keywords"
@@ -195,7 +201,7 @@ onMounted(() => {
 
       <template v-else>
         <div
-          class="rounded-[28px] bg-white px-6 py-16 text-center shadow-sm ring-1 ring-red-100"
+          class="rounded-xl bg-white px-6 py-16 text-center shadow-sm ring-1 ring-red-100"
         >
           <h2 class="text-2xl font-bold text-red-500">
             {{ errors || "Project not found" }}

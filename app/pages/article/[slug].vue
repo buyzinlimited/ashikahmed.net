@@ -1,21 +1,28 @@
 <script setup>
 const route = useRoute();
 const postStore = usePostStore();
+const { $date, $time, $dateTime, $timeAgo } = useNuxtApp();
 
-const { post, loading, errors } = storeToRefs(postStore);
+const slug = computed(() => route.params.slug);
 
 const loadPost = async () => {
-  await postStore.getPostBySlug(route.params.slug);
+  return await postStore.getPostBySlug(slug.value);
 };
 
-onMounted(() => {
-  loadPost();
+const {
+  data: post,
+  pending: loading,
+  error,
+  refresh,
+} = await useAsyncData(() => `post-${slug.value}`, loadPost, {
+  watch: [slug],
 });
 </script>
 
 <template>
-  <main class="min-h-screen bg-[#f8fafc]">
+  <main>
     <SeoMeta
+      v-if="post"
       :title="post?.title"
       :description="post?.meta_description || post?.short_description"
       :keywords="post?.meta_keywords"
