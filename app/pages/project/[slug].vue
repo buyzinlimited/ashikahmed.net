@@ -220,25 +220,27 @@ onMounted(() => {
   line-height: 1.9;
 }
 
+/* Reset preview wrapper */
 :deep(.project-markdown .md-editor-preview) {
   background: transparent;
   padding: 0;
 }
 
+/* Word wrapping */
 :deep(.project-markdown .md-editor-preview),
 :deep(.project-markdown .md-editor-preview *) {
   word-break: break-word;
   overflow-wrap: anywhere;
 }
 
+/* Headings */
 :deep(.project-markdown h1),
 :deep(.project-markdown h2),
 :deep(.project-markdown h3),
 :deep(.project-markdown h4),
 :deep(.project-markdown h5),
 :deep(.project-markdown h6) {
-  margin-top: 1.5em;
-  margin-bottom: 0.7em;
+  margin: 1.5em 0 0.7em;
   font-weight: 700;
   line-height: 1.3;
   color: #0f172a;
@@ -247,30 +249,42 @@ onMounted(() => {
 :deep(.project-markdown h1) {
   font-size: 2rem;
 }
-
 :deep(.project-markdown h2) {
   font-size: 1.65rem;
 }
-
 :deep(.project-markdown h3) {
   font-size: 1.35rem;
 }
 
+/* Paragraph */
 :deep(.project-markdown p) {
   margin: 1rem 0;
   color: #475569;
 }
 
-:deep(.project-markdown ul),
+/* ✅ Fixed Lists (with bullets) */
+:deep(.project-markdown ul) {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+  list-style: disc;
+}
+
 :deep(.project-markdown ol) {
   margin: 1rem 0;
-  padding-left: 1.25rem;
+  padding-left: 1.5rem;
+  list-style: decimal;
 }
 
 :deep(.project-markdown li) {
-  margin: 0.45rem 0;
+  margin: 0.4rem 0;
 }
 
+/* Force bullets if reset CSS exists */
+:deep(.project-markdown ul li) {
+  list-style-type: disc;
+}
+
+/* Links */
 :deep(.project-markdown a) {
   color: #059669;
   font-weight: 600;
@@ -281,38 +295,47 @@ onMounted(() => {
   text-decoration: underline;
 }
 
+/* Blockquote */
 :deep(.project-markdown blockquote) {
   margin: 1.25rem 0;
   padding: 1rem 1.25rem;
   border-left: 4px solid #10b981;
-  border-radius: 1rem;
+  border-radius: 0.75rem;
   background: #f8fafc;
   color: #475569;
 }
 
+/* Code */
 :deep(.project-markdown pre) {
   overflow-x: auto;
   margin: 1.25rem 0;
   padding: 1rem;
-  border-radius: 1rem;
+  border-radius: 0.75rem;
+  background: #0f172a;
+  color: #e2e8f0;
 }
 
 :deep(.project-markdown code) {
+  background: #f1f5f9;
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.25rem;
+  font-size: 0.9em;
   word-break: break-word;
   white-space: pre-wrap;
 }
 
+/* Images */
 :deep(.project-markdown img) {
   margin: 1rem 0;
-  border-radius: 1rem;
+  border-radius: 0.75rem;
+  max-width: 100%;
 }
 
+/* Tables */
 :deep(.project-markdown table) {
-  display: block;
   width: 100%;
-  overflow-x: auto;
-  margin: 1.25rem 0;
   border-collapse: collapse;
+  margin: 1.25rem 0;
 }
 
 :deep(.project-markdown th),
